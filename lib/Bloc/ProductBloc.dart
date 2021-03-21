@@ -4,11 +4,11 @@ import '../Models/Product.dart';
 
 class ProductBloc{
   List<Product> _productList=[
-    Product(1,"Lechuga",2.44,"Fresca, traida del tropico",4),
-    Product(2,"Tomate",3.44,"Fresca, traida del tropico",4),
-    Product(3,"Pepino",4.44,"Fresca, traida del tropico",4),
-    Product(4,"Carne",5.44,"Fresca, traida del tropico",4),
-    Product(5,"Pollo",6.44,"Fresca, traida del tropico",4),
+    Product(1,"Lechuga",2.44,"Fresca, traida del tropico",4,"burger.png"),
+    Product(2,"Tomate",3.44,"Fresca, traida del tropico",4,"burger.png"),
+    Product(3,"Pepino",4.44,"Fresca, traida del tropico",4,"burger.png"),
+    Product(4,"Carne",5.44,"Fresca, traida del tropico",4,"burger.png"),
+    Product(5,"Pollo",6.44,"Fresca, traida del tropico",4,"burger.png"),
   ];
   Stream <List<Product>> get getProductList async*{
     final List<Product> _products=[];

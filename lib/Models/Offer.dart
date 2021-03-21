@@ -1,12 +1,20 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
-class Product {
-  int _productId;
+class Offer {
+  // int _productId;
   String _name;
   double _price;
   String _description;
   String _imageUrl;
   int _unit;
+
+  int get unit => _unit;
+
+  set unit(int value) {
+    _unit = value;
+  }
+
+  double _discount;
 
 
   String get imageUrl => _imageUrl;
@@ -15,13 +23,7 @@ class Product {
     _imageUrl = value;
   }
 
-  Product(this._productId,this._name,this._price,this._description,this._unit, this._imageUrl);
-
-  int get productId => _productId;
-
-  set productId(int value) {
-    _productId = value;
-  }
+  Offer(this._name,this._price,this._description,this._unit, this._imageUrl, this._discount);
 
   String get name => _name;
 
@@ -29,10 +31,10 @@ class Product {
     _name = value;
   }
 
-  int get unit => _unit;
+  double get discount => _discount;
 
-  set unit(int value) {
-    _unit = value;
+  set discount(double value) {
+    _discount = value;
   }
 
   String get description => _description;
@@ -46,13 +48,12 @@ class Product {
   set price(double value) {
     _price = value;
   }
-  Product.fromJson(Map<String, dynamic>json){
-    productId=json['productId'];
+  Offer.fromJson(Map<String, dynamic>json){
     name=json['name'];
     price=json['price'];
     description=json['description'];
     imageUrl=json['imageUrl'];
-    unit=json['unit'];
+    discount=json['discount'];
   }
 
 }

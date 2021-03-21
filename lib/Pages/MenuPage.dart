@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
+import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Repository/OffersRepository.dart';
 import 'package:x_market/Repository/ProductRepository.dart';
 import 'package:x_market/States/NavigationStates.dart';
@@ -15,60 +16,13 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   final ProductBloc _productBloc=new ProductBloc();
-  final CategoriesScroller categoriesScroller= CategoriesScroller();
+  // final CategoriesScroller categoriesScroller= CategoriesScroller();
   @override
   void dispose(){
     super.dispose();
     _productBloc.dispose();
   }
   List<Widget> itemsData=[];
-  void getPostsData() {
-    List<dynamic> responseList = FOOD_DATA;
-    List<Widget> listItems = [];
-    responseList.forEach((post) {
-      listItems.add(Container(
-          height: 150,
-          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.0)), color: Colors.white, boxShadow: [
-            BoxShadow(color: Colors.white.withAlpha(100), blurRadius: 10.0),
-          ]),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      post["name"],
-                      style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      post["brand"],
-                      style: const TextStyle(fontSize: 17, color: Colors.grey),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "\$ ${post["price"]}",
-                      style: const TextStyle(fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-                Image.asset(
-                  "assets/images/${post["image"]}",
-                  height: double.infinity,
-                )
-              ],
-            ),
-          )));
-    });
-    setState(() {
-      itemsData = listItems;
-    });
-  }
   @override
   Widget build(BuildContext context) {
     final Size size=MediaQuery.of(context).size;
@@ -103,9 +57,9 @@ class _MenuPageState extends State<MenuPage> {
                   BlocBuilder <NavigationBloc,NavigationStates>(
                       builder: (context,state){
                         if(state is NavigationMenuPageState){
-                          List<Product> _offersObtain=state.props[1];
+                          List<Offer> _offersObtain=state.props[1];
                           return Container(
-                              height: size.height*0.30,
+                              height: size.height*0.3,
                               // width: size.width*0.3,
                               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                               child: ListView.builder(
@@ -114,29 +68,79 @@ class _MenuPageState extends State<MenuPage> {
                                   itemCount: _offersObtain.length,
                                   itemBuilder: (context, index){
                                     return Card(
-                                      elevation: 5.0,
+                                      color: color6.withOpacity(0.8),
+                                      // color: color3.withOpacity(0.8),
+                                      // color: color2.withOpacity(0.7),
+                                      elevation: 10.0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10.0),
+                                      ),
                                       child: Stack(
                                         children: [
-                                          Image.asset("assets/images/burger.png",fit: BoxFit.fill,),
-                                          Column(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children: [
-                                              Container(
-                                                padding: EdgeInsets.all(5.0),
-                                                child: Text("${_offersObtain[index].name}",style: TextStyle(fontSize: 20.0),),
-                                                // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
+
+                                          Image.asset("assets/images/${_offersObtain[index].imageUrl}",fit: BoxFit.fill,),
+                                          // CustomPaint(
+                                          //   size: Size(10,10),
+                                          //   painter: CustomShapePainter(_borderRadius, Colors.pink, Colors.red),
+                                          // ),
+                                          Positioned(
+                                            bottom: 0,
+                                            right: 0,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.only(bottomRight: Radius.circular(10.0),topLeft: Radius.circular(30.0)),
+                                                color: Colors.yellow.withOpacity(0.9),
                                               ),
-                                              Container(
+                                              // color: Colors.white.withOpacity(0.7),
+                                              padding: EdgeInsets.only(left: 20.0,right: 20.0,bottom: 5.0,top: 5.0),
+
+                                              child: Center(
                                                 child: Column(
                                                   children: [
-                                                    Text("${_offersObtain[index].name}",style: TextStyle(fontSize: 20.0),),
-                                                    Text("${_offersObtain[index].price}",style: TextStyle(fontSize: 20.0),),
-                                                    Text("${_offersObtain[index].unit}",style: TextStyle(fontSize: 20.0),)
+                                                    Text("${_offersObtain[index].name}",style: TextStyle(fontSize: size.height*0.035,),),
+                                                    Text("Cantidad ${_offersObtain[index].unit}",style: TextStyle(fontSize: size.height*0.02,),),
+                                                    Text("${_offersObtain[index].price} Bs",style: TextStyle(fontSize: size.height*0.025,color: color3),),
+
                                                   ],
                                                 ),
                                               ),
-                                            ],
+                                            ),
                                           ),
+                                          Container(
+                                            padding: EdgeInsets.all(5.0),
+                                            child: Text("Oferta ${_offersObtain[index].discount}%",style: TextStyle(fontSize: size.height*0.04,color: Colors.black),),
+                                            // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
+                                          ),
+                                          // Positioned(
+                                          //     child: Container(
+                                          //       padding: EdgeInsets.all(5.0),
+                                          //       child: Text("Oferta del ${_offersObtain[index].unit}%",style: TextStyle(fontSize: size.width*0.07,color: Colors.white),),
+                                          //       // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
+                                          //     ),
+                                          // ),
+
+                                          // Column(
+                                          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                          //   children: [
+                                          //     Container(
+                                          //       padding: EdgeInsets.all(5.0),
+                                          //       child: Text("Oferta del ${_offersObtain[index].unit}%",style: TextStyle(fontSize: size.width*0.07,color: Colors.white),),
+                                          //       // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
+                                          //     ),
+                                          //     // Container(
+                                          //     //   color: Colors.white.withOpacity(0.7),
+                                          //     //   padding: EdgeInsets.only(left: 20.0,right: 20.0),
+                                          //     //
+                                          //     //   child: Column(
+                                          //     //     children: [
+                                          //     //       Text("${_offersObtain[index].name}",style: TextStyle(fontSize: 20.0,),),
+                                          //     //       Text("${_offersObtain[index].price}",style: TextStyle(fontSize: 20.0,),),
+                                          //     //       Text("${_offersObtain[index].unit}",style: TextStyle(fontSize: 20.0,),)
+                                          //     //     ],
+                                          //     //   ),
+                                          //     // ),
+                                          //   ],
+                                          // ),
                                         ],
 
                                       ),
@@ -162,22 +166,27 @@ class _MenuPageState extends State<MenuPage> {
                              itemCount: _productsObtain.length,
                              itemBuilder: (context, index){
                                return Card(
+                                 color: color1,
                                  elevation: 5.0,
+                                 shape: RoundedRectangleBorder(
+                                   borderRadius: BorderRadius.circular(10.0),
+                                 ),
                                  child: Row(
                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                                    children: [
                                      Container(
                                        padding: EdgeInsets.all(10.0),
-                                       child: Image.asset("assets/images/burger.png",height: size.width*0.2,width: size.width*0.2,),
+                                       child: Image.asset("assets/images/${_productsObtain[index].imageUrl}",height: size.width*0.2,width: size.width*0.2,),
                                        // child: Text("${_productsObtain[index].name}",style: TextStyle(fontSize: 20.0),),
                                        // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
                                      ),
                                      Container(
                                        child: Column(
                                          children: [
-                                           Text("${_productsObtain[index].name}",style: TextStyle(fontSize: 20.0),),
-                                           Text("${_productsObtain[index].price}",style: TextStyle(fontSize: 20.0),),
-                                           Text("${_productsObtain[index].unit}",style: TextStyle(fontSize: 20.0),)
+                                           Text("${_productsObtain[index].name}",style: TextStyle(fontSize: 20.0,color: Colors.white),),
+                                           Text("Cantidad: ${_productsObtain[index].unit}",style: TextStyle(fontSize: 15.0,color: color5),),
+                                           Text("Precio: ${_productsObtain[index].price} Bs",style: TextStyle(fontSize: 15.0,color: color3),),
+
                                          ],
                                        ),
                                      ),
@@ -348,5 +357,5 @@ class CategoriesScroller extends StatelessWidget {
       ),
     );
   }
-}
 
+}
