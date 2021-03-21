@@ -7,7 +7,14 @@ class Product {
   String _description;
   String _imageUrl;
   int _unit;
+  String _branch;
 
+
+  String get branch => _branch;
+
+  set branch(String value) {
+    _branch = value;
+  }
 
   String get imageUrl => _imageUrl;
 
@@ -15,7 +22,7 @@ class Product {
     _imageUrl = value;
   }
 
-  Product(this._productId,this._name,this._price,this._description,this._unit, this._imageUrl);
+  Product(this._productId,this._name,this._price,this._description,this._unit, this._imageUrl,this._branch);
 
   int get productId => _productId;
 
@@ -53,6 +60,7 @@ class Product {
     description=json['description'];
     imageUrl=json['imageUrl'];
     unit=json['unit'];
+    branch=json['branch'];
   }
 
 }

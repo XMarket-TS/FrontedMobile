@@ -7,23 +7,27 @@ class Offer {
   String _description;
   String _imageUrl;
   int _unit;
+  String _branch;
+
+  String get branch => _branch;
+
+  set branch(String value) {
+    _branch = value;
+  }
 
   int get unit => _unit;
 
   set unit(int value) {
     _unit = value;
   }
-
   double _discount;
-
-
   String get imageUrl => _imageUrl;
 
   set imageUrl(String value) {
     _imageUrl = value;
   }
 
-  Offer(this._name,this._price,this._description,this._unit, this._imageUrl, this._discount);
+  Offer(this._name,this._price,this._description,this._unit, this._imageUrl, this._discount,this._branch);
 
   String get name => _name;
 
@@ -54,6 +58,7 @@ class Offer {
     description=json['description'];
     imageUrl=json['imageUrl'];
     discount=json['discount'];
+    branch=json['branch'];
   }
 
 }
