@@ -5,9 +5,18 @@ class Offer {
   String _name;
   double _price;
   String _description;
+  String _startDate;
+  String _endDate;
   String _imageUrl;
   int _unit;
   String _branch;
+
+  Offer(this._name,this._price,this._startDate,this._endDate,this._description,this._unit, this._imageUrl, this._discount,this._branch);
+  String get startDate => _startDate;
+
+  set startDate(String value) {
+    _startDate = value;
+  }
 
   String get branch => _branch;
 
@@ -26,8 +35,6 @@ class Offer {
   set imageUrl(String value) {
     _imageUrl = value;
   }
-
-  Offer(this._name,this._price,this._description,this._unit, this._imageUrl, this._discount,this._branch);
 
   String get name => _name;
 
@@ -55,10 +62,17 @@ class Offer {
   Offer.fromJson(Map<String, dynamic>json){
     name=json['name'];
     price=json['price'];
+    startDate=json["startDate"];
+    endDate=json['endDate'];
     description=json['description'];
     imageUrl=json['imageUrl'];
     discount=json['discount'];
     branch=json['branch'];
   }
 
+  String get endDate => _endDate;
+
+  set endDate(String value) {
+    _endDate = value;
+  }
 }
