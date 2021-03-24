@@ -8,6 +8,7 @@ import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
 import 'package:x_market/Pages/ProductPage.dart';
 import 'package:x_market/Repository/BranchRepository.dart';
+import 'package:x_market/Repository/CategoriesRepository.dart';
 import 'package:x_market/Repository/OffersRepository.dart';
 import 'package:x_market/Repository/ProductRepository.dart';
 import 'package:x_market/States/NavigationStates.dart';
@@ -16,7 +17,8 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   ProductRepository _productRepository;
   OffersRepository _offersRepository;
   BranchRepository _branchRepository;
-  NavigationBloc(this._productRepository,this._offersRepository,this._branchRepository);
+  CategoriesRepository _categoriesRepository;
+  NavigationBloc(this._productRepository,this._offersRepository,this._branchRepository,this._categoriesRepository);
 
   @override
   NavigationStates get initialState => NavigationInitialState();
@@ -35,7 +37,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       List<Branch> _getBranchList=_branchRepository.branchList;
       yield ListBranchPageState(_getBranchList);
     }else if(event is NavigationCategoriesPageEvent){
-      String _nombre=event.props[0];
+      int _branchId=event.props[0];
       // Lista<Categories> _listCategories=_branchRepository.branchList;
 
     }else {

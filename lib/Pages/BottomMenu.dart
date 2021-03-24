@@ -37,20 +37,22 @@ class _BottomMenuState extends State<BottomMenu> {
             Icon(Icons.person,size: 40,),
             Icon(Icons.menu,size: 40,),
             Icon(Icons.add_shopping_cart,size: 40,),
+            // Icon(Icons.add_shopping_cart,size: 40,),
           ],
           onTap: (index){
             setState(() {
               _selectedIndex=index;
-
             }
             );
             if(index==0){
               BlocProvider.of<NavigationBloc>(context).add(NavigationProfilePageEvent());
             }else if(index==1){
               BlocProvider.of<NavigationBloc>(context).add(NavigationBranchPageEvent());
-            }else{
-              print(context);
+            }else if(index==2){
+              // print(context);
               BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent());
+            }else{
+              BlocProvider.of<NavigationBloc>(context).add(NavigationProfilePageEvent());
             }
           },
           buttonBackgroundColor: color2,

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:x_market/Models/Branch.dart';
+import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
 import 'package:x_market/Pages/ProductPage.dart';
@@ -30,10 +31,15 @@ class ListBranchPageState extends NavigationStates{
 class NavigationProfilePageState extends NavigationStates{
   @override
   List<Object> get props => [];
-
 }
 class NavigationCartPageState extends NavigationStates{
   @override
   List<Object> get props => [];
-
+}
+class ListCategoriesPageState extends NavigationStates{
+  List<Categories> _categories;
+  List<Offer> _offers;
+  ListCategoriesPageState(this._categories, this._offers);
+  @override
+  List<Object> get props => [_categories,_offers];
 }

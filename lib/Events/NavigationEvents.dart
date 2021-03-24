@@ -24,10 +24,10 @@ class NavigationCartPageEvent extends NavigationEvents{
   List<Object> get props => [];
 }
 class NavigationCategoriesPageEvent extends NavigationEvents{
-  String _nombre;
-  NavigationCategoriesPageEvent(this._nombre);
+  int _branchId;
+  NavigationCategoriesPageEvent(this._branchId);
 
   @override
-  List<Object> get props => [_nombre];
+  List<Object> get props => [_branchId];
 
 }
