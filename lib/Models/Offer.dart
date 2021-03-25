@@ -9,19 +9,22 @@ class Offer {
   String _endDate;
   String _imageUrl;
   int _unit;
-  String _branch;
+  int _categoryId;
+  int _branchId;
+  // String _branch;
 
-  Offer(this._name,this._price,this._startDate,this._endDate,this._description,this._unit, this._imageUrl, this._discount,this._branch);
+  Offer(this._name,this._price,this._startDate,this._endDate,this._description,this._unit, this._imageUrl, this._discount,this._categoryId,this._branchId);
   String get startDate => _startDate;
 
   set startDate(String value) {
     _startDate = value;
   }
 
-  String get branch => _branch;
 
-  set branch(String value) {
-    _branch = value;
+  int get categoryId => _categoryId;
+
+  set categoryId(int value) {
+    _categoryId = value;
   }
 
   int get unit => _unit;
@@ -67,12 +70,19 @@ class Offer {
     description=json['description'];
     imageUrl=json['imageUrl'];
     discount=json['discount'];
-    branch=json['branch'];
+    categoryId=json['cateforyId'];
+    branchId=json['branchId'];
   }
 
   String get endDate => _endDate;
 
   set endDate(String value) {
     _endDate = value;
+  }
+
+  int get branchId => _branchId;
+
+  set branchId(int value) {
+    _branchId = value;
   }
 }

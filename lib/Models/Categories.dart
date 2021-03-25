@@ -4,10 +4,17 @@ class Categories {
   int _categorieId;
   String _name;
   String _imageUrl;
-  String _branchName;
+  // String _branchName;
   int _branchId;
 
-  Categories(this._categorieId,this._name,this._imageUrl,this._branchName);
+  Categories(this._categorieId,this._name,this._imageUrl,this._branchId);
+
+
+  int get branchId => _branchId;
+
+  set branchId(int value) {
+    _branchId = value;
+  }
 
   String get imageUrl => _imageUrl;
 
@@ -25,14 +32,14 @@ class Categories {
     _name = value;
   }
 
-  String get branchName => _branchName;
-  set branchName(String value) {
-    _branchName = value;
-  }
+  // String get branchName => _branchName;
+  // set branchName(String value) {
+  //   _branchName = value;
+  // }
   Categories.fromJson(Map<String, dynamic>json){
     categorieId=json['categorieId'];
     name=json['name'];
     imageUrl=json['imageUrl'];
-    branchName=json['branchName'];
+    branchId=json['branchId'];
   }
 }

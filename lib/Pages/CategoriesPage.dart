@@ -103,23 +103,9 @@ class _CategoriesPageState extends State<CategoriesPage> {
                         // itemCount: snapshot.data.length,
                         itemCount: _listCategories.length,
                         itemBuilder: (context, index){
-                          return Dismissible(
-                            key: ObjectKey(_listCategories[index]),
-                            direction: DismissDirection.endToStart,
-                            background: Container(
-                              // alignment: Alignment.centerRight,
-                              // padding: EdgeInsets.symmetric(horizontal: 50.0),
-                              color: color6,
-                              child: Icon(Icons.add),
-                            ),
-                            onDismissed: (direction){
-                              setState(() {
-                                _listCategories.removeAt(index);
-                              });
-                            },
-                            child: GestureDetector(
+                          return GestureDetector(
                               onTap: (){
-                                BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_listCategories[index].branchName,_listCategories[index].categorieId));
+                                BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_listCategories[index].branchId,_listCategories[index].categorieId));
                                 // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
                               },
                               child: Card(
@@ -149,8 +135,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                                   ],
                                 ),
                               ),
-                            ),
-                          );
+                            );
                         },
                       ),
                     ),
