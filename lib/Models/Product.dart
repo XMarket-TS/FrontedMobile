@@ -8,14 +8,21 @@ class Product {
   // List<String> _imageUrl;
   String _imageUrl;
   int _unit;
-  // int _branchId; si
+  int _branchId;
   // int _categoryId; no
   String _branch; //no
   String _category; //si
 
 
 
-  Product(this._productId,this._name,this._price,this._description,this._unit, this._imageUrl,this._branch,this._category);
+  Product(this._productId,this._name,this._price,this._description,this._unit, this._imageUrl,this._branchId,this._category);
+
+  int get branchId => _branchId;
+
+  set branchId(int value) {
+    _branchId = value;
+  }
+
   String get category => _category;
 
   set category(String value) {
@@ -69,7 +76,7 @@ class Product {
     description=json['description'];
     imageUrl=json['imageUrl'];
     unit=json['unit'];
-    branch=json['branch'];
+    branchId=json['branchId'];
     category=json['category'];
   }
 
