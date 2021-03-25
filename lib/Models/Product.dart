@@ -5,10 +5,13 @@ class Product {
   String _name;
   double _price;
   String _description;
+  // List<String> _imageUrl;
   String _imageUrl;
   int _unit;
-  String _branch;
-  String _category;
+  // int _branchId; si
+  // int _categoryId; no
+  String _branch; //no
+  String _category; //si
 
 
 

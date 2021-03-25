@@ -38,8 +38,10 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       yield ListBranchPageState(_getBranchList);
     }else if(event is NavigationCategoriesPageEvent){
       int _branchId=event.props[0];
-      // Lista<Categories> _listCategories=_branchRepository.branchList;
-
+      yield NavigationLoadingState();
+      List<Categories> _getListCategories=_categoriesRepository.categorieList;
+      List<Offer> _getListOffer=_offersRepository.offerList;
+      yield ListCategoriesPageState(_getListCategories, _getListOffer);
     }else {
 
     }

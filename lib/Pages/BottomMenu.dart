@@ -4,9 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Branch.dart';
+import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
 import 'package:x_market/Pages/CartPage.dart';
+import 'package:x_market/Pages/CategoriesPage.dart';
 import 'package:x_market/Pages/ProductPage.dart';
 import 'package:x_market/Pages/ProfilePage.dart';
 import 'package:x_market/Repository/BranchRepository.dart';
@@ -50,7 +52,8 @@ class _BottomMenuState extends State<BottomMenu> {
               BlocProvider.of<NavigationBloc>(context).add(NavigationBranchPageEvent());
             }else if(index==2){
               // print(context);
-              BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent());
+              BlocProvider.of<NavigationBloc>(context).add(NavigationBranchPageEvent());
+              // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent());
             }else{
               BlocProvider.of<NavigationBloc>(context).add(NavigationProfilePageEvent());
             }
@@ -72,6 +75,10 @@ class _BottomMenuState extends State<BottomMenu> {
                 List<Product> _listProduct=state.props[0];
                 List<Offer> _listOffer=state.props[1];
                 return ProductPage(_listProduct,_listOffer);
+              }else if(state is ListCategoriesPageState){
+                List<Categories> _listCategories=state.props[0];
+                List<Offer> _listOffer=state.props[1];
+                return CategoriesPage(_listCategories,_listOffer);
               }else{
                 return Container();
               }

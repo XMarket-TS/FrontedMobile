@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
 import 'package:x_market/Bloc/ProductBloc.dart';
+import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Branch.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
@@ -69,45 +70,51 @@ class _BranchPageState extends State<BranchPage> {
                         padding: EdgeInsets.only(top: 5,bottom: 20),
                         itemCount: _listBranches.length,
                         itemBuilder: (context, index){
-                          return Card(
-                            color: color1,
-                            elevation: 5.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            child: Stack(
-                              children: [
-                                Container(
-                                  height: size.height*0.17,
-                                  // padding: EdgeInsets.only(top: 10,bottom: 10),
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: new AssetImage("assets/images/${_url[index]}"),
-                                      fit: BoxFit.fill
+                          return GestureDetector(
+                            onTap: (){
+                              // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent());
+                              BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
+                            },
+                            child: Card(
+                              color: color1,
+                              elevation: 5.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    height: size.height*0.17,
+                                    // padding: EdgeInsets.only(top: 10,bottom: 10),
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: new AssetImage("assets/images/${_url[index]}"),
+                                        fit: BoxFit.fill
+                                      ),
+                                      borderRadius: BorderRadius.circular(10.0)
                                     ),
-                                    borderRadius: BorderRadius.circular(10.0)
                                   ),
-                                ),
-                                Positioned(
-                                  bottom: 0,
-                                    right: 0,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(10.0),topLeft: Radius.circular(30.0)),
-                                        color: color2.withOpacity(0.9),
+                                  Positioned(
+                                    bottom: 0,
+                                      right: 0,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(bottomRight: Radius.circular(10.0),topLeft: Radius.circular(30.0)),
+                                          color: color2.withOpacity(0.9),
+                                        ),
+                                        // color: Colors.white.withOpacity(0.7),
+                                        padding: EdgeInsets.only(left: 20.0,right: 20.0,bottom: 5.0,top: 5.0),
+                                        child: Column(
+                                          children: [
+                                            Text("${_listBranches[index].name}",style: TextStyle(fontSize: 20.0,color: Colors.white),),
+                                            Text("${_listBranches[index].zone}",style: TextStyle(fontSize: 15.0,color: color5),),
+                                            Text("${_listBranches[index].address} ",style: TextStyle(fontSize: 15.0,color: color3),),
+                                          ],
+                                        ),
                                       ),
-                                      // color: Colors.white.withOpacity(0.7),
-                                      padding: EdgeInsets.only(left: 20.0,right: 20.0,bottom: 5.0,top: 5.0),
-                                      child: Column(
-                                        children: [
-                                          Text("${_listBranches[index].name}",style: TextStyle(fontSize: 20.0,color: Colors.white),),
-                                          Text("${_listBranches[index].zone}",style: TextStyle(fontSize: 15.0,color: color5),),
-                                          Text("${_listBranches[index].address} ",style: TextStyle(fontSize: 15.0,color: color3),),
-                                        ],
-                                      ),
-                                    ),
-                                ),
-                              ],
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },

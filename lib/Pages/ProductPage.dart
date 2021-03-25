@@ -21,9 +21,7 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   List<Product> _listProduct;
   List<Offer> _listOffer;
-
   _ProductPageState(this._listProduct, this._listOffer);
-
   final ProductBloc _productBloc=new ProductBloc();
   // final CategoriesScroller categoriesScroller= CategoriesScroller();
   @override
