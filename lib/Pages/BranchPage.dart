@@ -56,7 +56,7 @@ class _BranchPageState extends State<BranchPage> {
           builder: (context,state){
             if(state is ListBranchPageState){
               List<Branch> _listBranches=state.props[0];
-              print(_listBranches.toString());
+              // print(_listBranches.toString());
               return Container(
                 height: size.height,
                 child: Column(

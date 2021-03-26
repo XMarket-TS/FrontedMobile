@@ -7,9 +7,9 @@ class Categories {
   // String _branchName;
   int _branchId;
 
-  Categories(this._categorieId,this._name,this._imageUrl,this._branchId);
+  Categories(this._categorieId,this._name,this._imageUrl);
 
-
+  // ,this._branchId)
   int get branchId => _branchId;
 
   set branchId(int value) {
@@ -37,9 +37,9 @@ class Categories {
   //   _branchName = value;
   // }
   Categories.fromJson(Map<String, dynamic>json){
-    categorieId=json['categorieId'];
-    name=json['name'];
+    categorieId=json['categoryId'];
+    name=json['category'];
     imageUrl=json['imageUrl'];
-    branchId=json['branchId'];
+    // branchId=json['branchId'];
   }
 }

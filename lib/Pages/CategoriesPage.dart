@@ -19,6 +19,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
   List<Categories> _listCategories;
   List<Offer> _listOffer;
   _CategoriesPageState(this._listCategories, this._listOffer);
+  List _url2=['burger.png','cheese_dip.png','cola.png','fries.png','ice_cream.png','noodles.png','pizza.png','sandwich.png','wrap.png','burger.png','cheese_dip.png','cola.png','fries.png','burger.png','cheese_dip.png','cola.png','fries.png'];
+  List _url=['fig1.jpg','fig2.jpg','fig3.png','fig1.jpg','fig4.jpg','fig5.jpg','fig2.jpg','sandwich.png','wrap.png','fig1.jpg','fig2.jpg','fig3.png','fig1.jpg','fig4.jpg','fig5.jpg','fig2.jpg','sandwich.png','wrap.png','fig1.jpg','fig2.jpg','fig3.png','fig1.jpg','fig4.jpg','fig5.jpg','fig2.jpg','sandwich.png','wrap.png'];
   @override
   Widget build(BuildContext context) {
     final Size size=MediaQuery.of(context).size;
@@ -61,7 +63,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
                             ),
                             child: Stack(
                               children: [
-                                Image.asset("assets/images/${_listOffer[index].imageUrl}",fit: BoxFit.fill,),
+                                // Image.asset("assets/images/${_listOffer[index].imageUrl}",fit: BoxFit.fill,),
+                                Image.asset("assets/images/${_url2[index]}",fit: BoxFit.fill,),
                                 Positioned(
                                   bottom: 0,
                                   right: 0,
@@ -119,7 +122,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
                                   children: [
                                     Container(
                                       padding: EdgeInsets.all(10.0),
-                                      child: Image.asset("assets/images/${_listCategories[index].imageUrl}",height: size.width*0.2,width: size.width*0.2,),
+                                      // child: Image.asset("assets/images/${_listCategories[index].imageUrl}",height: size.width*0.2,width: size.width*0.2,),
+                                      child: Image.asset("assets/images/${_url[index]}",height: size.width*0.2,width: size.width*0.2,),
                                       // child: Text("${_productsObtain[index].name}",style: TextStyle(fontSize: 20.0),),
                                       // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
                                     ),
