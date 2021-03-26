@@ -22,13 +22,13 @@ class _ProductPageState extends State<ProductPage> {
   List<Product> _listProduct;
   List<Offer> _listOffer;
   _ProductPageState(this._listProduct, this._listOffer);
-  final ProductBloc _productBloc=new ProductBloc();
+  // final ProductBloc _productBloc=new ProductBloc();
   // final CategoriesScroller categoriesScroller= CategoriesScroller();
-  @override
-  void dispose(){
-    super.dispose();
-    _productBloc.dispose();
-  }
+  // @override
+  // void dispose(){
+  //   super.dispose();
+  //   _productBloc.dispose();
+  // }
   List<Widget> itemsData=[];
   @override
   Widget build(BuildContext context) {
@@ -140,7 +140,7 @@ class _ProductPageState extends State<ProductPage> {
                                         children: [
                                           Container(
                                             padding: EdgeInsets.all(10.0),
-                                            child: Image.asset("assets/images/${_listProduct[index].imagesUrl[0]}",height: size.width*0.2,width: size.width*0.2,),
+                                            child: Image.network("${_listProduct[index].imageUrl}",height: size.width*0.2,width: size.width*0.2,),
                                             // child: Text("${_productsObtain[index].name}",style: TextStyle(fontSize: 20.0),),
                                             // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
                                           ),

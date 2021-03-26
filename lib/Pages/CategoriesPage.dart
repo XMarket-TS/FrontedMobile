@@ -108,7 +108,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
                         itemBuilder: (context, index){
                           return GestureDetector(
                               onTap: (){
-                                BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_listCategories[index].branchId,_listCategories[index].categorieId));
+                                // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_listCategories[index].branchId,_listCategories[index].categorieId));
+                                BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(1,_listCategories[index].categorieId));
                                 // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
                               },
                               child: Card(

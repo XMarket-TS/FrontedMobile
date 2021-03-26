@@ -25,13 +25,13 @@ class _BranchPageState extends State<BranchPage> {
   List<Branch> _listBranch;
   List _url=['fig1.jpg','fig2.jpg','fig3.png','fig1.jpg','fig4.jpg','fig5.jpg','fig2.jpg','sandwich.png','wrap.png'];
   _BranchPageState(this._listBranch);
-  final ProductBloc _productBloc=new ProductBloc();
+  // final ProductBloc _productBloc=new ProductBloc();
   // final CategoriesScroller categoriesScroller= CategoriesScroller();
-  @override
-  void dispose(){
-    super.dispose();
-    _productBloc.dispose();
-  }
+  // @override
+  // void dispose(){
+  //   super.dispose();
+  //   _productBloc.dispose();
+  // }
   List<Widget> itemsData=[];
   @override
   Widget build(BuildContext context) {

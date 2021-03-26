@@ -4,18 +4,23 @@ class Product {
   int _productId;
   String _name;
   double _price;
+  double _percentage;
   String _description;
-  List<String> _imagesUrl;
-  // String _imageUrl;
+  // List<String> _imagesUrl;
+  String _category; //si
+  String _imageUrl;
+
+
+
   int _unit;
   int _branchId;
   // int _categoryId; no
   // String _branch; //no
-  String _category; //si
+
   // Double _discount;
+  // ,this._unit,this._branchId,
 
-
-  Product(this._productId,this._name,this._price,this._description,this._unit, this._imagesUrl,this._branchId,this._category);
+  Product(this._productId,this._name,this._price,this._percentage,this._description, this._imageUrl,this._category);
 
   int get branchId => _branchId;
 
@@ -28,22 +33,29 @@ class Product {
   set category(String value) {
     _category = value;
   }
-  // String get branch => _branch;
+
+
+  double get percentage => _percentage;
+
+  set percentage(double value) {
+    _percentage = value;
+  } // String get branch => _branch;
   //
   // set branch(String value) {
   //   _branch = value;
   // }
 
-
-  List<String> get imagesUrl => _imagesUrl;
-
-  set imagesUrl(List<String> value) {
-    _imagesUrl = value;
-  } // String get imageUrl => _imageUrl;
   //
-  // set imageUrl(String value) {
-  //   _imageUrl = value;
+  // List<String> get imagesUrl => _imagesUrl;
+  //
+  // set imagesUrl(List<String> value) {
+  //   _imagesUrl = value;
   // }
+  String get imageUrl => _imageUrl;
+
+  set imageUrl(String value) {
+    _imageUrl = value;
+  }
 
   int get productId => _productId;
 
@@ -78,11 +90,13 @@ class Product {
     productId=json['productId'];
     name=json['name'];
     price=json['price'];
+    percentage=json['percentage'];
     description=json['description'];
-    imagesUrl=json['imagesUrl'];
-    unit=json['unit'];
-    branchId=json['branchId'];
     category=json['category'];
+    imageUrl=json['firstImage'];
+    // unit=json['unit'];
+    // branchId=json['branchId'];
+
   }
 
 }
