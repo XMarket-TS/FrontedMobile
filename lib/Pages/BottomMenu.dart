@@ -9,6 +9,7 @@ import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
 import 'package:x_market/Pages/CartPage.dart';
 import 'package:x_market/Pages/CategoriesPage.dart';
+import 'package:x_market/Pages/LoadingPage.dart';
 import 'package:x_market/Pages/ProductPage.dart';
 import 'package:x_market/Pages/ProfilePage.dart';
 import 'package:x_market/Repository/BranchRepository.dart';
@@ -67,7 +68,7 @@ class _BottomMenuState extends State<BottomMenu> {
         body: BlocBuilder<NavigationBloc,NavigationStates>(
             builder: (context,state){
               if(state is NavigationLoadingState){
-                return Container(); //pantalla de loading
+                return LoadingPage(); //pantalla de loading
               }else if(state is ListBranchPageState){
                 List<Branch> _listBranches=state.props[0];
                 return BranchPage(_listBranches);

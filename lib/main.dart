@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Pages/BottomMenu.dart';
 import 'package:x_market/Pages/BranchPage.dart';
+import 'package:x_market/Pages/LoadingPage.dart';
 import 'package:x_market/Pages/ProductPage.dart';
 import 'package:x_market/Repository/CategoriesRepository.dart';
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.black,
           primaryColor: Colors.black
       ),
+      // home: LoadingPage()
       home: BlocProvider(
           create: (context)=>NavigationBloc(ProductRepository(),OffersRepository(),BranchRepository(),CategoriesRepository())..add(NavigationBranchPageEvent()),
           child: BottomMenu()
