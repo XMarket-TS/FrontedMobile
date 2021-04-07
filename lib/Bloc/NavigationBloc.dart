@@ -7,6 +7,7 @@ import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
 import 'package:x_market/Pages/ProductPage.dart';
+import 'package:x_market/Pages/SpecificProductPage.dart';
 import 'package:x_market/Repository/BranchRepository.dart';
 import 'package:x_market/Repository/CategoriesRepository.dart';
 import 'package:x_market/Repository/OffersRepository.dart';
@@ -47,6 +48,11 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       List<Offer> _getListOffer=await _offersRepository.offerList;
       yield ListCategoriesPageState(_getListCategories, _getListOffer);
 
+    }else if(event is SpecificProductPageEvent){
+      yield NavigationLoadingState();
+      int _productId=event.props[0];
+      Product _getProduct=await _productRepository.obtainSpecificProduct(_productId);
+      yield SpecificProductPageState(_getProduct);
     }else {
 
     }

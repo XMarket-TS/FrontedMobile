@@ -12,6 +12,7 @@ import 'package:x_market/Pages/CategoriesPage.dart';
 import 'package:x_market/Pages/LoadingPage.dart';
 import 'package:x_market/Pages/ProductPage.dart';
 import 'package:x_market/Pages/ProfilePage.dart';
+import 'package:x_market/Pages/SpecificProductPage.dart';
 import 'package:x_market/Repository/BranchRepository.dart';
 import 'package:x_market/Repository/OffersRepository.dart';
 import 'package:x_market/Repository/ProductRepository.dart';
@@ -80,6 +81,9 @@ class _BottomMenuState extends State<BottomMenu> {
                 List<Categories> _listCategories=state.props[0];
                 List<Offer> _listOffer=state.props[1];
                 return CategoriesPage(_listCategories,_listOffer);
+              }else if(state is SpecificProductPageState){
+                Product _product=state.props[0];
+                return SpecificProductPage(_product);
               }else{
                 return Container();
               }

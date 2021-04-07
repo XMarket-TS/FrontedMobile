@@ -62,17 +62,6 @@ class Offer {
   set price(double value) {
     _price = value;
   }
-  Offer.fromJson(Map<String, dynamic>json){
-    name=json['name'];
-    price=json['price'];
-    startDate=json["startDate"];
-    endDate=json['endDate'];
-    description=json['description'];
-    imageUrl=json['imageUrl'];
-    discount=json['discount'];
-    categoryId=json['cateforyId'];
-    branchId=json['branchId'];
-  }
 
   String get endDate => _endDate;
 
@@ -85,4 +74,16 @@ class Offer {
   set branchId(int value) {
     _branchId = value;
   }
+  Offer.fromJson(Map<String, dynamic>json){
+    name=json['name'];
+    price=json['price'];
+    startDate=json["startDate"];
+    endDate=json['endDate'];
+    description=json['description'];
+    imageUrl=json['imageUrl'];
+    discount=json['discount'];
+    categoryId=json['cateforyId'];
+    branchId=json['branchId'];
+  }
+
 }

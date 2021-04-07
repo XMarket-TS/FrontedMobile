@@ -37,10 +37,10 @@ class CategoriesRepository {
       for(categoriesCollection2 in categoriesCollection2){
         categoriesCollection3.add(Categories.fromJson(categoriesCollection2));
       }
-      print(categoriesCollection3[1].name);
+      // print(categoriesCollection3[1].name);
       // body: jsonEncode(singleDriver.toJson()));
       if(res.statusCode == 200){
-        print("DoneListaBranchs");
+        // print("DoneListaBranchs");
         return categoriesCollection3;
       }else{
         return null;

@@ -40,9 +40,41 @@ class ProductRepository{
       print(productCollection3[1].name);
       // body: jsonEncode(singleDriver.toJson()));
       if(res.statusCode == 200){
-        print("DoneListaProducts");
+        // print("DoneListaProducts");
         return productCollection3;
       }else{
+        return null;
+      }
+    }
+    catch(error){
+      print(error);
+      return null;
+    }
+  }
+  Future<Product> obtainSpecificProduct (int productId) async{
+    try{
+      // var _branchId=branchId.toString();
+      Product product;
+      String url=directionUrl+"product/"+productId.toString();
+
+      var res = await http.get(url, //ip for virtualized devices
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          });
+      var product2=jsonDecode(res.body);
+      // print(singleDriver2);
+      product.productId=(product2["productId"]);
+      product.categoryId=(product2["productCategoryId"]);
+      product.name=(product2["name"]);
+      product.price=(product2["price"]);
+      product.description=(product2["description"]);
+
+      // product.imageUrl=(product2["imageUrl"]);
+      if(res.statusCode==200){
+        // print(product.name);
+        return product;
+      }
+      else{
         return null;
       }
     }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
+import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Repository/OffersRepository.dart';
 import 'package:x_market/Repository/ProductRepository.dart';
@@ -125,9 +126,11 @@ class _ProductPageState extends State<ProductPage> {
                                       child: Icon(Icons.add),
                                     ),
                                     onDismissed: (direction){
-                                      setState(() {
-                                        _listProduct.removeAt(index);
-                                      });
+                                      // setState(() {
+                                      //   _listProduct.removeAt(index);
+                                      // });
+                                      // print(_listProduct[index].productId);
+                                      BlocProvider.of<NavigationBloc>(context).add(SpecificProductPageEvent(_listProduct[index].productId));
                                     },
                                     child: Card(
                                       color: color1,

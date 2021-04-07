@@ -36,10 +36,10 @@ class BranchRepository {
       for(branchCollection2 in branchCollection2){
         branchCollection3.add(Branch.fromJson(branchCollection2));
       }
-      print(branchCollection3[1].name);
+      // print(branchCollection3[1].name);
       // body: jsonEncode(singleDriver.toJson()));
       if(res.statusCode == 200){
-        print("DoneListaBranchs");
+        // print("DoneListaBranchs");
         return branchCollection3;
       }else{
         return null;

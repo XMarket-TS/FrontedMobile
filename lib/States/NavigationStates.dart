@@ -29,6 +29,7 @@ class ListBranchPageState extends NavigationStates{
   List<Object> get props => [_branch];
 }
 class NavigationProfilePageState extends NavigationStates{
+
   @override
   List<Object> get props => [];
 }
@@ -42,4 +43,10 @@ class ListCategoriesPageState extends NavigationStates{
   ListCategoriesPageState(this._categories, this._offers);
   @override
   List<Object> get props => [_categories,_offers];
+}
+class SpecificProductPageState extends NavigationStates{
+  Product _product;
+  SpecificProductPageState(this._product);
+  @override
+  List<Object> get props => [_product];
 }
