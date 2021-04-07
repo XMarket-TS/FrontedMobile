@@ -4,6 +4,7 @@ import 'package:x_market/Models/Branch.dart';
 import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
+import 'package:x_market/Models/User.dart';
 import 'package:x_market/Pages/ProductPage.dart';
 abstract class NavigationStates extends Equatable{
 
@@ -49,4 +50,11 @@ class SpecificProductPageState extends NavigationStates{
   SpecificProductPageState(this._product);
   @override
   List<Object> get props => [_product];
+}
+class ProfilePageState extends NavigationStates{
+  User _user;
+  ProfilePageState(this._user);
+  @override
+  List<Object> get props => [_user];
+
 }

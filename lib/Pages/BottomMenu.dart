@@ -7,6 +7,7 @@ import 'package:x_market/Models/Branch.dart';
 import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
+import 'package:x_market/Models/User.dart';
 import 'package:x_market/Pages/CartPage.dart';
 import 'package:x_market/Pages/CategoriesPage.dart';
 import 'package:x_market/Pages/LoadingPage.dart';
@@ -49,7 +50,7 @@ class _BottomMenuState extends State<BottomMenu> {
             }
             );
             if(index==0){
-              BlocProvider.of<NavigationBloc>(context).add(NavigationProfilePageEvent());
+              BlocProvider.of<NavigationBloc>(context).add(ProfilePageEvent(1));
             }else if(index==1){
               BlocProvider.of<NavigationBloc>(context).add(NavigationBranchPageEvent());
             }else if(index==2){
@@ -57,7 +58,7 @@ class _BottomMenuState extends State<BottomMenu> {
               BlocProvider.of<NavigationBloc>(context).add(NavigationBranchPageEvent());
               // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent());
             }else{
-              BlocProvider.of<NavigationBloc>(context).add(NavigationProfilePageEvent());
+              BlocProvider.of<NavigationBloc>(context).add(ProfilePageEvent(1));
             }
           },
           buttonBackgroundColor: color2,
@@ -84,6 +85,9 @@ class _BottomMenuState extends State<BottomMenu> {
               }else if(state is SpecificProductPageState){
                 Product _product=state.props[0];
                 return SpecificProductPage(_product);
+              }else if(state is ProfilePageState){
+                User _user=state.props[0];
+                return ProfilePage(_user);
               }else{
                 return Container();
               }

@@ -4,10 +4,12 @@ import 'package:x_market/Models/Branch.dart';
 import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
+import 'package:x_market/Models/User.dart';
 import 'package:x_market/Repository/BranchRepository.dart';
 import 'package:x_market/Repository/CategoriesRepository.dart';
 import 'package:x_market/Repository/OffersRepository.dart';
 import 'package:x_market/Repository/ProductRepository.dart';
+import 'package:x_market/Repository/UserRepository.dart';
 import 'package:x_market/States/NavigationStates.dart';
 
 class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
@@ -15,9 +17,10 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   OffersRepository _offersRepository;
   BranchRepository _branchRepository;
   CategoriesRepository _categoriesRepository;
+  UserRepository _userRepository;
 
   NavigationBloc(this._productRepository, this._offersRepository,
-      this._branchRepository, this._categoriesRepository);
+      this._branchRepository, this._categoriesRepository,this._userRepository);
 
   @override
   NavigationStates get initialState => NavigationInitialState();
@@ -46,6 +49,12 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
           await _categoriesRepository.obtainListCategories(_branchId);
       List<Offer> _getListOffer = await _offersRepository.offerList;
       yield ListCategoriesPageState(_getListCategories, _getListOffer);
+    } else if (event is ProfilePageEvent) {
+      // event.
+      yield NavigationLoadingState();
+      int _userId=event.props[0];
+      User _getUser = await _userRepository.obtainUserProfile(_userId);
+      yield ProfilePageState(_getUser);
     } else {}
   }
 }

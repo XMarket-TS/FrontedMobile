@@ -44,3 +44,10 @@ class SpecificProductPageEvent extends NavigationEvents{
   @override
   List<Object> get props => [_productId];
 }
+class ProfilePageEvent extends NavigationEvents{
+  int _userId;
+  ProfilePageEvent(this._userId);
+  @override
+  List<Object> get props => [_userId];
+
+}

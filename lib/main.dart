@@ -5,6 +5,7 @@ import 'package:x_market/Pages/BranchPage.dart';
 import 'package:x_market/Pages/LoadingPage.dart';
 import 'package:x_market/Pages/ProductPage.dart';
 import 'package:x_market/Repository/CategoriesRepository.dart';
+import 'package:x_market/Repository/UserRepository.dart';
 
 import 'Bloc/NavigationBloc.dart';
 import 'Events/NavigationEvents.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: LoadingPage()
       home: BlocProvider(
-          create: (context)=>NavigationBloc(ProductRepository(),OffersRepository(),BranchRepository(),CategoriesRepository())..add(NavigationBranchPageEvent()),
+          create: (context)=>NavigationBloc(ProductRepository(),OffersRepository(),BranchRepository(),CategoriesRepository(),UserRepository())..add(NavigationBranchPageEvent()),
           child: BottomMenu()
       ),
     );
