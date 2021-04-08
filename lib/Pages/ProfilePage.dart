@@ -92,6 +92,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         GestureDetector(
                           onTap: () {
                             // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
+
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -113,6 +114,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         GestureDetector(
                           onTap: () {
                             // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
+                            BlocProvider.of<NavigationBloc>(context).add(CardPageEvent(1));
                           },
                           child: Container(
                             decoration: BoxDecoration(
