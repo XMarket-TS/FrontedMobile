@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
+import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/User.dart';
 import 'package:x_market/States/NavigationStates.dart';
 
@@ -97,6 +98,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             GestureDetector(
                               onTap: (){
                                 // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
+                                //poner la id del usuario que se obtiene en el estado
+                                BlocProvider.of<NavigationBloc>(context).add(CardPageEvent(1));
                               },
                               child: Container(
                                 decoration: BoxDecoration(

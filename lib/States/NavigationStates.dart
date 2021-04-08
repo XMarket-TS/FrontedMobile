@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:x_market/Models/Branch.dart';
+import 'package:x_market/Models/CardList.dart';
 import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
@@ -56,5 +57,18 @@ class ProfilePageState extends NavigationStates{
   ProfilePageState(this._user);
   @override
   List<Object> get props => [_user];
+}
+class CardPageState extends NavigationStates{
+  List<CardList> _cardList;
+  CardPageState(this._cardList);
+  @override
+  List<Object> get props => [_cardList];
+
+}
+class SpecificCardPageState extends NavigationStates{
+  List<CardList> _cardList; //corregir a solo card
+  SpecificCardPageState(this._cardList);
+  @override
+  List<Object> get props => [_cardList];
 
 }

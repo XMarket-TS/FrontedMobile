@@ -4,7 +4,7 @@ class CardList{
   int _cardId;
   int _userId;
   String _bank;
-  String _cardNumber;
+  int _cardNumber;
   int _cvc;
   int _status;
 
@@ -31,9 +31,9 @@ class CardList{
     _userId = value;
   }
 
-  String get cardNumber => _cardNumber;
+  int get cardNumber => _cardNumber;
 
-  set cardNumber(String value) {
+  set cardNumber(int value) {
     _cardNumber = value;
   }
 
@@ -47,5 +47,15 @@ class CardList{
 
   set status(int value) {
     _status = value;
+  }
+
+  CardList.fromJson(Map<String, dynamic>json){
+    cardId=json['cardId'];
+    userId=json['userId'];
+    bank=json['cardName'];
+    cardNumber=json['cardNumber'];
+    cvc=json['cvc'];
+    status=json['status'];
+
   }
 }

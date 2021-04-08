@@ -1,11 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Branch.dart';
+import 'package:x_market/Models/CardList.dart';
 import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
 import 'package:x_market/Models/User.dart';
 import 'package:x_market/Repository/BranchRepository.dart';
+import 'package:x_market/Repository/CardRepository.dart';
 import 'package:x_market/Repository/CategoriesRepository.dart';
 import 'package:x_market/Repository/OffersRepository.dart';
 import 'package:x_market/Repository/ProductRepository.dart';
@@ -18,9 +20,10 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   BranchRepository _branchRepository;
   CategoriesRepository _categoriesRepository;
   UserRepository _userRepository;
+  CardRepository _cardRepository;
 
   NavigationBloc(this._productRepository, this._offersRepository,
-      this._branchRepository, this._categoriesRepository,this._userRepository);
+      this._branchRepository, this._categoriesRepository,this._userRepository, this._cardRepository);
 
   @override
   NavigationStates get initialState => NavigationInitialState();
@@ -55,6 +58,12 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       int _userId=event.props[0];
       User _getUser = await _userRepository.obtainUserProfile(_userId);
       yield ProfilePageState(_getUser);
+    }else if (event is CardPageEvent) {
+      // event.
+      yield NavigationLoadingState();
+      int _userId=event.props[0];
+      List<CardList> _cardList= await _cardRepository.obtainCardList(_userId);
+      yield CardPageState(_cardList);
     } else {}
   }
 }

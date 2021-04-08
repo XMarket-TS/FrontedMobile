@@ -51,3 +51,15 @@ class ProfilePageEvent extends NavigationEvents{
   List<Object> get props => [_userId];
 
 }
+class CardPageEvent extends NavigationEvents{
+  int _userId;
+  CardPageEvent(this._userId);
+  @override
+  List<Object> get props => [_userId];
+}
+class SpecificCardPageEvent extends NavigationEvents{
+  int _cardId;
+  SpecificCardPageEvent(this._cardId);
+  @override
+  List<Object> get props => [_cardId];
+}
