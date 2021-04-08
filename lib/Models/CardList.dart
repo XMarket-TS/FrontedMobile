@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-class CardList{
+class CardList {
   int _cardId;
   int _userId;
   String _bank;
@@ -17,13 +15,11 @@ class CardList{
     _cardId = value;
   }
 
-
   String get bank => _bank;
 
   set bank(String value) {
     _bank = value;
   }
-
 
   int get userId => _userId;
 
@@ -49,13 +45,12 @@ class CardList{
     _status = value;
   }
 
-  CardList.fromJson(Map<String, dynamic>json){
-    cardId=json['cardId'];
-    userId=json['userId'];
-    bank=json['cardName'];
-    cardNumber=json['cardNumber'];
-    cvc=json['cvc'];
-    status=json['status'];
-
+  CardList.fromJson(Map<String, dynamic> json) {
+    cardId = json['cardId'];
+    userId = json['userId'];
+    bank = json['cardName'];
+    cardNumber = json['cardNumber'];
+    cvc = json['cvc'];
+    status = json['status'];
   }
 }

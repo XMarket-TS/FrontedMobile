@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-
-class Branch{
+class Branch {
   int _branchId;
+
   // String _manager;
   int _managerId;
   String _name;
   int _phone;
   String _zone;
   String _address;
+
   // String _status;
   // List<String> _transaction;
 
@@ -16,15 +16,15 @@ class Branch{
   // set status(String value) {
   //   _status = value;
   // }
-  Branch(this._branchId,this._managerId,this._name,this._phone,this._zone,this._address);
+  Branch(this._branchId, this._managerId, this._name, this._phone, this._zone,
+      this._address);
+
   // Branch();
   int get branchId => _branchId;
-
 
   set branchId(int value) {
     _branchId = value;
   }
-
 
   int get managerId => _managerId;
 
@@ -61,20 +61,20 @@ class Branch{
   // set manager(String value) {
   //   _manager = value;
   // }
-  Branch.fromJson(Map<String, dynamic>json){
-    branchId=json['branchOfficeId'];
-    managerId=json['managerId'];
-    name=json['name'];
-    phone=json['phone'];
-    zone=json['zone'];
-    address=json['address'];
+  Branch.fromJson(Map<String, dynamic> json) {
+    branchId = json['branchOfficeId'];
+    managerId = json['managerId'];
+    name = json['name'];
+    phone = json['phone'];
+    zone = json['zone'];
+    address = json['address'];
     // status=json['status'];
     // transaction=json['transaction'];
   }
 
-  // List<String> get transaction => _transaction;
-  //
-  // set transaction(List<String> value) {
-  //   _transaction = value;
-  // }
+// List<String> get transaction => _transaction;
+//
+// set transaction(List<String> value) {
+//   _transaction = value;
+// }
 }

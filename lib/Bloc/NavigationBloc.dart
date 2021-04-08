@@ -22,8 +22,13 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   UserRepository _userRepository;
   CardRepository _cardRepository;
 
-  NavigationBloc(this._productRepository, this._offersRepository,
-      this._branchRepository, this._categoriesRepository,this._userRepository, this._cardRepository);
+  NavigationBloc(
+      this._productRepository,
+      this._offersRepository,
+      this._branchRepository,
+      this._categoriesRepository,
+      this._userRepository,
+      this._cardRepository);
 
   @override
   NavigationStates get initialState => NavigationInitialState();
@@ -55,14 +60,14 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
     } else if (event is ProfilePageEvent) {
       // event.
       yield NavigationLoadingState();
-      int _userId=event.props[0];
+      int _userId = event.props[0];
       User _getUser = await _userRepository.obtainUserProfile(_userId);
       yield ProfilePageState(_getUser);
-    }else if (event is CardPageEvent) {
+    } else if (event is CardPageEvent) {
       // event.
       yield NavigationLoadingState();
-      int _userId=event.props[0];
-      List<CardList> _cardList= await _cardRepository.obtainCardList(_userId);
+      int _userId = event.props[0];
+      List<CardList> _cardList = await _cardRepository.obtainCardList(_userId);
       yield CardPageState(_cardList);
     } else {}
   }

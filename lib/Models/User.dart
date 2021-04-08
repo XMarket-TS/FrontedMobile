@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-class User{
+class User {
   String _userId;
   String _personUserId;
   String _userName;
@@ -61,16 +59,14 @@ class User{
     _cellphone = value;
   }
 
-
-  User.fromJson(Map<String, dynamic>json){
-    userId=json['userId'];
-    personUserId=json['personId'];
-    userName=json['userName'];
-    password=json['password'];
-    name=json['name'];
-    email=json['email'];
-    imageUrl=json['imageUrl'];
-    cellphone=json['cellphone'];
+  User.fromJson(Map<String, dynamic> json) {
+    userId = json['userId'];
+    personUserId = json['personId'];
+    userName = json['userName'];
+    password = json['password'];
+    name = json['name'];
+    email = json['email'];
+    imageUrl = json['imageUrl'];
+    cellphone = json['cellphone'];
   }
-
 }

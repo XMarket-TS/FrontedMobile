@@ -1,5 +1,3 @@
-import 'dart:ffi';
-import 'package:flutter/material.dart';
 class Offer {
   // int _productId;
   String _name;
@@ -11,15 +9,26 @@ class Offer {
   int _unit;
   int _categoryId;
   int _branchId;
+
   // String _branch;
 
-  Offer(this._name,this._price,this._startDate,this._endDate,this._description,this._unit, this._imageUrl, this._discount,this._categoryId,this._branchId);
+  Offer(
+      this._name,
+      this._price,
+      this._startDate,
+      this._endDate,
+      this._description,
+      this._unit,
+      this._imageUrl,
+      this._discount,
+      this._categoryId,
+      this._branchId);
+
   String get startDate => _startDate;
 
   set startDate(String value) {
     _startDate = value;
   }
-
 
   int get categoryId => _categoryId;
 
@@ -32,7 +41,9 @@ class Offer {
   set unit(int value) {
     _unit = value;
   }
+
   double _discount;
+
   String get imageUrl => _imageUrl;
 
   set imageUrl(String value) {
@@ -74,16 +85,16 @@ class Offer {
   set branchId(int value) {
     _branchId = value;
   }
-  Offer.fromJson(Map<String, dynamic>json){
-    name=json['name'];
-    price=json['price'];
-    startDate=json["startDate"];
-    endDate=json['endDate'];
-    description=json['description'];
-    imageUrl=json['imageUrl'];
-    discount=json['discount'];
-    categoryId=json['cateforyId'];
-    branchId=json['branchId'];
-  }
 
+  Offer.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    price = json['price'];
+    startDate = json["startDate"];
+    endDate = json['endDate'];
+    description = json['description'];
+    imageUrl = json['imageUrl'];
+    discount = json['discount'];
+    categoryId = json['cateforyId'];
+    branchId = json['branchId'];
+  }
 }

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-import 'package:flutter/material.dart';
 class SpecificProduct {
   int _productId;
   String _name;
@@ -7,19 +5,24 @@ class SpecificProduct {
   double _percentage;
   String _description;
   int _unit;
+
   // List<String> _imagesUrl;
   // String _category; //si
   List<String> _imageUrl;
+
   // String _categoryName:
   int _categoryId;
   int _branchId;
+
   // int _categoryId; no
   // String _branch; //no
 
   // Double _discount;
   // ,this._unit,this._branchId,
 
-  SpecificProduct(this._productId,this._categoryId,this._name,this._price,this._description);
+  SpecificProduct(this._productId, this._categoryId, this._name, this._price,
+      this._description);
+
   // this._percentage,
   // , this._imageUrl
   // ,this._category
@@ -29,7 +32,6 @@ class SpecificProduct {
   set branchId(int value) {
     _branchId = value;
   }
-
 
   int get categoryId => _categoryId;
 
@@ -42,7 +44,6 @@ class SpecificProduct {
   // set category(String value) {
   //   _category = value;
   // }
-
 
   double get percentage => _percentage;
 
@@ -95,18 +96,17 @@ class SpecificProduct {
   set price(double value) {
     _price = value;
   }
-  SpecificProduct.fromJson(Map<String, dynamic>json){
-    productId=json['productId'];
-    categoryId=json['productCategoryId'];
-    name=json['name'];
-    price=json['price'];
+
+  SpecificProduct.fromJson(Map<String, dynamic> json) {
+    productId = json['productId'];
+    categoryId = json['productCategoryId'];
+    name = json['name'];
+    price = json['price'];
     // percentage=json['percentage'];
-    description=json['description'];
+    description = json['description'];
     // category=json['category'];
     // imageUrl=json['imagesUrl'];
     // unit=json['unit'];
     // branchId=json['branchId'];
-
   }
-
 }

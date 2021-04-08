@@ -37,29 +37,39 @@ class NavigationCategoriesPageEvent extends NavigationEvents {
   @override
   List<Object> get props => [_branchId];
 }
-class SpecificProductPageEvent extends NavigationEvents{
+
+class SpecificProductPageEvent extends NavigationEvents {
   int _productId;
 
   SpecificProductPageEvent(this._productId);
+
   @override
   List<Object> get props => [_productId];
 }
-class ProfilePageEvent extends NavigationEvents{
-  int _userId;
-  ProfilePageEvent(this._userId);
-  @override
-  List<Object> get props => [_userId];
 
-}
-class CardPageEvent extends NavigationEvents{
+class ProfilePageEvent extends NavigationEvents {
   int _userId;
-  CardPageEvent(this._userId);
+
+  ProfilePageEvent(this._userId);
+
   @override
   List<Object> get props => [_userId];
 }
-class SpecificCardPageEvent extends NavigationEvents{
+
+class CardPageEvent extends NavigationEvents {
+  int _userId;
+
+  CardPageEvent(this._userId);
+
+  @override
+  List<Object> get props => [_userId];
+}
+
+class SpecificCardPageEvent extends NavigationEvents {
   int _cardId;
+
   SpecificCardPageEvent(this._cardId);
+
   @override
   List<Object> get props => [_cardId];
 }
