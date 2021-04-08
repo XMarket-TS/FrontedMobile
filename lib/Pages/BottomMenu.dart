@@ -10,15 +10,11 @@ import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
 import 'package:x_market/Models/User.dart';
 import 'package:x_market/Pages/CardPage.dart';
-import 'package:x_market/Pages/CartPage.dart';
 import 'package:x_market/Pages/CategoriesPage.dart';
 import 'package:x_market/Pages/LoadingPage.dart';
 import 'package:x_market/Pages/ProductPage.dart';
 import 'package:x_market/Pages/ProfilePage.dart';
 import 'package:x_market/Pages/SpecificProductPage.dart';
-import 'package:x_market/Repository/BranchRepository.dart';
-import 'package:x_market/Repository/OffersRepository.dart';
-import 'package:x_market/Repository/ProductRepository.dart';
 import 'package:x_market/States/NavigationStates.dart';
 
 import '../Colors.dart';
@@ -30,36 +26,46 @@ class BottomMenu extends StatefulWidget {
 }
 
 class _BottomMenuState extends State<BottomMenu> {
-  int _selectedIndex=1;
+  int _selectedIndex = 1;
 
   // final page=[ProfilePage(),BranchPage(),CartPage()];
   @override
   Widget build(BuildContext context) {
-    final Size size=MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
         bottomNavigationBar: CurvedNavigationBar(
           index: _selectedIndex,
           // height: size.height,
           items: [
-            Icon(Icons.person,size: 40,),
-            Icon(Icons.menu,size: 40,),
-            Icon(Icons.add_shopping_cart,size: 40,),
+            Icon(
+              Icons.person,
+              size: 40,
+            ),
+            Icon(
+              Icons.menu,
+              size: 40,
+            ),
+            Icon(
+              Icons.add_shopping_cart,
+              size: 40,
+            ),
             // Icon(Icons.add_shopping_cart,size: 40,),
           ],
-          onTap: (index){
+          onTap: (index) {
             setState(() {
-              _selectedIndex=index;
-            }
-            );
-            if(index==0){
+              _selectedIndex = index;
+            });
+            if (index == 0) {
               BlocProvider.of<NavigationBloc>(context).add(ProfilePageEvent(1));
-            }else if(index==1){
-              BlocProvider.of<NavigationBloc>(context).add(NavigationBranchPageEvent());
-            }else if(index==2){
+            } else if (index == 1) {
+              BlocProvider.of<NavigationBloc>(context)
+                  .add(NavigationBranchPageEvent());
+            } else if (index == 2) {
               // print(context);
-              BlocProvider.of<NavigationBloc>(context).add(NavigationBranchPageEvent());
+              BlocProvider.of<NavigationBloc>(context)
+                  .add(NavigationBranchPageEvent());
               // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent());
-            }else{
+            } else {
               BlocProvider.of<NavigationBloc>(context).add(ProfilePageEvent(1));
             }
           },
@@ -69,36 +75,33 @@ class _BottomMenuState extends State<BottomMenu> {
           animationCurve: Curves.easeInBack,
           animationDuration: const Duration(milliseconds: 300),
         ),
-        body: BlocBuilder<NavigationBloc,NavigationStates>(
-            builder: (context,state){
-              if(state is NavigationLoadingState){
-                return LoadingPage(); //pantalla de loading
-              }else if(state is ListBranchPageState){
-                List<Branch> _listBranches=state.props[0];
-                return BranchPage(_listBranches);
-              }else if(state is ListProductPageState){
-                List<Product> _listProduct=state.props[0];
-                List<Offer> _listOffer=state.props[1];
-                return ProductPage(_listProduct,_listOffer);
-              }else if(state is ListCategoriesPageState){
-                List<Categories> _listCategories=state.props[0];
-                List<Offer> _listOffer=state.props[1];
-                return CategoriesPage(_listCategories,_listOffer);
-              }else if(state is SpecificProductPageState){
-                Product _product=state.props[0];
-                return SpecificProductPage(_product);
-              }else if(state is ProfilePageState){
-                User _user=state.props[0];
-                return ProfilePage(_user);
-              }else if(state is CardPageState){
-                List<CardList> _cardList=state.props[0];
-                return CardPage(_cardList);
-              }else{
-                return Container();
-              }
-
-            }
-        )
-      );
+        body: BlocBuilder<NavigationBloc, NavigationStates>(
+            builder: (context, state) {
+          if (state is NavigationLoadingState) {
+            return LoadingPage(); //pantalla de loading
+          } else if (state is ListBranchPageState) {
+            List<Branch> _listBranches = state.props[0];
+            return BranchPage(_listBranches);
+          } else if (state is ListProductPageState) {
+            List<Product> _listProduct = state.props[0];
+            List<Offer> _listOffer = state.props[1];
+            return ProductPage(_listProduct, _listOffer);
+          } else if (state is ListCategoriesPageState) {
+            List<Categories> _listCategories = state.props[0];
+            List<Offer> _listOffer = state.props[1];
+            return CategoriesPage(_listCategories, _listOffer);
+          } else if (state is SpecificProductPageState) {
+            Product _product = state.props[0];
+            return SpecificProductPage(_product);
+          } else if (state is ProfilePageState) {
+            User _user = state.props[0];
+            return ProfilePage(_user);
+          } else if (state is CardPageState) {
+            List<CardList> _cardList = state.props[0];
+            return CardPage(_cardList);
+          } else {
+            return Container();
+          }
+        }));
   }
 }
