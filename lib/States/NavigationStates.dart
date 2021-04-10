@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:x_market/Models/Branch.dart';
+import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/Models/CardList.dart';
 import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
@@ -84,9 +85,9 @@ class CardPageState extends NavigationStates {
 }
 
 class SpecificCardPageState extends NavigationStates {
-  List<CardList> _cardList; //corregir a solo card
-  SpecificCardPageState(this._cardList);
+  Tarjeta _card;
+  SpecificCardPageState(this._card);
 
   @override
-  List<Object> get props => [_cardList];
+  List<Object> get props => [_card];
 }

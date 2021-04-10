@@ -1,9 +1,12 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:x_market/Models/Tarjeta.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Branch.dart';
+
 import 'package:x_market/Models/CardList.dart';
 import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
@@ -19,6 +22,8 @@ import 'package:x_market/States/NavigationStates.dart';
 
 import '../Colors.dart';
 import 'package:x_market/Pages/BranchPage.dart';
+
+import 'SpecificCardPage.dart';
 
 class BottomMenu extends StatefulWidget {
   @override
@@ -99,6 +104,10 @@ class _BottomMenuState extends State<BottomMenu> {
           } else if (state is CardPageState) {
             List<CardList> _cardList = state.props[0];
             return CardPage(_cardList);
+          } else if (state is SpecificCardPageState) {
+            // Card _cardList = state.props[0];
+            Tarjeta _card=state.props[0];
+            return SpecificCardPage(_card);
           } else {
             return Container();
           }

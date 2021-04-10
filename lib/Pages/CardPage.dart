@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
+import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/CardList.dart';
 import 'package:x_market/States/NavigationStates.dart';
 
@@ -57,6 +58,7 @@ class _CardPageState extends State<CardPage> {
                             return GestureDetector(
                               onTap: () {
                                 // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent());
+                                BlocProvider.of<NavigationBloc>(context).add(SpecificCardPageEvent(_cardList[index].cardId));
                                 // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
                               },
                               child: Card(

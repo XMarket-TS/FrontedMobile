@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Branch.dart';
+import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/Models/CardList.dart';
 import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
@@ -69,6 +70,12 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       int _userId = event.props[0];
       List<CardList> _cardList = await _cardRepository.obtainCardList(_userId);
       yield CardPageState(_cardList);
-    } else {}
+    } else if (event is SpecificCardPageEvent) {
+      // event.
+      yield NavigationLoadingState();
+      int _cardId = event.props[0];
+      Tarjeta _card = await _cardRepository.obtainSpecificCard(_cardId);
+      yield SpecificCardPageState(_card);
+    }else {}
   }
 }

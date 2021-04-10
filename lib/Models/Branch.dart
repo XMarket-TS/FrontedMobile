@@ -7,6 +7,7 @@ class Branch {
   int _phone;
   String _zone;
   String _address;
+  String _imageUrl;
 
   // String _status;
   // List<String> _transaction;
@@ -17,9 +18,14 @@ class Branch {
   //   _status = value;
   // }
   Branch(this._branchId, this._managerId, this._name, this._phone, this._zone,
-      this._address);
+      this._address,this._imageUrl);
 
-  // Branch();
+  String get imageUrl => _imageUrl;
+
+  set imageUrl(String value) {
+    _imageUrl = value;
+  } // Branch();
+
   int get branchId => _branchId;
 
   set branchId(int value) {
@@ -68,6 +74,7 @@ class Branch {
     phone = json['phone'];
     zone = json['zone'];
     address = json['address'];
+    imageUrl=json['image'];
     // status=json['status'];
     // transaction=json['transaction'];
   }

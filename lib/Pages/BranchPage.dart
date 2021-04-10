@@ -26,8 +26,20 @@ class _BranchPageState extends State<BranchPage> {
     'fig4.jpg',
     'fig5.jpg',
     'fig2.jpg',
-    'sandwich.png',
-    'wrap.png'
+    'fig1.jpg',
+    'fig2.jpg',
+    'fig3.png',
+    'fig1.jpg',
+    'fig4.jpg',
+    'fig5.jpg',
+    'fig2.jpg',
+    'fig1.jpg',
+    'fig2.jpg',
+    'fig3.png',
+    'fig1.jpg',
+    'fig4.jpg',
+    'fig5.jpg',
+    'fig2.jpg',
   ];
 
   _BranchPageState(this._listBranch);
@@ -107,8 +119,10 @@ class _BranchPageState extends State<BranchPage> {
                                     // padding: EdgeInsets.only(top: 10,bottom: 10),
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
-                                            image: new AssetImage(
-                                                "assets/images/${_url[index]}"),
+                                            // image: new AssetImage(
+                                            //     "assets/images/${_url[index]}"),
+                                            image:new NetworkImage(
+                                                "${_listBranches[index].imageUrl}"),
                                             fit: BoxFit.fill),
                                         borderRadius:
                                             BorderRadius.circular(10.0)),
