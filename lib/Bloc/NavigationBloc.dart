@@ -1,12 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Branch.dart';
+import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/Models/CardList.dart';
 import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
 import 'package:x_market/Models/User.dart';
+import 'package:x_market/Pages/SpecificProductPage.dart';
 import 'package:x_market/Repository/BranchRepository.dart';
 import 'package:x_market/Repository/CardRepository.dart';
 import 'package:x_market/Repository/CategoriesRepository.dart';
@@ -75,6 +77,14 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       int _cardId = event.props[0];
       Tarjeta _card = await _cardRepository.obtainSpecificCard(_cardId);
       yield SpecificCardPageState(_card);
+    }else if (event is SpecificProductPageEvent) {
+      // event.
+      yield NavigationLoadingState();
+      // int _productId = event.props[0];
+      // Tarjeta _card = await _cardRepository.obtainSpecificCard(_cardId);
+      // SpecificProduct _product;
+      // yield SpecificProductPageState(_product);
+      yield SpecificProductPageState();
     }else {}
   }
 }

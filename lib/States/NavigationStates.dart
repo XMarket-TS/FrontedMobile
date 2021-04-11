@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:x_market/Models/Branch.dart';
+import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/Models/CardList.dart';
 import 'package:x_market/Models/Categories.dart';
@@ -58,12 +59,11 @@ class ListCategoriesPageState extends NavigationStates {
 }
 
 class SpecificProductPageState extends NavigationStates {
-  Product _product;
-
-  SpecificProductPageState(this._product);
-
+  // SpecificProduct _product;
+  // SpecificProductPageState(this._product);
   @override
-  List<Object> get props => [_product];
+  // List<Object> get props => [_product];
+  List<Object> get props => [];
 }
 
 class ProfilePageState extends NavigationStates {

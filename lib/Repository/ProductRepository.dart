@@ -63,6 +63,7 @@ class ProductRepository{
           });
       var product2=jsonDecode(res.body);
       // print(singleDriver2);
+      print(product2);
       product.productId=(product2["productId"]);
       // product.categoryId=(product2["productCategoryId"]);
       product.name=(product2["name"]);

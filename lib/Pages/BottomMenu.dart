@@ -1,4 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 
 import 'package:flutter/material.dart';
@@ -97,8 +98,9 @@ class _BottomMenuState extends State<BottomMenu> {
             int _branchId=state.props[2];
             return CategoriesPage(_listCategories, _listOffer,_branchId);
           } else if (state is SpecificProductPageState) {
-            Product _product = state.props[0];
-            return SpecificProductPage(_product);
+            // SpecificProduct _product = state.props[0];
+            // return SpecificProductPage(_product);
+            return SpecificProductPage();
           } else if (state is ProfilePageState) {
             User _user = state.props[0];
             return ProfilePage(_user);

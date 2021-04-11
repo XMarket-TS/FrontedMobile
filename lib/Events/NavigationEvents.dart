@@ -40,9 +40,7 @@ class NavigationCategoriesPageEvent extends NavigationEvents {
 
 class SpecificProductPageEvent extends NavigationEvents {
   int _productId;
-
   SpecificProductPageEvent(this._productId);
-
   @override
   List<Object> get props => [_productId];
 }

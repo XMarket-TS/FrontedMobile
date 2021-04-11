@@ -176,49 +176,56 @@ class _ProductPageState extends State<ProductPage> {
                               BlocProvider.of<NavigationBloc>(context).add(
                                   SpecificProductPageEvent(_listProduct[index].productId));
                             },
-                            child: Card(
-                              color: color1,
-                              elevation: 5.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(10.0),
-                                    child: Image.network(
-                                      "${_listProduct[index].imageUrl}",
-                                      height: size.width * 0.2,
-                                      width: size.width * 0.2,
+                            child: GestureDetector(
+                              onTap: () {
+                                // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_listCategories[index].branchId,_listCategories[index].categorieId));
+                                BlocProvider.of<NavigationBloc>(context).add(SpecificProductPageEvent(_listProduct[index].productId));
+                                // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
+                              },
+                              child: Card(
+                                color: color1,
+                                elevation: 5.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Image.network(
+                                        "${_listProduct[index].imageUrl}",
+                                        height: size.width * 0.2,
+                                        width: size.width * 0.2,
+                                      ),
+                                      // child: Text("${_productsObtain[index].name}",style: TextStyle(fontSize: 20.0),),
+                                      // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
                                     ),
-                                    // child: Text("${_productsObtain[index].name}",style: TextStyle(fontSize: 20.0),),
-                                    // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
-                                  ),
-                                  Container(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          "${_listProduct[index].name}",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              color: Colors.white),
-                                        ),
-                                        Text(
-                                          "Cantidad: ${_listProduct[index].unit}",
-                                          style: TextStyle(
-                                              fontSize: 15.0, color: color5),
-                                        ),
-                                        Text(
-                                          "Precio: ${_listProduct[index].price} Bs",
-                                          style: TextStyle(
-                                              fontSize: 15.0, color: color3),
-                                        ),
-                                      ],
+                                    Container(
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            "${_listProduct[index].name}",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                color: Colors.white),
+                                          ),
+                                          Text(
+                                            "Cantidad: ${_listProduct[index].unit}",
+                                            style: TextStyle(
+                                                fontSize: 15.0, color: color5),
+                                          ),
+                                          Text(
+                                            "Precio: ${_listProduct[index].price} Bs",
+                                            style: TextStyle(
+                                                fontSize: 15.0, color: color3),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           );
