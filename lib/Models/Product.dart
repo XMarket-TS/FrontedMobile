@@ -1,18 +1,18 @@
 class Product {
   int _productId;
-  int _categoryId;
+  // int _categoryId;
   String _name;
   double _price;
-  double _percentage;
+  int _percentage;
   String _description;
-
+  String _category;
   // List<String> _imagesUrl;
   // String _category; //si
   String _imageUrl;
 
   // String _categoryName:
   int _unit;
-  int _branchId;
+  int _branchId; //falta que devuelva esto
 
   // int _categoryId; no
   // String _branch; //no
@@ -20,8 +20,8 @@ class Product {
   // Double _discount;
   // ,this._unit,this._branchId,
 
-  Product(this._productId, this._categoryId, this._name, this._price,
-      this._description);
+  Product(this._productId, this._name, this._price,this._percentage,
+      this._description, this._category,this._imageUrl,this._unit);
 
   // this._percentage,
   // , this._imageUrl
@@ -33,21 +33,20 @@ class Product {
     _branchId = value;
   }
 
-  int get categoryId => _categoryId;
 
-  set categoryId(int value) {
-    _categoryId = value;
-  }
+  String get category => _category;
 
-  // String get category => _category;
+  set category(String value) {
+    _category = value;
+  } // String get category => _category;
   //
   // set category(String value) {
   //   _category = value;
   // }
 
-  double get percentage => _percentage;
+  int get percentage => _percentage;
 
-  set percentage(double value) {
+  set percentage(int value) {
     _percentage = value;
   } // String get branch => _branch;
   //
@@ -99,14 +98,14 @@ class Product {
 
   Product.fromJson(Map<String, dynamic> json) {
     productId = json['productId'];
-    categoryId = json['productCategoryId'];
     name = json['name'];
     price = json['price'];
-    // percentage=json['percentage'];
+    percentage=json['percentage'];
     description = json['description'];
+    category = json['category'];
     // category=json['category'];
-    // imageUrl=json['imagesUrl'];
-    // unit=json['unit'];
+    imageUrl=json['firstImage'];
+    unit=json['unit'];
     // branchId=json['branchId'];
   }
 }

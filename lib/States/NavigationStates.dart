@@ -50,11 +50,11 @@ class NavigationCartPageState extends NavigationStates {
 class ListCategoriesPageState extends NavigationStates {
   List<Categories> _categories;
   List<Offer> _offers;
-
-  ListCategoriesPageState(this._categories, this._offers);
+  int _branchId;
+  ListCategoriesPageState(this._categories, this._offers,this._branchId);
 
   @override
-  List<Object> get props => [_categories, _offers];
+  List<Object> get props => [_categories, _offers,_branchId];
 }
 
 class SpecificProductPageState extends NavigationStates {

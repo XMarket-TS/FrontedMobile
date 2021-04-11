@@ -171,8 +171,7 @@ class _ProductPageState extends State<ProductPage> {
                               // });
                               // print(_listProduct[index].productId);
                               BlocProvider.of<NavigationBloc>(context).add(
-                                  SpecificProductPageEvent(
-                                      _listProduct[index].productId));
+                                  SpecificProductPageEvent(_listProduct[index].productId));
                             },
                             child: Card(
                               color: color1,

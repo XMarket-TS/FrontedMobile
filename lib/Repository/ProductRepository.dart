@@ -22,7 +22,7 @@ class ProductRepository{
   Future<List<Product>> obtainListProduct (int branchId, int categoriesId) async{
     try{
       // var _branchId=branchId.toString();
-      String url=directionUrl+"user/1/branchOffice/"+branchId.toString()+"/product";
+      String url=directionUrl+"user/1/branchOffice/"+branchId.toString()+"/category/"+categoriesId.toString();
 
       var res = await http.get(url, //ip for virtualized devices
           headers: <String, String>{
@@ -64,7 +64,7 @@ class ProductRepository{
       var product2=jsonDecode(res.body);
       // print(singleDriver2);
       product.productId=(product2["productId"]);
-      product.categoryId=(product2["productCategoryId"]);
+      // product.categoryId=(product2["productCategoryId"]);
       product.name=(product2["name"]);
       product.price=(product2["price"]);
       product.description=(product2["description"]);

@@ -11,19 +11,19 @@ import '../Colors.dart';
 class CategoriesPage extends StatefulWidget {
   List<Categories> _listCategories;
   List<Offer> _listOffer;
-
-  CategoriesPage(this._listCategories, this._listOffer);
+  int _branchId;
+  CategoriesPage(this._listCategories, this._listOffer,this._branchId);
 
   @override
   _CategoriesPageState createState() =>
-      _CategoriesPageState(this._listCategories, this._listOffer);
+      _CategoriesPageState(this._listCategories, this._listOffer,this._branchId);
 }
 
 class _CategoriesPageState extends State<CategoriesPage> {
   List<Categories> _listCategories;
   List<Offer> _listOffer;
-
-  _CategoriesPageState(this._listCategories, this._listOffer);
+  int _branchId;
+  _CategoriesPageState(this._listCategories, this._listOffer,this._branchId);
 
   List _url2 = [
     'burger.png',
@@ -94,6 +94,9 @@ class _CategoriesPageState extends State<CategoriesPage> {
             if (state is ListCategoriesPageState) {
               List<Categories> _listCategories = state.props[0];
               List<Offer> _listOffer = state.props[1];
+              int _branchId=state.props[2];
+              // print(_branchId);
+              // print(_listCategories[0].categorieId);
               return Container(
                 height: size.height,
                 child: Column(
@@ -199,9 +202,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                           return GestureDetector(
                             onTap: () {
                               // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_listCategories[index].branchId,_listCategories[index].categorieId));
-                              BlocProvider.of<NavigationBloc>(context).add(
-                                  NavigationProductPageEvent(
-                                      1, _listCategories[index].categorieId));
+                              BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_branchId, _listCategories[index].categorieId));
                               // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
                             },
                             child: Card(
@@ -210,37 +211,62 @@ class _CategoriesPageState extends State<CategoriesPage> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                              child: Stack(
                                 children: [
                                   Container(
-                                    padding: EdgeInsets.all(10.0),
-                                    // child: Image.asset("assets/images/${_listCategories[index].imageUrl}",height: size.width*0.2,width: size.width*0.2,),
-                                    child: Image.asset(
-                                      "assets/images/${_url[index]}",
-                                      height: size.width * 0.2,
-                                      width: size.width * 0.2,
-                                    ),
-                                    // child: Text("${_productsObtain[index].name}",style: TextStyle(fontSize: 20.0),),
-                                    // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
+                                    height: size.height * 0.17,
+                                    // padding: EdgeInsets.only(top: 10,bottom: 10),
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          // image: new AssetImage(
+                                          //     "assets/images/${_url[index]}"),
+                                            image:new NetworkImage("${_listCategories[index].imageUrl}"),
+                                            fit: BoxFit.fill),
+                                        borderRadius:
+                                        BorderRadius.circular(10.0)),
                                   ),
-                                  Container(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          "${_listCategories[index].name}",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              color: Colors.white),
-                                        ),
-                                        // Text("Cantidad: ${_listProduct[index].unit}",style: TextStyle(fontSize: 15.0,color: color5),),
-                                        // Text("Precio: ${_listProduct[index].price} Bs",style: TextStyle(fontSize: 15.0,color: color3),),
-                                      ],
+                                  Positioned(
+                                    bottom: 0,
+                                    right: 0,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                            bottomRight: Radius.circular(10.0),
+                                            topLeft: Radius.circular(30.0)),
+                                        color: color2.withOpacity(0.9),
+                                      ),
+                                      // color: Colors.white.withOpacity(0.7),
+                                      padding: EdgeInsets.only(
+                                          left: 20.0,
+                                          right: 20.0,
+                                          bottom: 5.0,
+                                          top: 5.0),
+                                      child: Column(
+                                        children: [
+                                          SizedBox(height: 5,),
+                                          Text(
+                                            "${_listCategories[index].name}",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                color: Colors.white),
+                                          ),
+                                          SizedBox(height: 5,),
+                                          // Text(
+                                          //   "${_listCategories[index].zone}",
+                                          //   style: TextStyle(
+                                          //       fontSize: 15.0, color: color5),
+                                          // ),
+                                          // Text(
+                                          //   "${_listBranches[index].address} ",
+                                          //   style: TextStyle(
+                                          //       fontSize: 15.0, color: color3),
+                                          // ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ],
-                              ),
+                              )
                             ),
                           );
                         },

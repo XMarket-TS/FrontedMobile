@@ -94,7 +94,8 @@ class _BottomMenuState extends State<BottomMenu> {
           } else if (state is ListCategoriesPageState) {
             List<Categories> _listCategories = state.props[0];
             List<Offer> _listOffer = state.props[1];
-            return CategoriesPage(_listCategories, _listOffer);
+            int _branchId=state.props[2];
+            return CategoriesPage(_listCategories, _listOffer,_branchId);
           } else if (state is SpecificProductPageState) {
             Product _product = state.props[0];
             return SpecificProductPage(_product);
