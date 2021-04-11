@@ -37,29 +37,29 @@ class _SpecificProductPageState extends State<SpecificProductPage> {
         ),
         centerTitle: true,
       ),
-      body: Container(
-        child: Text("producto especifico",style: TextStyle(color: Colors.white),),
-      ),
-      // body: BlocBuilder<NavigationBloc, NavigationStates>(
-      //   builder: (context, state) {
-      //     if (state is SpecificProductPageState) {
-      //       Product _product = state.props[0];
-      //       print("Prueba ahhh" + _product.productId.toString());
-      //       // List<Offer> _listOffer=state.props[1];
-      //       return Container(
-      //         height: size.height,
-      //
-      //         child: Column(
-      //           children: [
-      //             // Text("${_product.productId}"),
-      //           ],
-      //         ),
-      //       );
-      //     } else {
-      //       return Container(); //pantalla de error
-      //     }
-      //   },
+      // body: Container(
+      //   child: Text("producto especifico",style: TextStyle(color: Colors.white),),
       // ),
+      body: BlocBuilder<NavigationBloc, NavigationStates>(
+        builder: (context, state) {
+          if (state is SpecificProductPageState) {
+            // SpecificProduct _product = state.props[0];
+            // print("Prueba ahhh" + _product.productId.toString());
+            // List<Offer> _listOffer=state.props[1];
+            return Container(
+              height: size.height,
+
+              child: Column(
+                children: [
+                  Text("prueba"),
+                ],
+              ),
+            );
+          } else {
+            return Container(); //pantalla de error
+          }
+        },
+      ),
     ));
   }
 }
