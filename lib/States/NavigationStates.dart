@@ -22,10 +22,10 @@ class NavigationLoadingState extends NavigationStates {
 class ListProductPageState extends NavigationStates {
   List<Product> _products;
   List<Offer> _offers;
+  int _branchId;
+  ListProductPageState(this._products, this._offers,this._branchId);
 
-  ListProductPageState(this._products, this._offers);
-
-  List<Object> get props => [_products, _offers];
+  List<Object> get props => [_products, _offers,_branchId];
 }
 
 class ListBranchPageState extends NavigationStates {
