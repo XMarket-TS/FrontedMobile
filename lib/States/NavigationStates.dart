@@ -86,6 +86,7 @@ class CardPageState extends NavigationStates {
 
 class SpecificCardPageState extends NavigationStates {
   Tarjeta _card;
+
   SpecificCardPageState(this._card);
 
   @override

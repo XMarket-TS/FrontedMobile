@@ -76,6 +76,6 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       int _cardId = event.props[0];
       Tarjeta _card = await _cardRepository.obtainSpecificCard(_cardId);
       yield SpecificCardPageState(_card);
-    }else {}
+    } else {}
   }
 }

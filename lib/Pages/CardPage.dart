@@ -58,7 +58,9 @@ class _CardPageState extends State<CardPage> {
                             return GestureDetector(
                               onTap: () {
                                 // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent());
-                                BlocProvider.of<NavigationBloc>(context).add(SpecificCardPageEvent(_cardList[index].cardId));
+                                BlocProvider.of<NavigationBloc>(context).add(
+                                    SpecificCardPageEvent(
+                                        _cardList[index].cardId));
                                 // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
                               },
                               child: Card(

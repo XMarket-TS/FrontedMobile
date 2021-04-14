@@ -18,46 +18,60 @@ class Branch {
   //   _status = value;
   // }
   Branch(this._branchId, this._managerId, this._name, this._phone, this._zone,
-      this._address,this._imageUrl);
+      this._address, this._imageUrl);
 
+  // ignore: unnecessary_getters_setters
   String get imageUrl => _imageUrl;
 
+  // ignore: unnecessary_getters_setters
   set imageUrl(String value) {
     _imageUrl = value;
   } // Branch();
 
+  // ignore: unnecessary_getters_setters
   int get branchId => _branchId;
 
+  // ignore: unnecessary_getters_setters
   set branchId(int value) {
     _branchId = value;
   }
 
+  // ignore: unnecessary_getters_setters
   int get managerId => _managerId;
 
+  // ignore: unnecessary_getters_setters
   set managerId(int value) {
     _managerId = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get address => _address;
 
+  // ignore: unnecessary_getters_setters
   set address(String value) {
     _address = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get zone => _zone;
 
+  // ignore: unnecessary_getters_setters
   set zone(String value) {
     _zone = value;
   }
 
+  // ignore: unnecessary_getters_setters
   int get phone => _phone;
 
+  // ignore: unnecessary_getters_setters
   set phone(int value) {
     _phone = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get name => _name;
 
+  // ignore: unnecessary_getters_setters
   set name(String value) {
     _name = value;
   }
@@ -74,7 +88,7 @@ class Branch {
     phone = json['phone'];
     zone = json['zone'];
     address = json['address'];
-    imageUrl=json['image'];
+    imageUrl = json['image'];
     // status=json['status'];
     // transaction=json['transaction'];
   }

@@ -106,7 +106,7 @@ class _BottomMenuState extends State<BottomMenu> {
             return CardPage(_cardList);
           } else if (state is SpecificCardPageState) {
             // Card _cardList = state.props[0];
-            Tarjeta _card=state.props[0];
+            Tarjeta _card = state.props[0];
             return SpecificCardPage(_card);
           } else {
             return Container();
