@@ -1,11 +1,13 @@
 class Product {
   int _productId;
+
   // int _categoryId;
   String _name;
   double _price;
   int _percentage;
   String _description;
   String _category;
+
   // List<String> _imagesUrl;
   // String _category; //si
   String _imageUrl;
@@ -20,8 +22,8 @@ class Product {
   // Double _discount;
   // ,this._unit,this._branchId,
 
-  Product(this._productId, this._name, this._price,this._percentage,
-      this._description, this._category,this._imageUrl,this._unit);
+  Product(this._productId, this._name, this._price, this._percentage,
+      this._description, this._category, this._imageUrl, this._unit);
 
   // this._percentage,
   // , this._imageUrl
@@ -32,7 +34,6 @@ class Product {
   set branchId(int value) {
     _branchId = value;
   }
-
 
   String get category => _category;
 
@@ -100,12 +101,12 @@ class Product {
     productId = json['productId'];
     name = json['name'];
     price = json['price'];
-    percentage=json['percentage'];
+    percentage = json['percentage'];
     description = json['description'];
     category = json['category'];
     // category=json['category'];
-    imageUrl=json['firstImage'];
-    unit=json['unit'];
+    imageUrl = json['firstImage'];
+    unit = json['unit'];
     // branchId=json['branchId'];
   }
 }

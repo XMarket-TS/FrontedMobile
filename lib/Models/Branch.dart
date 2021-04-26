@@ -18,7 +18,7 @@ class Branch {
   //   _status = value;
   // }
   Branch(this._branchId, this._managerId, this._name, this._phone, this._zone,
-      this._address,this._imageUrl);
+      this._address, this._imageUrl);
 
   String get imageUrl => _imageUrl;
 
@@ -74,7 +74,7 @@ class Branch {
     phone = json['phone'];
     zone = json['zone'];
     address = json['address'];
-    imageUrl=json['image'];
+    imageUrl = json['image'];
     // status=json['status'];
     // transaction=json['transaction'];
   }

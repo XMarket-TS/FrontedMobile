@@ -12,10 +12,7 @@ class SpecificProduct {
   Categories _categories;
   int _branchId;
 
-
-  SpecificProduct(this._productId, this._name, this._price,
-      this._description);
-
+  SpecificProduct(this._productId, this._name, this._price, this._description);
 
   int get productId => _productId;
 
@@ -70,15 +67,16 @@ class SpecificProduct {
   set name(String value) {
     _name = value;
   }
+
   SpecificProduct.fromJson(Map<String, dynamic> json) {
     productId = json['productId'];
     name = json['name'];
     price = json['price'];
-    percentage=json['percentage'];
+    percentage = json['percentage'];
     description = json['description'];
-    unit=json['unit'];
+    unit = json['unit'];
     // imageUrl=json['imagesUrl'];
     // category=json['category'];
-    branchId=json['branchId'];
+    branchId = json['branchId'];
   }
 }

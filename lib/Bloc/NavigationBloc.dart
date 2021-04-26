@@ -1,14 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Branch.dart';
-import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/Models/CardList.dart';
 import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
 import 'package:x_market/Models/User.dart';
-import 'package:x_market/Pages/SpecificProductPage.dart';
 import 'package:x_market/Repository/BranchRepository.dart';
 import 'package:x_market/Repository/CardRepository.dart';
 import 'package:x_market/Repository/CategoriesRepository.dart';
@@ -44,9 +42,10 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       yield NavigationLoadingState();
       int _branchId = event.props[0];
       int _categoriesId = event.props[1];
-      List<Product> _getListProduct = await _productRepository.obtainListProduct(_branchId, _categoriesId);
+      List<Product> _getListProduct =
+          await _productRepository.obtainListProduct(_branchId, _categoriesId);
       List<Offer> _getListOffer = _offersRepository.offerList;
-      yield ListProductPageState(_getListProduct, _getListOffer,_branchId);
+      yield ListProductPageState(_getListProduct, _getListOffer, _branchId);
     } else if (event is NavigationBranchPageEvent) {
       // event.
       yield NavigationLoadingState();
@@ -58,7 +57,8 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       List<Categories> _getListCategories =
           await _categoriesRepository.obtainListCategories(_branchId);
       List<Offer> _getListOffer = await _offersRepository.offerList;
-      yield ListCategoriesPageState(_getListCategories, _getListOffer,_branchId);
+      yield ListCategoriesPageState(
+          _getListCategories, _getListOffer, _branchId);
     } else if (event is ProfilePageEvent) {
       // event.
       yield NavigationLoadingState();
@@ -77,7 +77,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       int _cardId = event.props[0];
       Tarjeta _card = await _cardRepository.obtainSpecificCard(_cardId);
       yield SpecificCardPageState(_card);
-    }else if (event is SpecificProductPageEvent) {
+    } else if (event is SpecificProductPageEvent) {
       // event.
       yield NavigationLoadingState();
       // int _productId = event.props[0];
@@ -85,6 +85,6 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       // SpecificProduct _product;
       // yield SpecificProductPageState(_product);
       yield SpecificProductPageState();
-    }else {}
+    } else {}
   }
 }
