@@ -7,12 +7,12 @@ import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/Repository/url.dart';
 import 'package:http/http.dart' as http;
 
-class CardRepository{
-  Future <List<CardList>> obtainCardList (int userId) async{
-    try{
+class CardRepository {
+  Future<List<CardList>> obtainCardList(int userId) async {
+    try {
       // print(userId.toString());
 
-      String url=directionUrl+"user/"+userId.toString()+"/listCards";
+      String url = directionUrl + "user/" + userId.toString() + "/listCards";
       // List<CardList> cardList;
       var res = await http.get(url, //ip for virtualized devices
           headers: <String, String>{
@@ -20,64 +20,61 @@ class CardRepository{
           });
       var cardList2 = json.decode(utf8.decode(res.bodyBytes));
       // var branchCollection2;
-      var cardList3=List<CardList>();
+      var cardList3 = List<CardList>();
       // var branchCollection2=jsonDecode(res.body);
-      for(cardList2 in cardList2){
+      for (cardList2 in cardList2) {
         cardList3.add(CardList.fromJson(cardList2));
       }
       // print(cardList3[0].bank);
-      if(res.statusCode == 200){
+      if (res.statusCode == 200) {
         // print("DoneListaCards");
         return cardList3;
-      }else{
+      } else {
         return null;
       }
-    }
-    catch(error){
+    } catch (error) {
       print(error);
       return null;
     }
   }
 
-  Future<Tarjeta> obtainSpecificCard (int cardId) async{
-    try{
+  Future<Tarjeta> obtainSpecificCard(int cardId) async {
+    try {
       // var _branchId=branchId.toString();
-      Tarjeta card=Tarjeta();
+      Tarjeta card = Tarjeta();
       print("pruebaespecific");
       print(cardId);
-      String url=directionUrl+"card/"+cardId.toString();
+      String url = directionUrl + "card/" + cardId.toString();
 
       var res = await http.get(url, //ip for virtualized devices
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           });
 
-      var card2=jsonDecode(res.body);
+      var card2 = jsonDecode(res.body);
       // print("blabla");
       // print(card2);
-      card.cardId=(card2["cardId"]);
+      card.cardId = (card2["cardId"]);
       // card.cardId=(card2["cardId"]);
       // print(card.cardId);
-      card.userId=(card2["userId"]);
+      card.userId = (card2["userId"]);
       // card.userId=;
-      card.bank=(card2["cardName"]);
-      card.cardNumber=(card2["cardNumber"]);
-      card.expirationYear=(card2["expirationYear"]);
-      card.expirationMonth=(card2["expirationMonth"]);
-      card.cvc=(card2["cvc"]);
-      card.creationDate=(card2["creationDate"]);
-      card.status=(card2["status"]);
+      card.bank = (card2["cardName"]);
+      card.cardNumber = (card2["cardNumber"]);
+      card.expirationYear = (card2["expirationYear"]);
+      card.expirationMonth = (card2["expirationMonth"]);
+      card.cvc = (card2["cvc"]);
+      card.creationDate = (card2["creationDate"]);
+      card.status = (card2["status"]);
       // print("specificpruebas");
       // print(card.bank);
-      if(res.statusCode==200){
+      if (res.statusCode == 200) {
         // print("exito en card especifico");
         return card;
-      }
-      else{
+      } else {
         return null;
       }
-    }
-    catch(error){
+    } catch (error) {
       print(error);
       return null;
     }

@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:x_market/Models/Branch.dart';
-import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/Models/CardList.dart';
 import 'package:x_market/Models/Categories.dart';
