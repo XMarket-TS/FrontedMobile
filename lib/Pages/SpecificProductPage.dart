@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
-import 'package:x_market/Models/Product.dart';
-import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/States/NavigationStates.dart';
 
 import '../Colors.dart';
@@ -48,7 +46,6 @@ class _SpecificProductPageState extends State<SpecificProductPage> {
             // List<Offer> _listOffer=state.props[1];
             return Container(
               height: size.height,
-
               child: Column(
                 children: [
                   Text("prueba"),

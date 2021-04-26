@@ -1,5 +1,4 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 
 import 'package:flutter/material.dart';
@@ -95,8 +94,8 @@ class _BottomMenuState extends State<BottomMenu> {
           } else if (state is ListCategoriesPageState) {
             List<Categories> _listCategories = state.props[0];
             List<Offer> _listOffer = state.props[1];
-            int _branchId=state.props[2];
-            return CategoriesPage(_listCategories, _listOffer,_branchId);
+            int _branchId = state.props[2];
+            return CategoriesPage(_listCategories, _listOffer, _branchId);
           } else if (state is SpecificProductPageState) {
             // SpecificProduct _product = state.props[0];
             // return SpecificProductPage(_product);
@@ -109,7 +108,7 @@ class _BottomMenuState extends State<BottomMenu> {
             return CardPage(_cardList);
           } else if (state is SpecificCardPageState) {
             // Card _cardList = state.props[0];
-            Tarjeta _card=state.props[0];
+            Tarjeta _card = state.props[0];
             return SpecificCardPage(_card);
           } else {
             return Container();

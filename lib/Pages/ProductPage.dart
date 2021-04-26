@@ -54,7 +54,7 @@ class _ProductPageState extends State<ProductPage> {
             if (state is ListProductPageState) {
               List<Product> _listProduct = state.props[0];
               List<Offer> _listOffer = state.props[1];
-              int _branchId=state.props[2];
+              int _branchId = state.props[2];
               // print("id sdjflajflk");
               // print(_branchId);
               return Container(
@@ -174,12 +174,15 @@ class _ProductPageState extends State<ProductPage> {
                               // });
                               // print(_listProduct[index].productId);
                               BlocProvider.of<NavigationBloc>(context).add(
-                                  SpecificProductPageEvent(_listProduct[index].productId));
+                                  SpecificProductPageEvent(
+                                      _listProduct[index].productId));
                             },
                             child: GestureDetector(
                               onTap: () {
                                 // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_listCategories[index].branchId,_listCategories[index].categorieId));
-                                BlocProvider.of<NavigationBloc>(context).add(SpecificProductPageEvent(_listProduct[index].productId));
+                                BlocProvider.of<NavigationBloc>(context).add(
+                                    SpecificProductPageEvent(
+                                        _listProduct[index].productId));
                                 // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
                               },
                               child: Card(
