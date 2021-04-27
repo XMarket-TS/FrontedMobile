@@ -121,7 +121,8 @@ class _BranchPageState extends State<BranchPage> {
                                         image: DecorationImage(
                                             // image: new AssetImage(
                                             //     "assets/images/${_url[index]}"),
-                                            image:new NetworkImage("${_listBranches[index].imageUrl}"),
+                                            image: new NetworkImage(
+                                                "${_listBranches[index].imageUrl}"),
                                             fit: BoxFit.fill),
                                         borderRadius:
                                             BorderRadius.circular(10.0)),

@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-class Tarjeta{
+class Tarjeta {
   int _cardId;
   int _userId;
   String _bank;
