@@ -5,10 +5,10 @@ class SpecificProduct {
   int _productId;
   String _name;
   double _price;
-  double _percentage;
+  int _percentage;
   String _description;
   int _unit;
-  List<ImagesUrl> _imageUrl;
+  List<String> _imageUrl;
   Categories _categories;
   int _branchId;
 
@@ -20,9 +20,9 @@ class SpecificProduct {
     _productId = value;
   }
 
-  double get percentage => _percentage;
+  int get percentage => _percentage;
 
-  set percentage(double value) {
+  set percentage(int value) {
     _percentage = value;
   }
 
@@ -32,9 +32,9 @@ class SpecificProduct {
     _description = value;
   }
 
-  List<ImagesUrl> get imageUrl => _imageUrl;
+  List<String> get imageUrl => _imageUrl;
 
-  set imageUrl(List<ImagesUrl> value) {
+  set imageUrl(List<String> value) {
     _imageUrl = value;
   }
 
@@ -68,15 +68,26 @@ class SpecificProduct {
     _name = value;
   }
 
+
   SpecificProduct.fromJson(Map<String, dynamic> json) {
+
     productId = json['productId'];
     name = json['name'];
     price = json['price'];
     percentage = json['percentage'];
     description = json['description'];
     unit = json['unit'];
-    // imageUrl=json['imagesUrl'];
-    // category=json['category'];
+    var auxImageUrl=json['imagesUrl'];
+    imageUrl=List();
+    for(var image in auxImageUrl){
+      imageUrl.add(image);
+    }
+    categories=Categories.fromJson(json['category']);
     branchId = json['branchId'];
+  }
+
+  @override
+  String toString() {
+    return 'SpecificProduct{_productId: $_productId, _name: $_name, _price: $_price, _percentage: $_percentage, _description: $_description, _unit: $_unit, _imageUrl: $_imageUrl, _categories: $_categories, _branchId: $_branchId}';
   }
 }

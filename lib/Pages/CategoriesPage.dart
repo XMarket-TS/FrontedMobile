@@ -203,10 +203,11 @@ class _CategoriesPageState extends State<CategoriesPage> {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
+                              // print("branic y categories id");
+                              // print(_branchId);
+                              // print(_listCategories[index].categorieId);
                               // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_listCategories[index].branchId,_listCategories[index].categorieId));
-                              BlocProvider.of<NavigationBloc>(context).add(
-                                  NavigationProductPageEvent(_branchId,
-                                      _listCategories[index].categorieId));
+                              BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_branchId, _listCategories[index].categorieId));
                               // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
                             },
                             child: Card(

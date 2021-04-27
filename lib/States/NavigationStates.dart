@@ -59,11 +59,11 @@ class ListCategoriesPageState extends NavigationStates {
 }
 
 class SpecificProductPageState extends NavigationStates {
-  // SpecificProduct _product;
-  // SpecificProductPageState(this._product);
+  SpecificProduct _product;
+  SpecificProductPageState(this._product);
   @override
-  // List<Object> get props => [_product];
-  List<Object> get props => [];
+  List<Object> get props => [_product];
+  // List<Object> get props => [];
 }
 
 class ProfilePageState extends NavigationStates {

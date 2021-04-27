@@ -43,4 +43,9 @@ class Categories {
     imageUrl = json['imageUrl'];
     // branchId=json['branchId'];
   }
+
+  @override
+  String toString() {
+    return 'Categories{_categorieId: $_categorieId, _name: $_name, _imageUrl: $_imageUrl}';
+  }
 }
