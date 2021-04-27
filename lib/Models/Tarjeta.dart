@@ -7,8 +7,10 @@ class Tarjeta{
   int _expirationYear;
   int _expirationMonth;
   int _cvc;
-  String _creationDate;
+  // String _creationDate;
+  int _creationDate;
   int _status;
+
 
   // Tarjeta(this._cardId,this._userId,this._bank, this._cardNumber, this._expirationYear, this._expirationMonth, this._cvc, this._creationDate, this._status);
 
@@ -56,11 +58,16 @@ class Tarjeta{
     _status = value;
   }
 
-  String get creationDate => _creationDate;
+  int get creationDate => _creationDate;
 
-  set creationDate(String value) {
+  set creationDate(int value) {
     _creationDate = value;
   }
+  // String get creationDate => _creationDate;
+  //
+  // set creationDate(String value) {
+  //   _creationDate = value;
+  // }
 
   int get cvc => _cvc;
 

@@ -67,8 +67,8 @@ class CardRepository{
       card.cvc=(card2["cvc"]);
       card.creationDate=(card2["creationDate"]);
       card.status=(card2["status"]);
-      // print("specificpruebas");
-      // print(card.bank);
+      print("specificpruebas");
+      print(card.bank);
       if(res.statusCode==200){
         // print("exito en card especifico");
         return card;
