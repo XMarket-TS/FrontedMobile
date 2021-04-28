@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:x_market/Models/Branch.dart';
+import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/Models/CardList.dart';
 import 'package:x_market/Models/Categories.dart';
@@ -23,9 +24,10 @@ class ListProductPageState extends NavigationStates {
   List<Product> _products;
   List<Offer> _offers;
   int _branchId;
-  ListProductPageState(this._products, this._offers,this._branchId);
 
-  List<Object> get props => [_products, _offers,_branchId];
+  ListProductPageState(this._products, this._offers, this._branchId);
+
+  List<Object> get props => [_products, _offers, _branchId];
 }
 
 class ListBranchPageState extends NavigationStates {
@@ -51,18 +53,21 @@ class ListCategoriesPageState extends NavigationStates {
   List<Categories> _categories;
   List<Offer> _offers;
   int _branchId;
-  ListCategoriesPageState(this._categories, this._offers,this._branchId);
+
+  ListCategoriesPageState(this._categories, this._offers, this._branchId);
 
   @override
-  List<Object> get props => [_categories, _offers,_branchId];
+  List<Object> get props => [_categories, _offers, _branchId];
 }
 
 class SpecificProductPageState extends NavigationStates {
   SpecificProduct _product;
+
   SpecificProductPageState(this._product);
+
   @override
   List<Object> get props => [_product];
-  // List<Object> get props => [];
+// List<Object> get props => [];
 }
 
 class ProfilePageState extends NavigationStates {
@@ -85,6 +90,7 @@ class CardPageState extends NavigationStates {
 
 class SpecificCardPageState extends NavigationStates {
   Tarjeta _card;
+
   SpecificCardPageState(this._card);
 
   @override

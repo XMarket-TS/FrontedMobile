@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:x_market/Models/Categories.dart';
 import 'package:x_market/Repository/url.dart';
+
 class CategoriesRepository {
   // List<Categories> _categoriesList=[
   //   Categories(1,"Vegetales",'fig1.jpg',1),
@@ -18,11 +19,11 @@ class CategoriesRepository {
   // set offerList(List<Categories> value) {
   //   _categoriesList = value;
   // }
-  Future<List<Categories>> obtainListCategories (int branchId) async{
-    try{
-      int _branchId=branchId;
+  Future<List<Categories>> obtainListCategories(int branchId) async {
+    try {
+      int _branchId = branchId;
 
-      String url=directionUrl+"category/list";
+      String url = directionUrl + "category/list";
 
       var res = await http.get(url, //ip for virtualized devices
           headers: <String, String>{
@@ -30,23 +31,21 @@ class CategoriesRepository {
           });
       var categoriesCollection2 = json.decode(utf8.decode(res.bodyBytes));
       // var branchCollection2;
-      var categoriesCollection3=List<Categories>();
+      var categoriesCollection3 = List<Categories>();
       // var branchCollection2=jsonDecode(res.body);
 
-
-      for(categoriesCollection2 in categoriesCollection2){
+      for (categoriesCollection2 in categoriesCollection2) {
         categoriesCollection3.add(Categories.fromJson(categoriesCollection2));
       }
       // print(categoriesCollection3[1].name);
       // body: jsonEncode(singleDriver.toJson()));
-      if(res.statusCode == 200){
+      if (res.statusCode == 200) {
         // print("DoneListaBranchs");
         return categoriesCollection3;
-      }else{
+      } else {
         return null;
       }
-    }
-    catch(error){
+    } catch (error) {
       print(error);
       return null;
     }
