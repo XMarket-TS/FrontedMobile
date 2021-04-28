@@ -278,8 +278,8 @@ class _chooseProductState extends State<chooseProduct> {
               _addProduct.unit=int.parse(_units.text);
               _addProduct.imageUrl=_product.imageUrl[0];
               globals.listProductCard.add(_addProduct);
-              // print("prueba de agregar un producto al carro");
-              // print(globals.listProductCard[0].imageUrl);
+              print("prueba de agregar un producto al carro");
+              print(globals.listProductCard.length);
               Navigator.of(context).pop();
             });
 
