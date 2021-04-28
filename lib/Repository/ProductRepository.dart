@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
 import 'package:x_market/Models/Product.dart';
+import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Repository/url.dart';
-
-class ProductRepository {
+class ProductRepository{
   // List<Product> _productList=[
   //   Product(1,"Lechuga",2.44,"Fresca, traida del tropico",4,['burger.png','cola.png'],1,"Vegetales"),
   //   Product(2,"Tomate",3.44,"Fresca, traida del tropico",4,['burger.png','cola.png'],1,"Vegetales"),
@@ -19,69 +20,71 @@ class ProductRepository {
   //   _productList = value;
   // }
 
-  Future<List<Product>> obtainListProduct(
-      int branchId, int categoriesId) async {
-    try {
+  Future<List<Product>> obtainListProduct (int branchId, int categoriesId) async{
+    try{
       // var _branchId=branchId.toString();
-      String url = directionUrl +
-          "user/1/branchOffice/" +
-          branchId.toString() +
-          "/category/" +
-          categoriesId.toString();
+      String url=directionUrl+"user/1/branchOffice/"+branchId.toString()+"/category/"+categoriesId.toString();
 
       var res = await http.get(url, //ip for virtualized devices
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           });
+      // print(res.body.length);
       var productCollection2 = json.decode(utf8.decode(res.bodyBytes));
+      // print(productCollection2);
       // var branchCollection2;
-      var productCollection3 = List<Product>();
+      var productCollection3=List<Product>();
       // var branchCollection2=jsonDecode(res.body);
-
-      for (productCollection2 in productCollection2) {
+      for(productCollection2 in productCollection2){
         productCollection3.add(Product.fromJson(productCollection2));
       }
-      print(productCollection3[1].name);
+      // print("list of Products");
+      // print(productCollection3);
       // body: jsonEncode(singleDriver.toJson()));
-      if (res.statusCode == 200) {
+      if(res.statusCode == 200){
         // print("DoneListaProducts");
         return productCollection3;
-      } else {
+      }else{
         return null;
       }
-    } catch (error) {
+    }
+    catch(error){
       print(error);
       return null;
     }
   }
-
-  Future<Product> obtainSpecificProduct(int productId) async {
-    try {
+  Future<SpecificProduct> obtainSpecificProduct (int productId) async{
+    try{
       // var _branchId=branchId.toString();
-      Product product;
-      String url = directionUrl + "product/" + productId.toString();
+      SpecificProduct product;
+      String url=directionUrl+"product/"+productId.toString();
 
       var res = await http.get(url, //ip for virtualized devices
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           });
-      var product2 = jsonDecode(res.body);
+      var product2=jsonDecode(res.body);
+      product=SpecificProduct.fromJson(product2);
       // print(singleDriver2);
-      print(product2);
-      product.productId = (product2["productId"]);
-      // product.categoryId=(product2["productCategoryId"]);
-      product.name = (product2["name"]);
-      product.price = (product2["price"]);
-      product.description = (product2["description"]);
+      // print("prueba producto especifico");
+      // print(product);
+      // product.productId=(product2["productId"]);
+      // // product.categoryId=(product2["productCategoryId"]);
+      // product.name=(product2["name"]);
+      // product.price=(product2["price"]);
+      // product.percentage=(product2[""])
+      // product.description=(product2["description"]);
 
       // product.imageUrl=(product2["imageUrl"]);
-      if (res.statusCode == 200) {
+      if(res.statusCode==200){
         // print(product.name);
         return product;
-      } else {
+      }
+      else{
         return null;
       }
-    } catch (error) {
+    }
+    catch(error){
       print(error);
       return null;
     }

@@ -52,7 +52,7 @@ class _ProductPageState extends State<ProductPage> {
         body: BlocBuilder<NavigationBloc, NavigationStates>(
           builder: (context, state) {
             if (state is ListProductPageState) {
-              List<Product> _listProduct = state.props[0];
+              _listProduct = state.props[0];
               List<Offer> _listOffer = state.props[1];
               int _branchId = state.props[2];
               // print("id sdjflajflk");

@@ -11,7 +11,6 @@ class CardRepository{
   Future <List<CardList>> obtainCardList (int userId) async{
     try{
       // print(userId.toString());
-
       String url=directionUrl+"user/"+userId.toString()+"/listCards";
       // List<CardList> cardList;
       var res = await http.get(url, //ip for virtualized devices
