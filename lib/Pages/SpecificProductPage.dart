@@ -24,6 +24,7 @@ class _SpecificProductPageState extends State<SpecificProductPage> {
   SpecificProduct _product;
 
   _SpecificProductPageState(this._product);
+
   TextEditingController _units = TextEditingController();
   // _units.text="0";
   ListProduct _addProduct=ListProduct();

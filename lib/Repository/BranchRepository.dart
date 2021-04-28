@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:x_market/Models/Branch.dart';
 import 'package:x_market/Repository/url.dart';
+
 class BranchRepository {
   // List<Branch> _branchList=[
   //   Branch(1,1,"Sucursal 1",244534,"Centro","Av. Mariscal"),
@@ -18,10 +18,9 @@ class BranchRepository {
   // set offerList(List<Branch> value) {
   //   _branchList = value;
   // }
-  Future<List<Branch>> obtainListBranch () async{
-    try{
-
-      String url=directionUrl+"branchOffice/list";
+  Future<List<Branch>> obtainListBranch() async {
+    try {
+      String url = directionUrl + "branchOffice/list";
 
       var res = await http.get(url, //ip for virtualized devices
           headers: <String, String>{
@@ -29,23 +28,21 @@ class BranchRepository {
           });
       var branchCollection2 = json.decode(utf8.decode(res.bodyBytes));
       // var branchCollection2;
-      var branchCollection3=List<Branch>();
+      var branchCollection3 = List<Branch>();
       // var branchCollection2=jsonDecode(res.body);
 
-
-      for(branchCollection2 in branchCollection2){
+      for (branchCollection2 in branchCollection2) {
         branchCollection3.add(Branch.fromJson(branchCollection2));
       }
       // print(branchCollection3[1].name);
       // body: jsonEncode(singleDriver.toJson()));
-      if(res.statusCode == 200){
+      if (res.statusCode == 200) {
         // print("DoneListaBranchs");
         return branchCollection3;
-      }else{
+      } else {
         return null;
       }
-    }
-    catch(error){
+    } catch (error) {
       print(error);
       return null;
     }
