@@ -34,6 +34,7 @@ dependencies:
   curved_navigation_bar: ^0.3.4
   http: ^0.12.2
   lottie: ^0.7.0+1
+  auto_size_text: ^2.1.0
 
 dev_dependencies:
   flutter_test:

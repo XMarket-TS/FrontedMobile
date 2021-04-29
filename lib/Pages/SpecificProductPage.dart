@@ -274,6 +274,7 @@ class _chooseProductState extends State<chooseProduct> {
             setState(() {
               // print(_product.productId);
               _addProduct.productId=_product.productId;
+              _addProduct.productName=_product.name;
               _addProduct.price=_product.price;
               _addProduct.unit=int.parse(_units.text);
               _addProduct.imageUrl=_product.imageUrl[0];

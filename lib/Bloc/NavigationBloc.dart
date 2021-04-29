@@ -87,6 +87,11 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
           await _productRepository.obtainSpecificProduct(_productId);
       yield SpecificProductPageState(_product);
       // yield SpecificProductPageState();
-    } else {}
+    } else if (event is NavigationCartPageEvent) {
+      // event.
+      yield NavigationLoadingState();
+
+      yield NavigationCartPageState();
+    }else {}
   }
 }

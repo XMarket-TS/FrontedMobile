@@ -14,6 +14,7 @@ import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Models/Product.dart';
 import 'package:x_market/Models/User.dart';
 import 'package:x_market/Pages/CardPage.dart';
+import 'package:x_market/Pages/CartPage.dart';
 import 'package:x_market/Pages/CategoriesPage.dart';
 import 'package:x_market/Pages/LoadingPage.dart';
 import 'package:x_market/Pages/ProductPage.dart';
@@ -33,7 +34,6 @@ class BottomMenu extends StatefulWidget {
 
 class _BottomMenuState extends State<BottomMenu> {
   int _selectedIndex = 1;
-
   // final page=[ProfilePage(),BranchPage(),CartPage()];
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class _BottomMenuState extends State<BottomMenu> {
             } else if (index == 2) {
               // print(context);
               BlocProvider.of<NavigationBloc>(context)
-                  .add(NavigationBranchPageEvent());
+                  .add(NavigationCartPageEvent());
               // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent());
             } else {
               BlocProvider.of<NavigationBloc>(context).add(ProfilePageEvent(1));
@@ -111,7 +111,10 @@ class _BottomMenuState extends State<BottomMenu> {
             // Card _cardList = state.props[0];
             Tarjeta _card = state.props[0];
             return SpecificCardPage(_card);
-          } else {
+          }  else if (state is NavigationCartPageState) {
+            // User _user = state.props[0];
+            return CartPage();
+          }else {
             return Container();
           }
         }));

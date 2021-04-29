@@ -1,5 +1,6 @@
 class ListProduct{
   int _productId;
+  String _productName;
   double _price;
   int _unit;
   String _imageUrl;
@@ -28,8 +29,16 @@ class ListProduct{
   set price(double value) {
     _price = value;
   }
+
+  String get productName => _productName;
+
+  set productName(String value) {
+    _productName = value;
+  }
+
   ListProduct.fromJson(Map<String, dynamic> json) {
     productId = json['productId'];
+    productName=json['productName'];
     price = json['price'];
     unit = json['unit'];
     imageUrl = json['firstImage'];
