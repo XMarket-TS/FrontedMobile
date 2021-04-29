@@ -9,6 +9,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  double costo=0;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -22,7 +23,7 @@ class _CartPageState extends State<CartPage> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-          child: Container(
+          child: globals.listProductCard.length>0?Container(
             height: size.height,
             color: color1,
             // padding: const EdgeInsets.only(right: 8, left: 8),
@@ -147,7 +148,7 @@ class _CartPageState extends State<CartPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text("Total:",style: TextStyle(color: Colors.white,fontSize: size.width*0.05),),
-                          Text("${globals.listProductCard[0].price.toString()} Bs",style: TextStyle(color: color2,fontSize: size.width*0.05),),
+                          Text("${costoTotal(costo).toString()} Bs",style: TextStyle(color: color2,fontSize: size.width*0.05),),
                         ],
                       ),
                       SizedBox(height: size.width*0.04,),
@@ -165,8 +166,25 @@ class _CartPageState extends State<CartPage> {
                 ),
               ],
             ),
+          ):Container(
+            height: size.height-size.height*0.08,
+            width: size.width,
+            color: color1,
+            child: Center(
+              child: Container(
+                  child: Text("  Usted no tiene ningún producto agregado  ",style: TextStyle(color: color2,fontSize: size.width*0.05),),
+                ),
+            ),
           )
       ),
     );
   }
+}
+double costoTotal(double costo){
+  
+  int taman=globals.listProductCard.length;
+    for(int i=0;i<taman;i++){
+      costo+=(globals.listProductCard[i].unit*globals.listProductCard[i].price);
+    }
+    return costo;
 }
