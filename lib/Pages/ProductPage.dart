@@ -65,7 +65,6 @@ class _ProductPageState extends State<ProductPage> {
                     children: [
                       // Text("Ofertas",style: TextStyle(color: Colors.white,fontSize: size.width*0.08),),
                       // SizedBox(height: 10,),
-
                       Container(
                         height: size.height * 0.25,
                         // width: size.width*0.3,

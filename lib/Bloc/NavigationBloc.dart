@@ -97,6 +97,8 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       yield NavigationLoadingState();
       Tarjeta _tarjeta=event.props[0];
       int _userId=event.props[1];
+      print("desde navigation update");
+      print(_tarjeta.bank);
       int _success=await _cardRepository.updateCard(_tarjeta);
       List<CardList> _cardList = await _cardRepository.obtainCardList(_userId);
       yield _success==1? CardPageState(_cardList):NavigationCartPageState();

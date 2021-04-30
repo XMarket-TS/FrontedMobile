@@ -27,6 +27,7 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
   TextEditingController _expirationMonth = TextEditingController();
   TextEditingController _cvc = TextEditingController();
 
+  Tarjeta _update=Tarjeta();
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -43,11 +44,16 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
         builder: (context, state) {
           if (state is SpecificCardPageState) {
             Tarjeta _card = state.props[0];
-            _bank.text = _card.bank;
-            _cardNumber.text = _card.cardNumber.toString();
-            _expirationYear.text = _card.expirationYear.toString();
-            _expirationMonth.text = _card.expirationMonth.toString();
-            _cvc.text = _card.cvc.toString();
+            // _bank.text=null;
+            // _cardNumber.text =null;
+            // _expirationYear.text =null;
+            // _expirationMonth.text=null;
+            // _cvc.text=null;
+            // _bank.text = _card.bank;
+            // _cardNumber.text = _card.cardNumber.toString();
+            // _expirationYear.text = _card.expirationYear.toString();
+            // _expirationMonth.text = _card.expirationMonth.toString();
+            // _cvc.text = _card.cvc.toString();
             // print(_card);
             return SingleChildScrollView(
               child: Container(
@@ -69,6 +75,7 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                         controller: _bank,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(size.height * 0.01),
+                          labelText: "Banco Actual: ${_card.bank}",
                         ),
                         // maxLines: 100,
                         style: TextStyle(color: Colors.white),
@@ -85,7 +92,8 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                       child: TextField(
                         controller: _cardNumber,
                         decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(size.height * 0.01)),
+                            contentPadding: EdgeInsets.all(size.height * 0.01),
+                          labelText: "Numero Tarjeta: ${_card.cardNumber}",),
                         // maxLines: 100,
                         style: TextStyle(color: Colors.white),
                         cursorColor: color2,
@@ -101,7 +109,8 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                       child: TextField(
                         controller: _expirationYear,
                         decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(size.height * 0.01)),
+                            contentPadding: EdgeInsets.all(size.height * 0.01),
+                          labelText: "Año Expiración: ${_card.expirationYear}",),
                         // maxLines: 100,
                         style: TextStyle(color: Colors.white),
                         cursorColor: color2,
@@ -117,7 +126,8 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                       child: TextField(
                         controller: _expirationMonth,
                         decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(size.height * 0.01)),
+                            contentPadding: EdgeInsets.all(size.height * 0.01),
+                          labelText: "Mes Expiración: ${_card.expirationMonth}",),
                         // maxLines: 100,
                         style: TextStyle(color: Colors.white),
                         cursorColor: color3,
@@ -133,7 +143,9 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                       child: TextField(
                         controller: _cvc,
                         decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(size.height * 0.01)),
+                            contentPadding: EdgeInsets.all(size.height * 0.01),
+                          labelText: "CVC: ${_card.cvc}",
+                        ),
                         // maxLines: 100,
                         style: TextStyle(color: Colors.white),
                         cursorColor: color3,
@@ -145,7 +157,18 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                       children: [
                         GestureDetector(
                           onTap: (){
-                            BlocProvider.of<NavigationBloc>(context).add(UpdateCardEvent(_card,_card.userId));
+                            _update.cardId=_card.cardId;
+                            _update.userId=_card.userId;
+                            _bank.text.isNotEmpty?_update.bank=_bank.text:_update.bank=_card.bank;
+                            _cardNumber.text.isNotEmpty?_update.cardNumber=int.parse(_cardNumber.text):_update.cardNumber=_card.cardNumber;
+                            _expirationYear.text.isNotEmpty?_update.expirationYear=int.parse(_expirationYear.text):_update.expirationYear=_card.expirationYear;
+                            _expirationMonth.text.isNotEmpty?_update.expirationMonth=int.parse(_expirationMonth.text):_update.expirationMonth=_card.expirationMonth;
+                            _cvc.text.isNotEmpty?_update.cvc=int.parse(_cvc.text):_update.cvc=_card.cvc;
+                            _update.creationDate=_card.creationDate;
+                            _update.status=_card.status;
+                            print("prueba list update");
+                            print(_update.bank);
+                            BlocProvider.of<NavigationBloc>(context).add(UpdateCardEvent(_update,_card.userId));
                           },
                           child: Container(
                             alignment: Alignment.center,
