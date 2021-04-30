@@ -35,10 +35,7 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
         toolbarHeight: size.height * 0.08,
         backgroundColor: color2,
         elevation: 5,
-        title: Text(
-          "Card",
-          style: TextStyle(fontSize: size.height * 0.045),
-        ),
+        title: Text("Card", style: TextStyle(fontSize: size.height * 0.045),),
         centerTitle: true,
       ),
       body: BlocBuilder<NavigationBloc, NavigationStates>(
@@ -53,15 +50,22 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
             // print(_card);
             return SingleChildScrollView(
               child: Container(
+                // alignment: Alignment.topCenter,
+                padding: EdgeInsets.only(left: 8,right: 8),
                 // height: size.height,
-                // color: color3,
+                color: color1,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(height: size.width*0.2,),
                     Container(
-                      color: color4,
+                      width: size.width*0.97,
+                      decoration: BoxDecoration(
+                        color: color7,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: TextField(
                         controller: _bank,
-
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(size.height * 0.01),
                         ),
@@ -70,8 +74,13 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                         cursorColor: color2,
                       ),
                     ),
+                    SizedBox(height: size.width*0.04,),
                     Container(
-                      color: color4,
+                      width: size.width*0.97,
+                      decoration: BoxDecoration(
+                        color: color7,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: TextField(
                         controller: _cardNumber,
                         decoration: InputDecoration(
@@ -81,8 +90,13 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                         cursorColor: color2,
                       ),
                     ),
+                    SizedBox(height: size.width*0.04,),
                     Container(
-                      color: color4,
+                      width: size.width*0.97,
+                      decoration: BoxDecoration(
+                        color: color7,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: TextField(
                         controller: _expirationYear,
                         decoration: InputDecoration(
@@ -92,8 +106,13 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                         cursorColor: color2,
                       ),
                     ),
+                    SizedBox(height: size.width*0.04,),
                     Container(
-                      color: color4,
+                      width: size.width*0.97,
+                      decoration: BoxDecoration(
+                        color: color7,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: TextField(
                         controller: _expirationMonth,
                         decoration: InputDecoration(
@@ -103,8 +122,13 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                         cursorColor: color3,
                       ),
                     ),
+                    SizedBox(height: size.width*0.04,),
                     Container(
-                      color: color4,
+                      width: size.width*0.97,
+                      decoration: BoxDecoration(
+                        color: color7,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: TextField(
                         controller: _cvc,
                         decoration: InputDecoration(
@@ -114,6 +138,39 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                         cursorColor: color3,
                       ),
                     ),
+                    SizedBox(height: size.width*0.2,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        GestureDetector(
+                          onTap: (){},
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: size.width*0.3,
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: color3,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text("Guardar",style: TextStyle(color: Colors.white,fontSize: size.width*0.05),),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: (){},
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: size.width*0.3,
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: color2,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text("Eliminar",style: TextStyle(color: Colors.white,fontSize: size.width*0.05),),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: size.width*0.3,),
                   ],
                 ),
               ),

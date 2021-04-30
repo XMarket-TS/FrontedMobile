@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -192,27 +193,29 @@ class _ProductPageState extends State<ProductPage> {
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Container(
-                                      padding: EdgeInsets.all(10.0),
-                                      child: Image.network(
-                                        "${_listProduct[index].imageUrl}",
-                                        height: size.width * 0.2,
-                                        width: size.width * 0.2,
+                                      width: size.width*0.34,
+                                      height: size.height*0.2,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),topLeft:  Radius.circular(10)),
+                                          image: DecorationImage(
+                                              image: NetworkImage(_listProduct[index].imageUrl),
+                                              fit: BoxFit.cover
+                                          )
                                       ),
-                                      // child: Text("${_productsObtain[index].name}",style: TextStyle(fontSize: 20.0),),
-                                      // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
                                     ),
+                                    SizedBox(width: size.width*0.05,),
                                     Container(
                                       child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          Text(
-                                            "${_listProduct[index].name}",
-                                            style: TextStyle(
-                                                fontSize: 20.0,
-                                                color: Colors.white),
+                                          SizedBox(
+                                            child: AutoSizeText("${_listProduct[index].name}",
+                                              style: TextStyle(fontSize: size.width*0.04, color: Colors.white),
+                                              maxLines: 1,
+                                            ),
                                           ),
                                           Text(
                                             "Cantidad: ${_listProduct[index].unit}",
@@ -227,6 +230,7 @@ class _ProductPageState extends State<ProductPage> {
                                         ],
                                       ),
                                     ),
+                                    SizedBox(width: size.width*0.01,),
                                   ],
                                 ),
                               ),
