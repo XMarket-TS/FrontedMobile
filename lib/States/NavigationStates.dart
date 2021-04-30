@@ -102,3 +102,9 @@ class UpdateCardState extends NavigationStates{
   @override
   List<Object> get props => [_success];
 }
+class DeleteCardState extends NavigationStates{
+  List<CardList> _list;
+  DeleteCardState(this._list);
+  @override
+  List<Object> get props => [_list];
+}

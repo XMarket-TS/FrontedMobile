@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
+import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/States/NavigationStates.dart';
 
@@ -143,7 +144,9 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         GestureDetector(
-                          onTap: (){},
+                          onTap: (){
+                            BlocProvider.of<NavigationBloc>(context).add(UpdateCardEvent(_card,_card.userId));
+                          },
                           child: Container(
                             alignment: Alignment.center,
                             width: size.width*0.3,
@@ -156,7 +159,9 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: (){},
+                          onTap: (){
+                            BlocProvider.of<NavigationBloc>(context).add(DeleteCardEvent(_card.cardId, _card.userId));
+                          },
                           child: Container(
                             alignment: Alignment.center,
                             width: size.width*0.3,

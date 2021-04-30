@@ -77,7 +77,14 @@ class SpecificCardPageEvent extends NavigationEvents {
 }
 class UpdateCardEvent extends NavigationEvents{
   Tarjeta _tarjeta;
-  UpdateCardEvent(this._tarjeta);
+  int _userId;
+  UpdateCardEvent(this._tarjeta,this._userId);
   @override
-  List<Object> get props => [_tarjeta];
+  List<Object> get props => [_tarjeta,_userId];
+}
+class DeleteCardEvent extends NavigationEvents{
+  int _cardId;int _userId;
+  DeleteCardEvent(this._cardId,this._userId);
+  @override
+  List<Object> get props => [_cardId,_userId];
 }

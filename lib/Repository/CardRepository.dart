@@ -75,23 +75,35 @@ class CardRepository {
       return null;
     }
   }
-  Future<int> updateCard(Tarjeta tarjeta) async{
-    try{
+
+  Future<int> updateCard(Tarjeta tarjeta) async {
+    try {
       String url = directionUrl + "updateCard";
       var res = await http.put(url, //ip for virtualized devices
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
-          },body: jsonEncode(tarjeta.toJsonUp()));
-      if(res.statusCode == 200){
+          }, body: jsonEncode(tarjeta.toJsonUp()));
+      if (res.statusCode == 200) {
         print("Done Update");
         return 1;
-      }else{
+      } else {
         return 0;
       }
     }
-    catch(error){
+    catch (error) {
       print(error);
       return 0;
+    }
+  }
+
+  Future<void> deleteCard(int cardId) async {
+    String url = directionUrl + "card/" + cardId.toString();
+    var res = await http.delete(url, //ip for virtualized devices
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        });
+    if (res.statusCode == 200) {
+      print("exito al eliminar la tarjeta");
     }
   }
 }
