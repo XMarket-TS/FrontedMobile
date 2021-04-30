@@ -6,7 +6,6 @@ class Tarjeta {
   int _expirationYear;
   int _expirationMonth;
   int _cvc;
-
   // String _creationDate;
   int _creationDate;
   int _status;
@@ -86,4 +85,15 @@ class Tarjeta {
   set cardId(int value) {
     _cardId = value;
   }
+  Map toJsonUp() => {
+    "cardId":cardId,
+    "userId":userId,
+    "cardName":bank,
+    "cardNumber":cardNumber,
+    "expirationYear":expirationYear,
+    "expirationMonth":expirationMonth,
+    "cvc":cvc,
+    "creationDate":creationDate,
+    "status":status
+  };
 }

@@ -39,17 +39,14 @@ class CardRepository {
 
   Future<Tarjeta> obtainSpecificCard(int cardId) async {
     try {
-      // var _branchId=branchId.toString();
       Tarjeta card = Tarjeta();
       print("pruebaespecific");
       print(cardId);
       String url = directionUrl + "card/" + cardId.toString();
-
       var res = await http.get(url, //ip for virtualized devices
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           });
-
       var card2 = jsonDecode(res.body);
       // print("blabla");
       // print(card2);
@@ -76,6 +73,25 @@ class CardRepository {
     } catch (error) {
       print(error);
       return null;
+    }
+  }
+  Future<int> updateCard(Tarjeta tarjeta) async{
+    try{
+      String url = directionUrl + "updateCard";
+      var res = await http.put(url, //ip for virtualized devices
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },body: jsonEncode(tarjeta.toJsonUp()));
+      if(res.statusCode == 200){
+        print("Done Update");
+        return 1;
+      }else{
+        return 0;
+      }
+    }
+    catch(error){
+      print(error);
+      return 0;
     }
   }
 }

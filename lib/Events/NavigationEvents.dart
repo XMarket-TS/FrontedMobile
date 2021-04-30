@@ -1,4 +1,6 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:x_market/Models/Tarjeta.dart';
 
 abstract class NavigationEvents extends Equatable {}
 
@@ -72,4 +74,10 @@ class SpecificCardPageEvent extends NavigationEvents {
 
   @override
   List<Object> get props => [_cardId];
+}
+class UpdateCardEvent extends NavigationEvents{
+  Tarjeta _tarjeta;
+  UpdateCardEvent(this._tarjeta);
+  @override
+  List<Object> get props => [_tarjeta];
 }

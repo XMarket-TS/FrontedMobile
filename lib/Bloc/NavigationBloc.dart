@@ -92,6 +92,13 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       yield NavigationLoadingState();
 
       yield NavigationCartPageState();
-    }else {}
+    }else if (event is UpdateCardEvent) {
+      // event.
+      yield NavigationLoadingState();
+      Tarjeta _tarjeta=event.props[0];
+      int _success=await _cardRepository.updateCard(_tarjeta);
+      List<Branch> _getBranchList = await _branchRepository.obtainListBranch();
+      yield _success==1? ListBranchPageState(_getBranchList):NavigationCartPageState();
+    } else {}
   }
 }
