@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 
 abstract class NavigationEvents extends Equatable {}
@@ -75,16 +74,23 @@ class SpecificCardPageEvent extends NavigationEvents {
   @override
   List<Object> get props => [_cardId];
 }
-class UpdateCardEvent extends NavigationEvents{
+
+class UpdateCardEvent extends NavigationEvents {
   Tarjeta _tarjeta;
   int _userId;
-  UpdateCardEvent(this._tarjeta,this._userId);
+
+  UpdateCardEvent(this._tarjeta, this._userId);
+
   @override
-  List<Object> get props => [_tarjeta,_userId];
+  List<Object> get props => [_tarjeta, _userId];
 }
-class DeleteCardEvent extends NavigationEvents{
-  int _cardId;int _userId;
-  DeleteCardEvent(this._cardId,this._userId);
+
+class DeleteCardEvent extends NavigationEvents {
+  int _cardId;
+  int _userId;
+
+  DeleteCardEvent(this._cardId, this._userId);
+
   @override
-  List<Object> get props => [_cardId,_userId];
+  List<Object> get props => [_cardId, _userId];
 }

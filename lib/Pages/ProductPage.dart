@@ -196,41 +196,53 @@ class _ProductPageState extends State<ProductPage> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Container(
-                                        width: size.width*0.34,
-                                        height: size.height*0.2,
+                                        width: size.width * 0.34,
+                                        height: size.height * 0.2,
                                         decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),topLeft:  Radius.circular(10)),
+                                            borderRadius: BorderRadius.only(
+                                                bottomLeft: Radius.circular(10),
+                                                topLeft: Radius.circular(10)),
                                             image: DecorationImage(
-                                                image: NetworkImage(_listProduct[index].imageUrl),
-                                                fit: BoxFit.cover
-                                            )
-                                        ),
+                                                image: NetworkImage(
+                                                    _listProduct[index]
+                                                        .imageUrl),
+                                                fit: BoxFit.cover)),
                                       ),
-                                      SizedBox(width: size.width*0.05,),
+                                      SizedBox(
+                                        width: size.width * 0.05,
+                                      ),
                                       Container(
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             SizedBox(
-                                              child: AutoSizeText("${_listProduct[index].name}",
-                                                style: TextStyle(fontSize: size.width*0.04, color: Colors.white),
+                                              child: AutoSizeText(
+                                                "${_listProduct[index].name}",
+                                                style: TextStyle(
+                                                    fontSize: size.width * 0.04,
+                                                    color: Colors.white),
                                                 maxLines: 1,
                                               ),
                                             ),
                                             Text(
                                               "Cantidad: ${_listProduct[index].unit}",
                                               style: TextStyle(
-                                                  fontSize: 15.0, color: color5),
+                                                  fontSize: 15.0,
+                                                  color: color5),
                                             ),
                                             Text(
                                               "Precio: ${_listProduct[index].price} Bs",
                                               style: TextStyle(
-                                                  fontSize: 15.0, color: color3),
+                                                  fontSize: 15.0,
+                                                  color: color3),
                                             ),
                                           ],
                                         ),
                                       ),
-                                      SizedBox(width: size.width*0.01,),
+                                      SizedBox(
+                                        width: size.width * 0.01,
+                                      ),
                                     ],
                                   ),
                                 ),
