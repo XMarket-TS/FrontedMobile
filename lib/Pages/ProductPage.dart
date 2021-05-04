@@ -66,6 +66,17 @@ class _ProductPageState extends State<ProductPage> {
                       // Text("Ofertas",style: TextStyle(color: Colors.white,fontSize: size.width*0.08),),
                       // SizedBox(height: 10,),
                       Container(
+                        child: Row(
+                          children: [
+                            Text("Buscar",style: TextStyle(color: color5),),
+                            GestureDetector(
+                              onTap: (){},
+                                child: Icon(Icons.search)
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
                         height: size.height * 0.25,
                         // width: size.width*0.3,
                         margin: const EdgeInsets.symmetric(
