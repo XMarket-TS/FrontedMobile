@@ -34,6 +34,7 @@ class BottomMenu extends StatefulWidget {
 
 class _BottomMenuState extends State<BottomMenu> {
   int _selectedIndex = 1;
+
   // final page=[ProfilePage(),BranchPage(),CartPage()];
   @override
   Widget build(BuildContext context) {
@@ -111,10 +112,10 @@ class _BottomMenuState extends State<BottomMenu> {
             // Card _cardList = state.props[0];
             Tarjeta _card = state.props[0];
             return SpecificCardPage(_card);
-          }  else if (state is NavigationCartPageState) {
+          } else if (state is NavigationCartPageState) {
             // User _user = state.props[0];
             return CartPage();
-          }else {
+          } else {
             return Container();
           }
         }));

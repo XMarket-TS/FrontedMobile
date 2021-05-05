@@ -208,7 +208,9 @@ class _CategoriesPageState extends State<CategoriesPage> {
                                 // print(_branchId);
                                 // print(_listCategories[index].categorieId);
                                 // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_listCategories[index].branchId,_listCategories[index].categorieId));
-                                BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_branchId, _listCategories[index].categorieId));
+                                BlocProvider.of<NavigationBloc>(context).add(
+                                    NavigationProductPageEvent(_branchId,
+                                        _listCategories[index].categorieId));
                                 // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
                               },
                               child: Card(

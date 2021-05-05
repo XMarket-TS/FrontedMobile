@@ -134,7 +134,8 @@ class _BranchPageState extends State<BranchPage> {
                                       child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.only(
-                                              bottomRight: Radius.circular(10.0),
+                                              bottomRight:
+                                                  Radius.circular(10.0),
                                               topLeft: Radius.circular(30.0)),
                                           color: color2.withOpacity(0.9),
                                         ),
@@ -155,12 +156,14 @@ class _BranchPageState extends State<BranchPage> {
                                             Text(
                                               "${_listBranches[index].zone}",
                                               style: TextStyle(
-                                                  fontSize: 15.0, color: color5),
+                                                  fontSize: 15.0,
+                                                  color: color5),
                                             ),
                                             Text(
                                               "${_listBranches[index].address} ",
                                               style: TextStyle(
-                                                  fontSize: 15.0, color: color3),
+                                                  fontSize: 15.0,
+                                                  color: color3),
                                             ),
                                           ],
                                         ),

@@ -1,5 +1,4 @@
 import 'package:x_market/Models/Categories.dart';
-import 'package:x_market/Models/ImagesUrl.dart';
 
 class SpecificProduct {
   int _productId;
@@ -68,21 +67,19 @@ class SpecificProduct {
     _name = value;
   }
 
-
   SpecificProduct.fromJson(Map<String, dynamic> json) {
-
     productId = json['productId'];
     name = json['name'];
     price = json['price'];
     percentage = json['percentage'];
     description = json['description'];
     unit = json['unit'];
-    var auxImageUrl=json['imagesUrl'];
-    imageUrl=List();
-    for(var image in auxImageUrl){
+    var auxImageUrl = json['imagesUrl'];
+    imageUrl = List();
+    for (var image in auxImageUrl) {
       imageUrl.add(image);
     }
-    categories=Categories.fromJson(json['category']);
+    categories = Categories.fromJson(json['category']);
     branchId = json['branchId'];
   }
 

@@ -82,15 +82,15 @@ class CardRepository {
       var res = await http.put(url, //ip for virtualized devices
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
-          }, body: jsonEncode(tarjeta.toJsonUp()));
+          },
+          body: jsonEncode(tarjeta.toJsonUp()));
       if (res.statusCode == 200) {
         print("Done Update");
         return 1;
       } else {
         return 0;
       }
-    }
-    catch (error) {
+    } catch (error) {
       print(error);
       return 0;
     }
