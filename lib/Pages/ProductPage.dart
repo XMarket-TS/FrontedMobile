@@ -25,7 +25,8 @@ class _ProductPageState extends State<ProductPage> {
   List<Offer> _listOffer;
 
   _ProductPageState(this._listProduct, this._listOffer);
-  TextEditingController _search=TextEditingController();
+
+  TextEditingController _search = TextEditingController();
 
   // final ProductBloc _productBloc=new ProductBloc();
   // final CategoriesScroller categoriesScroller= CategoriesScroller();
@@ -70,11 +71,12 @@ class _ProductPageState extends State<ProductPage> {
                       Container(
                         // color: color5,
                         margin: EdgeInsets.all(10),
-                        padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
+                        padding: EdgeInsets.only(
+                            right: 10, left: 10, top: 5, bottom: 5),
                         decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                            color: color5,
-                      ),
+                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                          color: color5,
+                        ),
                         child: Row(
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -89,9 +91,7 @@ class _ProductPageState extends State<ProductPage> {
                               // cursorColor: color5,
                             ),
                             GestureDetector(
-                              onTap: (){},
-                                child: Icon(Icons.search)
-                            ),
+                                onTap: () {}, child: Icon(Icons.search)),
                           ],
                         ),
                       ),
