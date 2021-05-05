@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Pages/BottomMenu.dart';
+import 'package:x_market/Pages/LoginPage.dart';
 import 'package:x_market/Repository/CardRepository.dart';
 import 'package:x_market/Repository/CategoriesRepository.dart';
 import 'package:x_market/Repository/UserRepository.dart';
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
               UserRepository(),
               CardRepository())
             ..add(NavigationBranchPageEvent()),
-          child: BottomMenu()),
+          // child: BottomMenu()),
+          child: LoginPage()),
     );
   }
 }

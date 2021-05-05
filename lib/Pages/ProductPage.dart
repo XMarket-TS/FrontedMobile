@@ -25,6 +25,7 @@ class _ProductPageState extends State<ProductPage> {
   List<Offer> _listOffer;
 
   _ProductPageState(this._listProduct, this._listOffer);
+  TextEditingController _search=TextEditingController();
 
   // final ProductBloc _productBloc=new ProductBloc();
   // final CategoriesScroller categoriesScroller= CategoriesScroller();
@@ -61,10 +62,39 @@ class _ProductPageState extends State<ProductPage> {
               return SingleChildScrollView(
                 child: Container(
                   height: size.height,
+                  // color: color5,
                   child: Column(
                     children: [
                       // Text("Ofertas",style: TextStyle(color: Colors.white,fontSize: size.width*0.08),),
                       // SizedBox(height: 10,),
+                      Container(
+                        // color: color5,
+                        margin: EdgeInsets.all(10),
+                        padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
+                        decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                            color: color5,
+                      ),
+                        child: Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextField(
+                              // cursorWidth: size.width*0.5,
+                              controller: _search,
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.all(10.0),
+                                hintText: "Buscar",
+                              ),
+                              style: TextStyle(color: color1),
+                              // cursorColor: color5,
+                            ),
+                            GestureDetector(
+                              onTap: (){},
+                                child: Icon(Icons.search)
+                            ),
+                          ],
+                        ),
+                      ),
                       Container(
                         height: size.height * 0.25,
                         // width: size.width*0.3,
