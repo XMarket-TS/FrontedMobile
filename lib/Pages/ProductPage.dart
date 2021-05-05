@@ -67,33 +67,47 @@ class _ProductPageState extends State<ProductPage> {
                     children: [
                       // Text("Ofertas",style: TextStyle(color: Colors.white,fontSize: size.width*0.08),),
                       // SizedBox(height: 10,),
-                      Container(
-                        // color: color5,
-                        margin: EdgeInsets.all(10),
-                        padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
-                        decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                            color: color5,
-                      ),
-                        child: Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextField(
-                              // cursorWidth: size.width*0.5,
-                              controller: _search,
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(10.0),
-                                hintText: "Buscar",
-                              ),
-                              style: TextStyle(color: color1),
-                              // cursorColor: color5,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            // color: color5,
+                            height: size.height*0.06,
+                            width: size.width*0.8,
+                            margin: EdgeInsets.only(left: 10,top: 10,bottom: 10),
+                            padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
+                            decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0),bottomLeft: Radius.circular(10.0)),
+                                color: color5,
+                          ),
+                            child: TextField(
+                                  // cursorWidth: size.width*0.5,
+                                  controller: _search,
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(10.0),
+                                    hintText: "Buscar",
+                                  ),
+                                  style: TextStyle(color: color1),
+                                  // cursorColor: color5,
+                                ),
+                          ),
+                          Container(
+                            height: size.height*0.06,
+                            width: size.width*0.1,
+                            margin: EdgeInsets.only(right: 10,top: 10,bottom: 10),
+                            padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(topRight: Radius.circular(10.0),bottomRight: Radius.circular(10.0)),
+                              color: color5,
                             ),
-                            GestureDetector(
-                              onTap: (){},
+                            child: GestureDetector(
+                                onTap: (){
+                                  // print("search");
+                                },
                                 child: Icon(Icons.search)
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       Container(
                         height: size.height * 0.25,

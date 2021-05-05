@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
               UserRepository(),
               CardRepository())
             ..add(NavigationBranchPageEvent()),
-          // child: BottomMenu()),
-          child: LoginPage()),
+          child: BottomMenu()),
+          // child: LoginPage()),
     );
   }
 }
