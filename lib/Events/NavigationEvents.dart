@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:x_market/Models/ConfirmUser.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 
 abstract class NavigationEvents extends Equatable {}
@@ -93,4 +94,14 @@ class DeleteCardEvent extends NavigationEvents {
 
   @override
   List<Object> get props => [_cardId, _userId];
+}
+class ConfirmUserEvent extends NavigationEvents{
+  ConfirmUser _confirmUser;
+  ConfirmUserEvent(this._confirmUser);
+  @override
+  List<Object> get props => [_confirmUser];
+}
+class LogoutEvent extends NavigationEvents{
+  @override
+  List<Object> get props =>[];
 }

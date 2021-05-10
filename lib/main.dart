@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Pages/BottomMenu.dart';
+import 'package:x_market/Pages/BranchPage.dart';
 import 'package:x_market/Pages/LoginPage.dart';
 import 'package:x_market/Repository/CardRepository.dart';
 import 'package:x_market/Repository/CategoriesRepository.dart';
@@ -11,6 +12,8 @@ import 'Events/NavigationEvents.dart';
 import 'Repository/BranchRepository.dart';
 import 'Repository/OffersRepository.dart';
 import 'Repository/ProductRepository.dart';
+import 'Globals.dart' as globals;
+import 'States/NavigationStates.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,8 +38,16 @@ class MyApp extends StatelessWidget {
               UserRepository(),
               CardRepository())
             ..add(NavigationBranchPageEvent()),
-          child: BottomMenu()),
-          // child: LoginPage()),
+          // child: BottomMenu()),
+          child: BlocBuilder<NavigationBloc, NavigationStates>(
+            builder: (context,state){
+              if(state is ConfirmUserState){
+                return LoginPage();
+              }else {
+                return BottomMenu();
+              }
+            },
+          )),
     );
   }
 }

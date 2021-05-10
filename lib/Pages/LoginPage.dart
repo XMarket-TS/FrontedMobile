@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:x_market/Bloc/NavigationBloc.dart';
+import 'package:x_market/Events/NavigationEvents.dart';
+import 'package:x_market/States/NavigationStates.dart';
+import 'package:x_market/Models/ConfirmUser.dart';
 import 'package:x_market/Pages/RegisterPage.dart';
 
 import '../Colors.dart';
@@ -11,6 +16,7 @@ class LoginPage extends StatelessWidget {
   // TextInputAction _inputAction;
   TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
+  ConfirmUser _confirmUser=ConfirmUser();
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +126,11 @@ class LoginPage extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.0), color: color2),
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _confirmUser.userName=_username.text;
+                    _confirmUser.password=_password.text;
+                    BlocProvider.of<NavigationBloc>(context).add(ConfirmUserEvent(_confirmUser));
+                  },
                   child: Text(
                     "Login",
                     style: TextStyle(

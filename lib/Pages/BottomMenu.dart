@@ -17,6 +17,7 @@ import 'package:x_market/Pages/CardPage.dart';
 import 'package:x_market/Pages/CartPage.dart';
 import 'package:x_market/Pages/CategoriesPage.dart';
 import 'package:x_market/Pages/LoadingPage.dart';
+import 'package:x_market/Pages/LoginPage.dart';
 import 'package:x_market/Pages/ProductPage.dart';
 import 'package:x_market/Pages/ProfilePage.dart';
 import 'package:x_market/Pages/SpecificProductPage.dart';
@@ -84,9 +85,11 @@ class _BottomMenuState extends State<BottomMenu> {
         ),
         body: BlocBuilder<NavigationBloc, NavigationStates>(
             builder: (context, state) {
+              print(state);
           if (state is NavigationLoadingState) {
             return LoadingPage(); //pantalla de loading
           } else if (state is ListBranchPageState) {
+
             List<Branch> _listBranches = state.props[0];
             return BranchPage(_listBranches);
           } else if (state is ListProductPageState) {
@@ -115,7 +118,17 @@ class _BottomMenuState extends State<BottomMenu> {
           } else if (state is NavigationCartPageState) {
             // User _user = state.props[0];
             return CartPage();
-          } else {
+          } else if (state is ConfirmUserState) {
+            // User _user = state.props[0];
+            return LoginPage();
+          } else if (state is LogoutState) {
+            // User _user = state.props[0];
+            return LoginPage();
+          }
+          else if (state is ConfirmBottomState) {
+            List<Branch> _listBranches = state.props[0];
+            return BranchPage(_listBranches);
+          }else {
             return Container();
           }
         }));

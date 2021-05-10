@@ -101,6 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: Padding(
                               padding: const EdgeInsets.only(
                                   top: 8, bottom: 8, right: 20, left: 20),
+                                  // top: 8, bottom: 8, right: 20, left: 20),
                               child: Text(
                                 "Editar Perfil",
                                 style: TextStyle(
@@ -112,7 +113,6 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
                             BlocProvider.of<NavigationBloc>(context)
                                 .add(CardPageEvent(1));
                           },
@@ -123,9 +123,31 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.only(
-                                  top: 8, bottom: 8, right: 20, left: 20),
+                                  top: 8, bottom: 8, right: 10, left: 10),
+                                  // top: 8, bottom: 8, right: 20, left: 20),
                               child: Text(
                                 "Editar Tarjetas",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: size.height * 0.028),
+                              ),
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            BlocProvider.of<NavigationBloc>(context).add(LogoutEvent());
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: color3,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 8, bottom: 8, right: 10, left: 10),
+                              child: Text(
+                                "Salir",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: size.height * 0.028),

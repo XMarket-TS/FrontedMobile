@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Branch.dart';
+import 'package:x_market/Models/ConfirmUser.dart';
 import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/Models/CardList.dart';
@@ -15,6 +16,8 @@ import 'package:x_market/Repository/OffersRepository.dart';
 import 'package:x_market/Repository/ProductRepository.dart';
 import 'package:x_market/Repository/UserRepository.dart';
 import 'package:x_market/States/NavigationStates.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../Globals.dart' as globals;
 
 class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   ProductRepository _productRepository;
@@ -112,6 +115,44 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       await _cardRepository.deleteCard(_cardId);
       List<CardList> _cardList = await _cardRepository.obtainCardList(_userId);
       yield CardPageState(_cardList);
+    } else if (event is ConfirmUserEvent) {
+      try{
+        yield NavigationLoadingState();
+        ConfirmUser _confirmUser= event.props[0];
+        print("datos para revisar");
+        print(_confirmUser.userName);
+        User _user=await _userRepository.confirmUser(_confirmUser);
+        print("revision datos usuario");
+        print(_user.name);
+        SharedPreferences userId=await SharedPreferences.getInstance();
+        await userId.setInt('userId', _user.userId);
+        // print("revision set");
+        // globals.userProfile.userId=_user.userId;
+        // globals.userProfile.personUserId=_user.personUserId;
+        // globals.userProfile.name=_user.name;
+        // globals.userProfile.surName=_user.surName;
+        // globals.userProfile.userName=_user.userName;
+        // globals.userProfile.status=_user.status;
+        // globals.userProfile.imageUrl=_user.imageUrl;
+        // globals.userProfile.email=_user.email;
+        // globals.userProfile.cellphone=_user.cellphone;
+        List<Branch> _getBranchList = await _branchRepository.obtainListBranch();
+        // print("Revision SharedPreferences");
+        // print(userId.getInt('userId'));
+        // print(globals.userProfile.userId);
+        // yield globals.userProfile.userId!=null?ListBranchPageState(_getBranchList):ConfirmUserState();
+        yield userId.getInt('userId')!=null?ListBranchPageState(_getBranchList):ConfirmUserState();
+      }catch (error) {
+        print(error);
+      }
+      // event.
+
+    }else if (event is LogoutEvent) {
+      // event.
+      yield NavigationLoadingState();
+      SharedPreferences userId=await SharedPreferences.getInstance();
+      userId.remove('userId');
+      yield ConfirmUserState();
     } else {}
   }
 }

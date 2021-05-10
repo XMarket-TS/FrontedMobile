@@ -14,7 +14,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    print(globals.listProductCard.length);
+    // print(globals.listProductCard.length);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: size.height * 0.08,

@@ -114,3 +114,18 @@ class DeleteCardState extends NavigationStates {
   @override
   List<Object> get props => [_list];
 }
+class ConfirmUserState extends NavigationStates{
+  @override
+  List<Object> get props => [];
+}
+class ConfirmBottomState extends NavigationStates{
+  List<Branch> _branch;
+  ConfirmBottomState(this._branch);
+  @override
+  List<Object> get props => [_branch];
+}
+class LogoutState extends NavigationStates{
+
+  @override
+  List<Object> get props => [];
+}

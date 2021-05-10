@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:x_market/Models/ConfirmUser.dart';
 import 'package:x_market/Models/User.dart';
 import 'package:x_market/Repository/url.dart';
 import 'package:http/http.dart' as http;
@@ -18,7 +19,6 @@ class UserRepository {
       user.userId = (user2["userId"]);
       user.personUserId = (user2["personId"]);
       user.userName = (user2["userName"]);
-      user.password = (user2["password"]);
       user.name = (user2["name"]);
       user.email = (user2["email"]);
       user.imageUrl = (user2["imageUrl"]);
@@ -34,4 +34,46 @@ class UserRepository {
       return null;
     }
   }
+
+  Future<User> confirmUser(ConfirmUser confirmUser)async{
+    try {
+      String url = directionUrl + "user/login";
+      User user=User();
+      // print("llego al repositorio del usuario");
+      // print(confirmUser.userName);
+      // print(confirmUser.password);
+      var res = await http.post(url, //ip for virtualized devices
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(confirmUser.toJsonUp()));
+      // print("devolucion userconfirm");
+      // print(jsonEncode(confirmUser.toJsonUp()));
+      // print(res.body);
+      var user2 = jsonDecode(res.body);
+      // print("datos que devuelve usuario");
+      // print(user2["userId"]);
+      // print(singleDriver2);
+      user=User.fromJson(user2);
+      // user.userId = (user2["userId"]);
+      // user.personUserId = (user2["personUserId"]);
+      // user.name = (user2["name"]);
+      // user.surName=(user2['surname']);
+      // user.userName = (user2["username"]);
+      // user.status=(user2['status']);
+      // user.imageUrl = (user2["photo"]);
+      // user.email = (user2["email"]);
+      // user.cellphone = (user2["cellphone"]);
+      if (res.statusCode == 200) {
+        print("DoneConfirmUser");
+        return user;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      print(error);
+      return null;
+    }
+  }
+
 }
