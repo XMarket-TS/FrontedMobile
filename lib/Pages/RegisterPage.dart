@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:x_market/Models/User.dart';
 
 import '../Colors.dart';
 
@@ -9,7 +10,9 @@ class CreateAccountPage extends StatelessWidget {
   TextEditingController _email = TextEditingController();
   TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
-
+  TextEditingController _gender = TextEditingController();
+  String _imageUrl;
+  User _user=User();
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;

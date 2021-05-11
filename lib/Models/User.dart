@@ -4,7 +4,8 @@ class User {
   String _userName;
   String _name;
   String _surName;
-  // String _password;
+  String _gender;
+  String _password;
   int _status;
   String _email;
   String _imageUrl;
@@ -15,11 +16,18 @@ class User {
   User();
 
 
-  // String get password => _password;
-  //
-  // set password(String value) {
-  //   _password = value;
-  // }
+  String get password => _password;
+
+  set password(String value) {
+    _password = value;
+  }
+
+
+  String get gender => _gender;
+
+  set gender(String value) {
+    _gender = value;
+  }
 
   int get userId => _userId;
 
@@ -88,5 +96,14 @@ class User {
     email = json['email'];
     cellphone = json['cellphone'];
   }
+  Map toJson() => {
+    "name" :name,
+    "surname":surName,
+    "username":userName,
+    "gender":gender,
+    "userPhoto" : imageUrl,
+    "email":email,
+    "password" :password
+  };
 
 }

@@ -67,6 +67,8 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       // event.
       yield NavigationLoadingState();
       int _userId = event.props[0];
+      // print("bloc profilepageevent");
+      // print(_userId);
       User _getUser = await _userRepository.obtainUserProfile(_userId);
       yield ProfilePageState(_getUser);
     } else if (event is CardPageEvent) {
@@ -100,8 +102,8 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       yield NavigationLoadingState();
       Tarjeta _tarjeta = event.props[0];
       int _userId = event.props[1];
-      print("desde navigation update");
-      print(_tarjeta.bank);
+      // print("desde navigation update");
+      // print(_tarjeta.bank);
       int _success = await _cardRepository.updateCard(_tarjeta);
       List<CardList> _cardList = await _cardRepository.obtainCardList(_userId);
       yield _success == 1
@@ -119,28 +121,17 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       try{
         yield NavigationLoadingState();
         ConfirmUser _confirmUser= event.props[0];
-        print("datos para revisar");
-        print(_confirmUser.userName);
+        // print("datos para revisar");
+        // print(_confirmUser.userName);
         User _user=await _userRepository.confirmUser(_confirmUser);
-        print("revision datos usuario");
-        print(_user.name);
+        // print("revision datos usuario");
+        // print(_user.name);
         SharedPreferences userId=await SharedPreferences.getInstance();
         await userId.setInt('userId', _user.userId);
-        // print("revision set");
-        // globals.userProfile.userId=_user.userId;
-        // globals.userProfile.personUserId=_user.personUserId;
-        // globals.userProfile.name=_user.name;
-        // globals.userProfile.surName=_user.surName;
-        // globals.userProfile.userName=_user.userName;
-        // globals.userProfile.status=_user.status;
-        // globals.userProfile.imageUrl=_user.imageUrl;
-        // globals.userProfile.email=_user.email;
-        // globals.userProfile.cellphone=_user.cellphone;
         List<Branch> _getBranchList = await _branchRepository.obtainListBranch();
         // print("Revision SharedPreferences");
         // print(userId.getInt('userId'));
         // print(globals.userProfile.userId);
-        // yield globals.userProfile.userId!=null?ListBranchPageState(_getBranchList):ConfirmUserState();
         yield userId.getInt('userId')!=null?ListBranchPageState(_getBranchList):ConfirmUserState();
       }catch (error) {
         print(error);

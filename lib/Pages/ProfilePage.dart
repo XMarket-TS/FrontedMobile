@@ -40,6 +40,8 @@ class _ProfilePageState extends State<ProfilePage> {
         builder: (context, state) {
           if (state is ProfilePageState) {
             User _user = state.props[0];
+            // print("DatosPerfil");
+            // print(_user.userId);
             return SingleChildScrollView(
               child: Container(
                 height: size.height,
@@ -54,7 +56,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: CircleAvatar(
                             radius: size.height * 0.085,
                             backgroundImage:
-                                AssetImage('assets/images/burger.png'),
+                                // AssetImage('assets/images/burger.png'),
+                                NetworkImage(_user.imageUrl),
                           ),
                         ),
                         Padding(
@@ -63,15 +66,15 @@ class _ProfilePageState extends State<ProfilePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Nombre',
+                                '${_user.name}',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: size.height * 0.035,
-                                  color: color3,
+                                  color: color4,
                                 ),
                               ),
                               Text(
-                                'ejemplo@gmail.com',
+                                '${_user.email}',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: size.height * 0.02,
@@ -106,7 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 "Editar Perfil",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: size.height * 0.028),
+                                    fontSize: size.height * 0.024),
                               ),
                             ),
                           ),
@@ -129,7 +132,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 "Editar Tarjetas",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: size.height * 0.028),
+                                    fontSize: size.height * 0.024),
                               ),
                             ),
                           ),
@@ -141,7 +144,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: color3,
+                              color: color2,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -150,7 +153,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 "Salir",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: size.height * 0.028),
+                                    fontSize: size.height * 0.024),
                               ),
                             ),
                           ),

@@ -22,6 +22,7 @@ import 'package:x_market/Pages/ProductPage.dart';
 import 'package:x_market/Pages/ProfilePage.dart';
 import 'package:x_market/Pages/SpecificProductPage.dart';
 import 'package:x_market/States/NavigationStates.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Colors.dart';
 import 'package:x_market/Pages/BranchPage.dart';
@@ -35,7 +36,14 @@ class BottomMenu extends StatefulWidget {
 
 class _BottomMenuState extends State<BottomMenu> {
   int _selectedIndex = 1;
-
+  int _userData;
+  obtainUser ()async{
+    SharedPreferences idUser=await SharedPreferences.getInstance();
+    // print("funcion en bottommenu");
+    // print(idUser.getInt('userId'));
+    _userData=idUser.getInt('userId');
+    // print(_userData);
+  }
   // final page=[ProfilePage(),BranchPage(),CartPage()];
   @override
   Widget build(BuildContext context) {
@@ -62,9 +70,13 @@ class _BottomMenuState extends State<BottomMenu> {
           onTap: (index) {
             setState(() {
               _selectedIndex = index;
+              obtainUser();
             });
             if (index == 0) {
-              BlocProvider.of<NavigationBloc>(context).add(ProfilePageEvent(1));
+              obtainUser();
+              // print("en bottomneu imprimir userid");
+              // print(_userData);
+              BlocProvider.of<NavigationBloc>(context).add(ProfilePageEvent(_userData));
             } else if (index == 1) {
               BlocProvider.of<NavigationBloc>(context)
                   .add(NavigationBranchPageEvent());
@@ -85,11 +97,11 @@ class _BottomMenuState extends State<BottomMenu> {
         ),
         body: BlocBuilder<NavigationBloc, NavigationStates>(
             builder: (context, state) {
-              print(state);
+              // print(state);
           if (state is NavigationLoadingState) {
             return LoadingPage(); //pantalla de loading
           } else if (state is ListBranchPageState) {
-
+            obtainUser();
             List<Branch> _listBranches = state.props[0];
             return BranchPage(_listBranches);
           } else if (state is ListProductPageState) {
