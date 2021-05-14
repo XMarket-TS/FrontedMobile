@@ -56,8 +56,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: CircleAvatar(
                             radius: size.height * 0.085,
                             backgroundImage:
+                                _user!=null?
                                 // AssetImage('assets/images/burger.png'),
-                                NetworkImage(_user.imageUrl),
+                                NetworkImage(_user.imageUrl):AssetImage('assets/images/burger.png'),
                           ),
                         ),
                         Padding(
@@ -65,16 +66,16 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '${_user.name}',
+                              Text(_user!=null?
+                                '${_user.name}':'User',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: size.height * 0.035,
                                   color: color4,
                                 ),
                               ),
-                              Text(
-                                '${_user.email}',
+                              Text(_user!=null?
+                                '${_user.email}':'example@gmail.com',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: size.height * 0.02,
@@ -116,8 +117,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         GestureDetector(
                           onTap: () {
+                            print("la tarjeta es del id ");
+                            print(_user.userId);
                             BlocProvider.of<NavigationBloc>(context)
-                                .add(CardPageEvent(1));
+                                .add(CardPageEvent(_user.userId));
                           },
                           child: Container(
                             decoration: BoxDecoration(

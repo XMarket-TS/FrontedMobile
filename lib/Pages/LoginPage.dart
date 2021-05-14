@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
+import 'package:x_market/Pages/CreateAccountPage.dart';
 import 'package:x_market/States/NavigationStates.dart';
 import 'package:x_market/Models/ConfirmUser.dart';
-import 'package:x_market/Pages/RegisterPage.dart';
 
 import '../Colors.dart';
 

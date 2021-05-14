@@ -1,4 +1,6 @@
-import 'dart:html';
+// import 'dart:html';
+
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,7 +9,12 @@ import 'package:x_market/Models/User.dart';
 
 import '../Colors.dart';
 
-class CreatePage extends StatelessWidget {
+class CreateAccountPage extends StatefulWidget {
+  @override
+  _CreateAccountPageState createState() => _CreateAccountPageState();
+}
+
+class _CreateAccountPageState extends State<CreateAccountPage> {
   TextEditingController _firstName = TextEditingController();
   TextEditingController _lastName = TextEditingController();
   TextEditingController _email = TextEditingController();
@@ -18,7 +25,19 @@ class CreatePage extends StatelessWidget {
   User _user=User();
   File _image;
   final picker = ImagePicker();
-
+  Future getImage() async  {
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    // final picture= await ImagePicker.pickImage(source: ImageSource.camera);
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+      // _image = File(pickedFile.path);
+      // _image=picture;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -56,7 +75,7 @@ class CreatePage extends StatelessWidget {
                         radius: size.width * 0.17,
                         backgroundColor: Colors.grey[400].withOpacity(0.5),
                         // backgroundColor: color7.withOpacity(0.9),
-                        child: Icon(
+                        child: _image!=null?Image.file(_image):Icon(
                           Icons.perm_identity_rounded,
                           color: color5,
                           size: size.width * 0.2,
@@ -66,16 +85,19 @@ class CreatePage extends StatelessWidget {
                     Positioned(
                       top: size.height * 0.11,
                       left: size.width * 0.59,
-                      child: Container(
-                        height: size.width * 0.12,
-                        width: size.width * 0.12,
-                        decoration: BoxDecoration(
-                            color: color2,
-                            shape: BoxShape.circle,
-                            border: Border.all(color: color5, width: 2)),
-                        child: Icon(
-                          Icons.add,
-                          color: color5,
+                      child: GestureDetector(
+                        onTap: (){print("ELEGIR IMAGEN");getImage();},
+                        child: Container(
+                          height: size.width * 0.12,
+                          width: size.width * 0.12,
+                          decoration: BoxDecoration(
+                              color: color2,
+                              shape: BoxShape.circle,
+                              border: Border.all(color: color5, width: 2)),
+                          child: Icon(
+                            Icons.add,
+                            color: color5,
+                          ),
                         ),
                       ),
                     ),

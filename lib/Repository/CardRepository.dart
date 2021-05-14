@@ -26,7 +26,8 @@ class CardRepository {
       }
       // print(cardList3[0].bank);
       if (res.statusCode == 200) {
-        // print("DoneListaCards");
+        print("DoneListaCards");
+        print(cardList3.length);
         return cardList3;
       } else {
         return null;
