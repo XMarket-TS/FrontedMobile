@@ -12,6 +12,7 @@ import 'package:x_market/Models/User.dart';
 import 'package:x_market/Repository/BranchRepository.dart';
 import 'package:x_market/Repository/CardRepository.dart';
 import 'package:x_market/Repository/CategoriesRepository.dart';
+import 'package:x_market/Repository/ImageRepository.dart';
 import 'package:x_market/Repository/OffersRepository.dart';
 import 'package:x_market/Repository/ProductRepository.dart';
 import 'package:x_market/Repository/UserRepository.dart';
@@ -26,6 +27,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   CategoriesRepository _categoriesRepository;
   UserRepository _userRepository;
   CardRepository _cardRepository;
+  ImageRepository _imageRepository;
 
   NavigationBloc(
       this._productRepository,
@@ -33,7 +35,8 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       this._branchRepository,
       this._categoriesRepository,
       this._userRepository,
-      this._cardRepository);
+      this._cardRepository,
+      this._imageRepository);
 
   @override
   NavigationStates get initialState => NavigationInitialState();
