@@ -129,3 +129,14 @@ class LogoutState extends NavigationStates{
   @override
   List<Object> get props => [];
 }
+class QrState extends NavigationStates{
+
+  @override
+  List<Object> get props => [];
+
+}
+class RecetasState extends NavigationStates{
+  @override
+  List<Object> get props =>[];
+
+}

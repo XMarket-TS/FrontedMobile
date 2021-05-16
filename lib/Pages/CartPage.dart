@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:x_market/Components/PopupMenuComponent.dart';
 import '../Globals.dart' as globals;
 import 'package:auto_size_text/auto_size_text.dart';
 import '../Colors.dart';
@@ -25,6 +26,11 @@ class _CartPageState extends State<CartPage> {
           style: TextStyle(fontSize: size.height * 0.045),
         ),
         centerTitle: true,
+        actions: [
+          Padding(padding: EdgeInsets.only(right: 10.0),
+            child: PopupMenuComponent(),
+          )
+        ],
       ),
       body: SingleChildScrollView(
           child: globals.listProductCard.length > 0

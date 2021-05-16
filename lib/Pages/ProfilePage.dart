@@ -119,8 +119,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           onTap: () {
                             print("la tarjeta es del id ");
                             print(_user.userId);
-                            BlocProvider.of<NavigationBloc>(context)
-                                .add(CardPageEvent(_user.userId));
+                            BlocProvider.of<NavigationBloc>(context).add(CardPageEvent(_user.userId));
                           },
                           child: Container(
                             decoration: BoxDecoration(

@@ -75,7 +75,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                         radius: size.width * 0.17,
                         backgroundColor: Colors.grey[400].withOpacity(0.5),
                         // backgroundColor: color7.withOpacity(0.9),
-                        child: _image!=null?Image.file(_image):Icon(
+                        child: _image!=null?Image.file(_image,fit: BoxFit.fill,):Icon(
                           Icons.perm_identity_rounded,
                           color: color5,
                           size: size.width * 0.2,

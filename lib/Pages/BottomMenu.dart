@@ -20,6 +20,8 @@ import 'package:x_market/Pages/LoadingPage.dart';
 import 'package:x_market/Pages/LoginPage.dart';
 import 'package:x_market/Pages/ProductPage.dart';
 import 'package:x_market/Pages/ProfilePage.dart';
+import 'package:x_market/Pages/QrPage.dart';
+import 'package:x_market/Pages/RecetasPage.dart';
 import 'package:x_market/Pages/SpecificProductPage.dart';
 import 'package:x_market/States/NavigationStates.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -140,6 +142,12 @@ class _BottomMenuState extends State<BottomMenu> {
           else if (state is ConfirmBottomState) {
             List<Branch> _listBranches = state.props[0];
             return BranchPage(_listBranches);
+          }else if (state is QrState) {
+            // List<Branch> _listBranches = state.props[0];
+            return QrPage();
+          }else if (state is RecetasState) {
+            // List<Branch> _listBranches = state.props[0];
+            return RecetasPage();
           }else {
             return Container();
           }

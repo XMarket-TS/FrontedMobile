@@ -39,6 +39,7 @@ dependencies:
   google_fonts: ^1.1.1
   shared_preferences: 0.5.12+4
   image_picker: 0.6.7+11
+  flutter_barcode_scanner: ^1.0.1
 
 dev_dependencies:
   flutter_test:

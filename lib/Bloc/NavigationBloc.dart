@@ -144,6 +144,16 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       SharedPreferences userId=await SharedPreferences.getInstance();
       userId.remove('userId');
       yield ConfirmUserState();
+    } else if (event is QrEvent) {
+      // event.
+      yield NavigationLoadingState();
+      // SharedPreferences userId=await SharedPreferences.getInstance();
+      // userId.remove('userId');
+      yield QrState();
+    }else if (event is RecetasEvent) {
+      // event.
+      yield NavigationLoadingState();
+      yield RecetasState();
     } else {}
   }
 }

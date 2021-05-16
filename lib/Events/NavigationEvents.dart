@@ -111,3 +111,11 @@ class RegisterEvent extends NavigationEvents{
   List<Object> get props => [];
 
 }
+class QrEvent extends NavigationEvents{
+  @override
+  List<Object> get props => [];
+}
+class RecetasEvent extends NavigationEvents{
+  @override
+  List<Object> get props => [];
+}
