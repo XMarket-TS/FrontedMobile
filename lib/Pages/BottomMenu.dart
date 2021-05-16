@@ -1,4 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 
@@ -109,6 +110,7 @@ class _BottomMenuState extends State<BottomMenu> {
           } else if (state is ListProductPageState) {
             List<Product> _listProduct = state.props[0];
             List<Offer> _listOffer = state.props[1];
+            // PagingController<int, Product> _pagingController=PagingController(firstPageKey: 0);
             return ProductPage(_listProduct, _listOffer);
           } else if (state is ListCategoriesPageState) {
             List<Categories> _listCategories = state.props[0];
