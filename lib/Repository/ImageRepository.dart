@@ -16,7 +16,7 @@ class ImageRepository {
       imagesCloudinary.tags="browser-upload";
       String url = "https://api.cloudinary.com/v1_1/"+cloudName+"/upload";
       // User user=User();
-      // print("llego al repositorio del usuario");
+      print("llego al repositorio del imagenCloudinary");
       // print(confirmUser.userName);
       // print(confirmUser.password);
       var res = await http.post(url, //ip for virtualized devices
