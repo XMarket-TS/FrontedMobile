@@ -2,17 +2,18 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Offer.dart';
+import 'package:x_market/Repository/ProductRepository.dart';
 import 'package:x_market/States/NavigationStates.dart';
 import '../Models/Product.dart';
 import '../Colors.dart';
-
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 class ProductPage extends StatefulWidget {
   List<Product> _listProduct;
   List<Offer> _listOffer;
-
   ProductPage(this._listProduct, this._listOffer);
 
   @override
@@ -23,9 +24,38 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   List<Product> _listProduct;
   List<Offer> _listOffer;
-
+  int branchId;
+  int categoryId;
   _ProductPageState(this._listProduct, this._listOffer);
   TextEditingController _search=TextEditingController();
+  static const _pageSize = 1;
+  final _pagingController = PagingController<int, Product>(
+    firstPageKey: 1,
+  );
+  @override
+  void initState() {
+    _pagingController.addPageRequestListener((pageKey) {
+      _fetchPage(pageKey);
+    });
+    super.initState();
+  }
+  Future<void> _fetchPage(int pageKey) async {
+    try {
+      final _listProduct1 = await ProductRepository.obtainListProduct(branchId,categoryId,pageKey, _pageSize);
+      print(pageKey);
+      final isLastPage = _listProduct1.length < _pageSize;
+      if (isLastPage) {
+        _pagingController.appendLastPage(_listProduct1);
+      } else {
+        await Future.delayed(Duration(seconds: 1));
+        final nextPageKey = pageKey + _listProduct1.length;
+        _pagingController.appendPage(_listProduct1, nextPageKey);
+      }
+    } catch (error) {
+      _pagingController.error = error;
+    }
+  }
+
 
   // final ProductBloc _productBloc=new ProductBloc();
   // final CategoriesScroller categoriesScroller= CategoriesScroller();
@@ -56,7 +86,8 @@ class _ProductPageState extends State<ProductPage> {
             if (state is ListProductPageState) {
               _listProduct = state.props[0];
               List<Offer> _listOffer = state.props[1];
-              int _branchId = state.props[2];
+              branchId = state.props[2];
+              categoryId = state.props[3];
               // print("id sdjflajflk");
               // print(_branchId);
               return SingleChildScrollView(
@@ -200,87 +231,101 @@ class _ProductPageState extends State<ProductPage> {
                       // categoriesScroller,
                       Container(
                         height: size.height * 0.47,
-                        child: ListView.builder(
-                          // itemCount: snapshot.data.length,
-                          itemCount: _listProduct.length,
-                          itemBuilder: (context, index) {
-                            return Dismissible(
-                              key: ObjectKey(_listProduct[index]),
-                              direction: DismissDirection.endToStart,
-                              background: Container(
-                                // alignment: Alignment.centerRight,
-                                // padding: EdgeInsets.symmetric(horizontal: 50.0),
-                                color: color6,
-                                child: Icon(Icons.add),
-                              ),
-                              onDismissed: (direction) {
-                                // setState(() {
-                                //   _listProduct.removeAt(index);
-                                // });
-                                // print(_listProduct[index].productId);
-                                BlocProvider.of<NavigationBloc>(context).add(
-                                    SpecificProductPageEvent(
-                                        _listProduct[index].productId));
+                        child: RefreshIndicator(
+                          onRefresh: () => Future.sync(
+                            // 2
+                                () => _pagingController.refresh(),
+                          ),
+                          child: PagedListView<int,Product>(
+                            pagingController: _pagingController,
+                            // itemCount: _listProduct.length,
+                            builderDelegate: PagedChildBuilderDelegate<Product>(
+                              itemBuilder: (context,product, index) {
+                                return Dismissible(
+                                  key: ObjectKey(product),
+                                  direction: DismissDirection.endToStart,
+                                  background: Container(
+                                    // alignment: Alignment.centerRight,
+                                    // padding: EdgeInsets.symmetric(horizontal: 50.0),
+                                    color: color6,
+                                    child: Icon(Icons.add),
+                                  ),
+                                  onDismissed: (direction) {
+                                    // setState(() {
+                                    //   _listProduct.removeAt(index);
+                                    // });
+                                    // print(_listProduct[index].productId);
+                                    BlocProvider.of<NavigationBloc>(context).add(
+                                        SpecificProductPageEvent(
+                                            product.productId));
+                                  },
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_listCategories[index].branchId,_listCategories[index].categorieId));
+                                      BlocProvider.of<NavigationBloc>(context).add(
+                                          SpecificProductPageEvent(
+                                              product.productId));
+                                      // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
+                                    },
+                                    child: Card(
+                                      color: color1,
+                                      elevation: 5.0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10.0),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: size.width*0.34,
+                                            height: size.height*0.2,
+                                            decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),topLeft:  Radius.circular(10)),
+                                                image: DecorationImage(
+                                                    image: NetworkImage(product.imageUrl),
+                                                    fit: BoxFit.cover
+                                                )
+                                            ),
+                                          ),
+                                          SizedBox(width: size.width*0.05,),
+                                          Container(
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                SizedBox(
+                                                  child: AutoSizeText("${product.name}",
+                                                    style: TextStyle(fontSize: size.width*0.04, color: Colors.white),
+                                                    maxLines: 1,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  "Cantidad: ${product.unit}",
+                                                  style: TextStyle(
+                                                      fontSize: 15.0, color: color5),
+                                                ),
+                                                Text(
+                                                  "Precio: ${product.price} Bs",
+                                                  style: TextStyle(
+                                                      fontSize: 15.0, color: color3),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(width: size.width*0.01,),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                );
                               },
-                              child: GestureDetector(
-                                onTap: () {
-                                  // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_listCategories[index].branchId,_listCategories[index].categorieId));
-                                  BlocProvider.of<NavigationBloc>(context).add(
-                                      SpecificProductPageEvent(
-                                          _listProduct[index].productId));
-                                  // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
-                                },
-                                child: Card(
-                                  color: color1,
-                                  elevation: 5.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        width: size.width*0.34,
-                                        height: size.height*0.2,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),topLeft:  Radius.circular(10)),
-                                            image: DecorationImage(
-                                                image: NetworkImage(_listProduct[index].imageUrl),
-                                                fit: BoxFit.cover
-                                            )
-                                        ),
-                                      ),
-                                      SizedBox(width: size.width*0.05,),
-                                      Container(
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            SizedBox(
-                                              child: AutoSizeText("${_listProduct[index].name}",
-                                                style: TextStyle(fontSize: size.width*0.037, color: Colors.white),
-                                                maxLines: 1,
-                                              ),
-                                            ),
-                                            Text(
-                                              "Cantidad: ${_listProduct[index].unit}",
-                                              style: TextStyle(
-                                                  fontSize: 15.0, color: color5),
-                                            ),
-                                            Text(
-                                              "Precio: ${_listProduct[index].price} Bs",
-                                              style: TextStyle(
-                                                  fontSize: 15.0, color: color3),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(width: size.width*0.01,),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
+                              // firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
+                              //   error: _pagingController.error,
+                              //   onTryAgain: () => _pagingController.refresh(),
+                              // ),
+                              // noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
+                            ),
+
+                          ),
                         ),
                       ),
                     ],
