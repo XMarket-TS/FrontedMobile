@@ -6,14 +6,17 @@ abstract class NavigationEvents extends Equatable {}
 
 class NavigationProductPageEvent extends NavigationEvents {
   int _branchId;
-
   // String _branchName;
   int _categorieId;
+  int page;
+  int size;
 
-  NavigationProductPageEvent(this._branchId, this._categorieId);
+  NavigationProductPageEvent(
+      this._branchId, this._categorieId, this.page, this.size);
+
 
   @override
-  List<Object> get props => [_branchId, _categorieId];
+  List<Object> get props => [_branchId, _categorieId,page,size];
 }
 
 class NavigationBranchPageEvent extends NavigationEvents {
