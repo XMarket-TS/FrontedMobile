@@ -26,8 +26,8 @@ class CardRepository {
       }
       // print(cardList3[0].bank);
       if (res.statusCode == 200) {
-        print("DoneListaCards");
-        print(cardList3.length);
+        // print("DoneListaCards");
+        // print(cardList3.length);
         return cardList3;
       } else {
         return null;
@@ -41,8 +41,8 @@ class CardRepository {
   Future<Tarjeta> obtainSpecificCard(int cardId) async {
     try {
       Tarjeta card = Tarjeta();
-      print("pruebaespecific");
-      print(cardId);
+      // print("pruebaespecific");
+      // print(cardId);
       String url = directionUrl + "card/" + cardId.toString();
       var res = await http.get(url, //ip for virtualized devices
           headers: <String, String>{
@@ -63,8 +63,8 @@ class CardRepository {
       card.cvc = (card2["cvc"]);
       card.creationDate = (card2["creationDate"]);
       card.status = (card2["status"]);
-      print("specificpruebas");
-      print(card.bank);
+      // print("specificpruebas");
+      // print(card.bank);
       if (res.statusCode == 200) {
         // print("exito en card especifico");
         return card;
@@ -86,7 +86,7 @@ class CardRepository {
           },
           body: jsonEncode(tarjeta.toJsonUp()));
       if (res.statusCode == 200) {
-        print("Done Update");
+        // print("Done Update");
         return 1;
       } else {
         return 0;

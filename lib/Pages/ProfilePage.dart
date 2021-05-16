@@ -52,9 +52,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 28.0, top: 10),
+                          padding: const EdgeInsets.only(left: 20.0, top: 10),
                           child: CircleAvatar(
-                            radius: size.height * 0.085,
+                            radius: size.height * 0.075,
                             backgroundImage:
                                 _user!=null?
                                 // AssetImage('assets/images/burger.png'),
@@ -62,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 38.0),
+                          padding: const EdgeInsets.only(left: 28.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -78,7 +78,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 '${_user.email}':'example@gmail.com',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: size.height * 0.02,
+                                  fontSize: size.height * 0.017,
                                   color: color3,
                                 ),
                               ),
@@ -117,8 +117,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            print("la tarjeta es del id ");
-                            print(_user.userId);
+                            // print("la tarjeta es del id ");
+                            // print(_user.userId);
                             BlocProvider.of<NavigationBloc>(context).add(CardPageEvent(_user.userId));
                           },
                           child: Container(

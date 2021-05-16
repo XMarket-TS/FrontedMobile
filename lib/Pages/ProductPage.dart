@@ -257,7 +257,7 @@ class _ProductPageState extends State<ProductPage> {
                                           children: [
                                             SizedBox(
                                               child: AutoSizeText("${_listProduct[index].name}",
-                                                style: TextStyle(fontSize: size.width*0.04, color: Colors.white),
+                                                style: TextStyle(fontSize: size.width*0.037, color: Colors.white),
                                                 maxLines: 1,
                                               ),
                                             ),

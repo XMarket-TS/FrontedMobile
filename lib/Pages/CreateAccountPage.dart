@@ -83,10 +83,13 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                       ),
                     ),
                     Positioned(
-                      top: size.height * 0.11,
+                      top: size.height * 0.103,
                       left: size.width * 0.59,
                       child: GestureDetector(
-                        onTap: (){print("ELEGIR IMAGEN");getImage();},
+                        onTap: (){
+                          // print("ELEGIR IMAGEN");
+                          getImage();
+                          },
                         child: Container(
                           height: size.width * 0.12,
                           width: size.width * 0.12,
@@ -324,7 +327,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                               "Crear",
                               style: TextStyle(
                                   color: color5,
-                                  fontSize: size.height * 0.025,
+                                  fontSize: size.width * 0.04,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -346,7 +349,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                               "Cancelar",
                               style: TextStyle(
                                   color: color5,
-                                  fontSize: size.height * 0.025,
+                                  fontSize: size.width * 0.04,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
