@@ -30,7 +30,7 @@ class ImageRepository {
       var imageUrl2 = jsonDecode(res.body);
       imageUrl=imageUrl2["secure_url"];
       if (res.statusCode == 200) {
-        // print("DoneConfirmUser");
+        print("Se subio cloudinary");
         return imageUrl;
       } else {
         return null;
