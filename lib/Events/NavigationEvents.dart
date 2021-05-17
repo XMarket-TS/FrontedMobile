@@ -6,6 +6,7 @@ abstract class NavigationEvents extends Equatable {}
 
 class NavigationProductPageEvent extends NavigationEvents {
   int _branchId;
+
   // String _branchName;
   int _categorieId;
   int page;
@@ -14,9 +15,8 @@ class NavigationProductPageEvent extends NavigationEvents {
   NavigationProductPageEvent(
       this._branchId, this._categorieId, this.page, this.size);
 
-
   @override
-  List<Object> get props => [_branchId, _categorieId,page,size];
+  List<Object> get props => [_branchId, _categorieId, page, size];
 }
 
 class NavigationBranchPageEvent extends NavigationEvents {
@@ -98,27 +98,32 @@ class DeleteCardEvent extends NavigationEvents {
   @override
   List<Object> get props => [_cardId, _userId];
 }
-class ConfirmUserEvent extends NavigationEvents{
+
+class ConfirmUserEvent extends NavigationEvents {
   ConfirmUser _confirmUser;
+
   ConfirmUserEvent(this._confirmUser);
+
   @override
   List<Object> get props => [_confirmUser];
 }
-class LogoutEvent extends NavigationEvents{
-  @override
-  List<Object> get props =>[];
-}
-class RegisterEvent extends NavigationEvents{
 
-  @override
-  List<Object> get props => [];
-
-}
-class QrEvent extends NavigationEvents{
+class LogoutEvent extends NavigationEvents {
   @override
   List<Object> get props => [];
 }
-class RecetasEvent extends NavigationEvents{
+
+class RegisterEvent extends NavigationEvents {
+  @override
+  List<Object> get props => [];
+}
+
+class QrEvent extends NavigationEvents {
+  @override
+  List<Object> get props => [];
+}
+
+class RecetasEvent extends NavigationEvents {
   @override
   List<Object> get props => [];
 }

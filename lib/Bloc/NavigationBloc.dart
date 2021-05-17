@@ -49,12 +49,13 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       yield NavigationLoadingState();
       int _branchId = event.props[0];
       int _categoriesId = event.props[1];
-      int page= event.props[2];
-      int size= event.props[3];
-      List<Product> _getListProduct =
-          await ProductRepository.obtainListProduct(_branchId, _categoriesId,page,size);
+      int page = event.props[2];
+      int size = event.props[3];
+      List<Product> _getListProduct = await ProductRepository.obtainListProduct(
+          _branchId, _categoriesId, page, size);
       List<Offer> _getListOffer = _offersRepository.offerList;
-      yield ListProductPageState(_getListProduct, _getListOffer, _branchId,_categoriesId);
+      yield ListProductPageState(
+          _getListProduct, _getListOffer, _branchId, _categoriesId);
     } else if (event is NavigationBranchPageEvent) {
       // event.
       yield NavigationLoadingState();
@@ -123,30 +124,33 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       List<CardList> _cardList = await _cardRepository.obtainCardList(_userId);
       yield CardPageState(_cardList);
     } else if (event is ConfirmUserEvent) {
-      try{
+      try {
         yield NavigationLoadingState();
-        ConfirmUser _confirmUser= event.props[0];
+        ConfirmUser _confirmUser = event.props[0];
         // print("datos para revisar");
         // print(_confirmUser.userName);
-        User _user=await _userRepository.confirmUser(_confirmUser);
+        User _user = await _userRepository.confirmUser(_confirmUser);
         // print("revision datos usuario");
         // print(_user.name);
-        SharedPreferences userId=await SharedPreferences.getInstance();
+        SharedPreferences userId = await SharedPreferences.getInstance();
         await userId.setInt('userId', _user.userId);
-        List<Branch> _getBranchList = await _branchRepository.obtainListBranch();
+        List<Branch> _getBranchList =
+            await _branchRepository.obtainListBranch();
         // print("Revision SharedPreferences");
         // print(userId.getInt('userId'));
         // print(globals.userProfile.userId);
-        yield userId.getInt('userId')!=null?ListBranchPageState(_getBranchList):ConfirmUserState();
-      }catch (error) {
+        yield userId.getInt('userId') != null
+            ? ListBranchPageState(_getBranchList)
+            : ConfirmUserState();
+      } catch (error) {
         print(error);
       }
       // event.
 
-    }else if (event is LogoutEvent) {
+    } else if (event is LogoutEvent) {
       // event.
       yield NavigationLoadingState();
-      SharedPreferences userId=await SharedPreferences.getInstance();
+      SharedPreferences userId = await SharedPreferences.getInstance();
       userId.remove('userId');
       yield ConfirmUserState();
     } else if (event is QrEvent) {
@@ -155,7 +159,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       // SharedPreferences userId=await SharedPreferences.getInstance();
       // userId.remove('userId');
       yield QrState();
-    }else if (event is RecetasEvent) {
+    } else if (event is RecetasEvent) {
       // event.
       yield NavigationLoadingState();
       yield RecetasState();
