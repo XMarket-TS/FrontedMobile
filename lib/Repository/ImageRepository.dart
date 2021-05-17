@@ -30,6 +30,8 @@ class ImageRepository {
       // print(res.body);
       var imageUrl2 = jsonDecode(res.body);
       imageUrl=imageUrl2["secure_url"];
+      print("url obtenida de la subida");
+      print(imageUrl);
       if (res.statusCode == 200) {
         print("Se subio cloudinary");
         return imageUrl;

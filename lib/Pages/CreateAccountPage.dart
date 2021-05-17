@@ -112,6 +112,23 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Container(
+                      height: size.height * 0.06,
+                      width: size.width * 0.4,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16.0),
+                          color: color3),
+                      child: FlatButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Guardar Imagen",
+                          style: TextStyle(
+                              color: color5,
+                              fontSize: size.width * 0.04,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: Container(
@@ -131,7 +148,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                   horizontal: 20.0,
                                 ),
                                 child: Icon(
-                                  Icons.email_rounded,
+                                  Icons.perm_contact_cal_outlined,
                                   size: 30,
                                 ),
                               ),
@@ -164,7 +181,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                   horizontal: 20.0,
                                 ),
                                 child: Icon(
-                                  Icons.email_rounded,
+                                  Icons.perm_contact_cal_outlined,
                                   size: 30,
                                 ),
                               ),
@@ -230,7 +247,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                   horizontal: 20.0,
                                 ),
                                 child: Icon(
-                                  Icons.email_rounded,
+                                  Icons.person,
                                   size: 30,
                                 ),
                               ),
@@ -263,7 +280,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                   horizontal: 20.0,
                                 ),
                                 child: Icon(
-                                  FontAwesomeIcons.lock,
+                                  Icons.email_rounded,
                                   size: 30,
                                 ),
                               ),
@@ -276,7 +293,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           ),
                         ),
                       ),
-                    ),Padding(
+                    ),
+                    Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: Container(
                         height: size.height * 0.075,
@@ -300,6 +318,39 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                 ),
                               ),
                               hintText: "Contraseña",
+                              // hintStyle: kBodyText,
+                            ),
+                            obscureText: true,
+                            keyboardType: TextInputType.name,
+                            textInputAction: TextInputAction.done,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Container(
+                        height: size.height * 0.075,
+                        width: size.width * 0.8,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[500].withOpacity(0.8),
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Center(
+                          child: TextField(
+                            controller: _password,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              prefixIcon: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20.0,
+                                ),
+                                child: Icon(
+                                  FontAwesomeIcons.phone,
+                                  size: 30,
+                                ),
+                              ),
+                              hintText: "Celular",
                               // hintStyle: kBodyText,
                             ),
                             obscureText: true,
