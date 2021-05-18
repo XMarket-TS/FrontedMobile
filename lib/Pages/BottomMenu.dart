@@ -1,5 +1,4 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 
@@ -17,7 +16,6 @@ import 'package:x_market/Models/User.dart';
 import 'package:x_market/Pages/CardPage.dart';
 import 'package:x_market/Pages/CartPage.dart';
 import 'package:x_market/Pages/CategoriesPage.dart';
-import 'package:x_market/Pages/CreateAccountPage.dart';
 import 'package:x_market/Pages/LoadingPage.dart';
 import 'package:x_market/Pages/LoginPage.dart';
 import 'package:x_market/Pages/ProductPage.dart';
@@ -41,13 +39,15 @@ class BottomMenu extends StatefulWidget {
 class _BottomMenuState extends State<BottomMenu> {
   int _selectedIndex = 1;
   int _userData;
-  obtainUser ()async{
-    SharedPreferences idUser=await SharedPreferences.getInstance();
+
+  obtainUser() async {
+    SharedPreferences idUser = await SharedPreferences.getInstance();
     // print("funcion en bottommenu");
     // print(idUser.getInt('userId'));
-    _userData=idUser.getInt('userId');
+    _userData = idUser.getInt('userId');
     // print(_userData);
   }
+
   // final page=[ProfilePage(),BranchPage(),CartPage()];
   @override
   Widget build(BuildContext context) {
@@ -80,7 +80,8 @@ class _BottomMenuState extends State<BottomMenu> {
               obtainUser();
               // print("en bottomneu imprimir userid");
               // print(_userData);
-              BlocProvider.of<NavigationBloc>(context).add(ProfilePageEvent(_userData));
+              BlocProvider.of<NavigationBloc>(context)
+                  .add(ProfilePageEvent(_userData));
             } else if (index == 1) {
               BlocProvider.of<NavigationBloc>(context)
                   .add(NavigationBranchPageEvent());
@@ -101,7 +102,7 @@ class _BottomMenuState extends State<BottomMenu> {
         ),
         body: BlocBuilder<NavigationBloc, NavigationStates>(
             builder: (context, state) {
-              // print(state);
+          // print(state);
           if (state is NavigationLoadingState) {
             return LoadingPage(); //pantalla de loading
           } else if (state is ListBranchPageState) {
@@ -141,14 +142,13 @@ class _BottomMenuState extends State<BottomMenu> {
           } else if (state is LogoutState) {
             // User _user = state.props[0];
             return LoginPage();
-          }
-          else if (state is ConfirmBottomState) {
+          } else if (state is ConfirmBottomState) {
             List<Branch> _listBranches = state.props[0];
             return BranchPage(_listBranches);
-          }else if (state is QrState) {
+          } else if (state is QrState) {
             // List<Branch> _listBranches = state.props[0];
             return QrPage();
-          }else if (state is RecetasState) {
+          } else if (state is RecetasState) {
             // List<Branch> _listBranches = state.props[0];
             return RecetasPage();
           }

@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Branch.dart';
 import 'package:x_market/Models/ConfirmUser.dart';
@@ -19,7 +18,6 @@ import 'package:x_market/Repository/ProductRepository.dart';
 import 'package:x_market/Repository/UserRepository.dart';
 import 'package:x_market/States/NavigationStates.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Globals.dart' as globals;
 
 class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   ProductRepository _productRepository;
@@ -166,25 +164,27 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       yield RecetasState();
     } else if (event is RegisterEvent) {
       // event.
-      User _user=event.props[0];
+      User _user = event.props[0];
       yield NavigationLoadingState();
-      User _user1=await _userRepository.addUser(_user);
-      SharedPreferences userId=await SharedPreferences.getInstance();
+      User _user1 = await _userRepository.addUser(_user);
+      SharedPreferences userId = await SharedPreferences.getInstance();
       await userId.setInt('userId', _user1.userId);
       List<Branch> _getBranchList = await _branchRepository.obtainListBranch();
       // print("Revision SharedPreferences");
       // print(userId.getInt('userId'));
       // print(globals.userProfile.userId);
-      yield userId.getInt('userId')!=null?ListBranchPageState(_getBranchList):ConfirmUserState();
+      yield userId.getInt('userId') != null
+          ? ListBranchPageState(_getBranchList)
+          : ConfirmUserState();
       // yield RegisterState(_user1);
     } else if (event is RegisterPageEvent) {
       // event.
       yield NavigationLoadingState();
       yield RegisterPageState();
-    }else if (event is LoginPageEvent) {
+    } else if (event is LoginPageEvent) {
       // event.
       yield NavigationLoadingState();
       yield LoginPageState();
-    }else {}
+    } else {}
   }
 }

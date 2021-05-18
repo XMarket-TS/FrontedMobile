@@ -1,8 +1,8 @@
-class ConfirmUser{
+class ConfirmUser {
   String _userName;
   String _password;
-  ConfirmUser();
 
+  ConfirmUser();
 
   String get userName => _userName;
 
@@ -16,8 +16,5 @@ class ConfirmUser{
     _password = value;
   }
 
-  Map toJsonUp()=>{
-    "username": userName,
-    "password": password
-  };
+  Map toJsonUp() => {"username": userName, "password": password};
 }
