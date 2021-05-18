@@ -46,7 +46,7 @@ class _ProductPageState extends State<ProductPage> {
       if (isLastPage) {
         _pagingController.appendLastPage(_listProduct1);
       } else {
-        await Future.delayed(Duration(seconds: 1));
+        await Future.delayed(Duration(seconds: 2));
         final nextPageKey = pageKey + _listProduct1.length;
         _pagingController.appendPage(_listProduct1, nextPageKey);
       }
