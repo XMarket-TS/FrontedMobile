@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x_market/Pages/BottomMenu.dart';
 import 'package:x_market/Pages/BranchPage.dart';
+import 'package:x_market/Pages/CreateAccountPage.dart';
 import 'package:x_market/Pages/LoginPage.dart';
 import 'package:x_market/Repository/CardRepository.dart';
 import 'package:x_market/Repository/CategoriesRepository.dart';
@@ -43,7 +44,11 @@ class MyApp extends StatelessWidget {
           // child: BottomMenu()),
           child: BlocBuilder<NavigationBloc, NavigationStates>(
             builder: (context,state){
-              if(state is ConfirmUserState){
+              if(state is RegisterPageState){
+                return CreateAccountPage();
+              }else if(state is LoginPageState){
+                return LoginPage();
+              }else if(state is ConfirmUserState){
                 return LoginPage();
               }else {
                 return BottomMenu();

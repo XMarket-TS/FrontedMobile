@@ -139,97 +139,97 @@ class _ProductPageState extends State<ProductPage> {
                           ),
                         ],
                       ),
-                      Container(
-                        height: size.height * 0.25,
-                        // width: size.width*0.3,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
-                        child: ListView.builder(
-                          // itemCount: snapshot.data.length,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: _listOffer.length,
-                          itemBuilder: (context, index) {
-                            return Card(
-                              color: color6.withOpacity(0.8),
-                              // color: color3.withOpacity(0.8),
-                              // color: color2.withOpacity(0.7),
-                              elevation: 10.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              child: Stack(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/${_listOffer[index].imageUrl}",
-                                    fit: BoxFit.fill,
-                                  ),
-                                  Positioned(
-                                    bottom: 0,
-                                    right: 0,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                            bottomRight: Radius.circular(10.0),
-                                            topLeft: Radius.circular(30.0)),
-                                        color: Colors.yellow.withOpacity(0.9),
-                                      ),
-                                      // color: Colors.white.withOpacity(0.7),
-                                      padding: EdgeInsets.only(
-                                          left: 20.0,
-                                          right: 20.0,
-                                          bottom: 5.0,
-                                          top: 5.0),
-
-                                      child: Center(
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              "${_listOffer[index].name}",
-                                              style: TextStyle(
-                                                fontSize: size.height * 0.025,
-                                              ),
-                                            ),
-                                            Text(
-                                              "Cantidad ${_listOffer[index].unit}",
-                                              style: TextStyle(
-                                                fontSize: size.height * 0.015,
-                                              ),
-                                            ),
-                                            Text(
-                                              "${_listOffer[index].price} Bs",
-                                              style: TextStyle(
-                                                  fontSize: size.height * 0.015,
-                                                  color: color3),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Text(
-                                      "Oferta ${_listOffer[index].discount}%",
-                                      style: TextStyle(
-                                          fontSize: size.height * 0.03,
-                                          color: Colors.black),
-                                    ),
-                                    // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      Text(
-                        "Productos",
-                        style: TextStyle(
-                            color: Colors.white, fontSize: size.width * 0.08),
-                      ),
+                      // Container(
+                      //   height: size.height * 0.25,
+                      //   // width: size.width*0.3,
+                      //   margin: const EdgeInsets.symmetric(
+                      //       vertical: 10, horizontal: 10),
+                      //   child: ListView.builder(
+                      //     // itemCount: snapshot.data.length,
+                      //     scrollDirection: Axis.horizontal,
+                      //     itemCount: _listOffer.length,
+                      //     itemBuilder: (context, index) {
+                      //       return Card(
+                      //         color: color6.withOpacity(0.8),
+                      //         // color: color3.withOpacity(0.8),
+                      //         // color: color2.withOpacity(0.7),
+                      //         elevation: 10.0,
+                      //         shape: RoundedRectangleBorder(
+                      //           borderRadius: BorderRadius.circular(10.0),
+                      //         ),
+                      //         child: Stack(
+                      //           children: [
+                      //             Image.asset(
+                      //               "assets/images/${_listOffer[index].imageUrl}",
+                      //               fit: BoxFit.fill,
+                      //             ),
+                      //             Positioned(
+                      //               bottom: 0,
+                      //               right: 0,
+                      //               child: Container(
+                      //                 decoration: BoxDecoration(
+                      //                   borderRadius: BorderRadius.only(
+                      //                       bottomRight: Radius.circular(10.0),
+                      //                       topLeft: Radius.circular(30.0)),
+                      //                   color: Colors.yellow.withOpacity(0.9),
+                      //                 ),
+                      //                 // color: Colors.white.withOpacity(0.7),
+                      //                 padding: EdgeInsets.only(
+                      //                     left: 20.0,
+                      //                     right: 20.0,
+                      //                     bottom: 5.0,
+                      //                     top: 5.0),
+                      //
+                      //                 child: Center(
+                      //                   child: Column(
+                      //                     children: [
+                      //                       Text(
+                      //                         "${_listOffer[index].name}",
+                      //                         style: TextStyle(
+                      //                           fontSize: size.height * 0.025,
+                      //                         ),
+                      //                       ),
+                      //                       Text(
+                      //                         "Cantidad ${_listOffer[index].unit}",
+                      //                         style: TextStyle(
+                      //                           fontSize: size.height * 0.015,
+                      //                         ),
+                      //                       ),
+                      //                       Text(
+                      //                         "${_listOffer[index].price} Bs",
+                      //                         style: TextStyle(
+                      //                             fontSize: size.height * 0.015,
+                      //                             color: color3),
+                      //                       ),
+                      //                     ],
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //             Container(
+                      //               padding: EdgeInsets.all(5.0),
+                      //               child: Text(
+                      //                 "Oferta ${_listOffer[index].discount}%",
+                      //                 style: TextStyle(
+                      //                     fontSize: size.height * 0.03,
+                      //                     color: Colors.black),
+                      //               ),
+                      //               // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
+                      //             ),
+                      //           ],
+                      //         ),
+                      //       );
+                      //     },
+                      //   ),
+                      // ),
+                      // Text(
+                      //   "Productos",
+                      //   style: TextStyle(
+                      //       color: Colors.white, fontSize: size.width * 0.08),
+                      // ),
                       // categoriesScroller,
                       Container(
-                        height: size.height * 0.47,
+                        height: size.height * 0.7,
                         child: RefreshIndicator(
                           onRefresh: () => Future.sync(
                             // 2
@@ -293,7 +293,7 @@ class _ProductPageState extends State<ProductPage> {
                                               children: [
                                                 SizedBox(
                                                   child: AutoSizeText("${product.name}",
-                                                    style: TextStyle(fontSize: size.width*0.04, color: Colors.white),
+                                                    style: TextStyle(fontSize: size.width*0.037, color: Colors.white),
                                                     maxLines: 1,
                                                   ),
                                                 ),

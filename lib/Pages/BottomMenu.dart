@@ -17,6 +17,7 @@ import 'package:x_market/Models/User.dart';
 import 'package:x_market/Pages/CardPage.dart';
 import 'package:x_market/Pages/CartPage.dart';
 import 'package:x_market/Pages/CategoriesPage.dart';
+import 'package:x_market/Pages/CreateAccountPage.dart';
 import 'package:x_market/Pages/LoadingPage.dart';
 import 'package:x_market/Pages/LoginPage.dart';
 import 'package:x_market/Pages/ProductPage.dart';
@@ -150,7 +151,16 @@ class _BottomMenuState extends State<BottomMenu> {
           }else if (state is RecetasState) {
             // List<Branch> _listBranches = state.props[0];
             return RecetasPage();
-          }else {
+          }
+          // else if (state is RegisterPageState) {
+          //   // List<Branch> _listBranches = state.props[0];
+          //   return CreateAccountPage();
+          // }
+          // else if (state is LoginPageState) {
+          //   // List<Branch> _listBranches = state.props[0];
+          //   return LoginPage();
+          // }
+          else {
             return Container();
           }
         }));

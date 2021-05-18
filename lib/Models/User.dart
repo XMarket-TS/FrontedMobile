@@ -103,7 +103,7 @@ class User {
     "gender":gender,
     "userPhoto" : imageUrl,
     "email":email,
-    "password" :password
+    "password": password,
+    "cellphone": cellphone
   };
-
 }

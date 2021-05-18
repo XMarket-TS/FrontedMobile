@@ -79,4 +79,34 @@ class UserRepository {
     }
   }
 
+  Future<User> addUser(User user)async{
+    try {
+      String url = directionUrl + "user";
+      User user1=User();
+      print("llego al repositorio del addUser");
+      // print(confirmUser.userName);
+      // print(confirmUser.password);
+      var res = await http.post(url, //ip for virtualized devices
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(user.toJson()));
+      // print("devolucion userconfirm");
+      // print(jsonEncode(confirmUser.toJsonUp()));
+      // print(res.body);
+      var user2 = jsonDecode(res.body);
+      // print("datos que devuelve usuario");
+      // print(user2["userId"]);
+      user1=User.fromJson(user2);
+      if (res.statusCode == 200) {
+        print("DoneCreateUser");
+        return user1;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      print(error);
+      return null;
+    }
+  }
 }
