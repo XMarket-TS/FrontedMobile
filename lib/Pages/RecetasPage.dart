@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:x_market/Components/PopupMenuComponent.dart';
 
 import '../Colors.dart';
+
 class RecetasPage extends StatefulWidget {
   @override
   _RecetasPageState createState() => _RecetasPageState();
@@ -22,7 +23,8 @@ class _RecetasPageState extends State<RecetasPage> {
         ),
         centerTitle: true,
         actions: [
-          Padding(padding: EdgeInsets.only(right: 10.0),
+          Padding(
+            padding: EdgeInsets.only(right: 10.0),
             child: PopupMenuComponent(),
           )
         ],

@@ -26,9 +26,11 @@ class ListProductPageState extends NavigationStates {
   List<Offer> _offers;
   int _branchId;
   int _categoriesId;
-  ListProductPageState(this._products, this._offers, this._branchId, this._categoriesId);
 
-  List<Object> get props => [_products, _offers, _branchId,_categoriesId];
+  ListProductPageState(
+      this._products, this._offers, this._branchId, this._categoriesId);
+
+  List<Object> get props => [_products, _offers, _branchId, _categoriesId];
 }
 
 class ListBranchPageState extends NavigationStates {
@@ -115,50 +117,58 @@ class DeleteCardState extends NavigationStates {
   @override
   List<Object> get props => [_list];
 }
-class ConfirmUserState extends NavigationStates{
+
+class ConfirmUserState extends NavigationStates {
   @override
   List<Object> get props => [];
 }
-class ConfirmBottomState extends NavigationStates{
+
+class ConfirmBottomState extends NavigationStates {
   List<Branch> _branch;
+
   ConfirmBottomState(this._branch);
+
   @override
   List<Object> get props => [_branch];
 }
-class LogoutState extends NavigationStates{
 
+class LogoutState extends NavigationStates {
   @override
   List<Object> get props => [];
 }
-class QrState extends NavigationStates{
 
+class QrState extends NavigationStates {
   @override
   List<Object> get props => [];
+}
 
-}
-class RecetasState extends NavigationStates{
+class RecetasState extends NavigationStates {
   @override
-  List<Object> get props =>[];
+  List<Object> get props => [];
 }
-class ImageUploadState extends NavigationStates{
+
+class ImageUploadState extends NavigationStates {
   ImagesUrl _imagesUrl;
+
   @override
   List<Object> get props => [_imagesUrl];
 }
-class RegisterState extends NavigationStates{
+
+class RegisterState extends NavigationStates {
   User _user;
 
   RegisterState(this._user);
+
   @override
   List<Object> get props => [_user];
 }
-class RegisterPageState extends NavigationStates{
+
+class RegisterPageState extends NavigationStates {
   @override
   List<Object> get props => [];
-
 }
-class LoginPageState extends NavigationStates{
+
+class LoginPageState extends NavigationStates {
   @override
   List<Object> get props => [];
-
 }

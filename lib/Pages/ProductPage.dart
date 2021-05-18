@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Offer.dart';
@@ -11,9 +10,11 @@ import 'package:x_market/States/NavigationStates.dart';
 import '../Models/Product.dart';
 import '../Colors.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+
 class ProductPage extends StatefulWidget {
   List<Product> _listProduct;
   List<Offer> _listOffer;
+
   ProductPage(this._listProduct, this._listOffer);
 
   @override
@@ -26,12 +27,15 @@ class _ProductPageState extends State<ProductPage> {
   List<Offer> _listOffer;
   int branchId;
   int categoryId;
+
   _ProductPageState(this._listProduct, this._listOffer);
-  TextEditingController _search=TextEditingController();
+
+  TextEditingController _search = TextEditingController();
   static const _pageSize = 10;
   final _pagingController = PagingController<int, Product>(
     firstPageKey: 1,
   );
+
   @override
   void initState() {
     _pagingController.addPageRequestListener((pageKey) {
@@ -39,9 +43,11 @@ class _ProductPageState extends State<ProductPage> {
     });
     super.initState();
   }
+
   Future<void> _fetchPage(int pageKey) async {
     try {
-      final _listProduct1 = await ProductRepository.obtainListProduct(branchId,categoryId,pageKey, _pageSize);
+      final _listProduct1 = await ProductRepository.obtainListProduct(
+          branchId, categoryId, pageKey, _pageSize);
       final isLastPage = _listProduct1.length < _pageSize;
       if (isLastPage) {
         _pagingController.appendLastPage(_listProduct1);
@@ -54,7 +60,6 @@ class _ProductPageState extends State<ProductPage> {
       _pagingController.error = error;
     }
   }
-
 
   // final ProductBloc _productBloc=new ProductBloc();
   // final CategoriesScroller categoriesScroller= CategoriesScroller();
@@ -102,40 +107,47 @@ class _ProductPageState extends State<ProductPage> {
                         children: [
                           Container(
                             // color: color5,
-                            height: size.height*0.06,
-                            width: size.width*0.8,
-                            margin: EdgeInsets.only(left: 10,top: 10,bottom: 10),
-                            padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
+                            height: size.height * 0.06,
+                            width: size.width * 0.8,
+                            margin:
+                                EdgeInsets.only(left: 10, top: 10, bottom: 10),
+                            padding: EdgeInsets.only(
+                                right: 10, left: 10, top: 5, bottom: 5),
                             decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0),bottomLeft: Radius.circular(10.0)),
-                                color: color5,
-                          ),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10.0),
+                                  bottomLeft: Radius.circular(10.0)),
+                              color: color5,
+                            ),
                             child: TextField(
-                                  // cursorWidth: size.width*0.5,
-                                  controller: _search,
-                                  decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.all(10.0),
-                                    hintText: "Buscar",
-                                  ),
-                                  style: TextStyle(color: color1),
-                                  // cursorColor: color5,
-                                ),
+                              // cursorWidth: size.width*0.5,
+                              controller: _search,
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.all(10.0),
+                                hintText: "Buscar",
+                              ),
+                              style: TextStyle(color: color1),
+                              // cursorColor: color5,
+                            ),
                           ),
                           Container(
-                            height: size.height*0.06,
-                            width: size.width*0.1,
-                            margin: EdgeInsets.only(right: 10,top: 10,bottom: 10),
-                            padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
+                            height: size.height * 0.06,
+                            width: size.width * 0.1,
+                            margin:
+                                EdgeInsets.only(right: 10, top: 10, bottom: 10),
+                            padding: EdgeInsets.only(
+                                right: 10, left: 10, top: 5, bottom: 5),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(topRight: Radius.circular(10.0),bottomRight: Radius.circular(10.0)),
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(10.0),
+                                  bottomRight: Radius.circular(10.0)),
                               color: color5,
                             ),
                             child: GestureDetector(
-                                onTap: (){
+                                onTap: () {
                                   // print("search");
                                 },
-                                child: Icon(Icons.search)
-                            ),
+                                child: Icon(Icons.search)),
                           ),
                         ],
                       ),
@@ -233,13 +245,13 @@ class _ProductPageState extends State<ProductPage> {
                         child: RefreshIndicator(
                           onRefresh: () => Future.sync(
                             // 2
-                                () => _pagingController.refresh(),
+                            () => _pagingController.refresh(),
                           ),
-                          child: PagedListView<int,Product>(
+                          child: PagedListView<int, Product>(
                             pagingController: _pagingController,
                             // itemCount: _listProduct.length,
                             builderDelegate: PagedChildBuilderDelegate<Product>(
-                              itemBuilder: (context,product, index) {
+                              itemBuilder: (context, product, index) {
                                 return Dismissible(
                                   key: ObjectKey(product),
                                   direction: DismissDirection.endToStart,
@@ -254,15 +266,15 @@ class _ProductPageState extends State<ProductPage> {
                                     //   _listProduct.removeAt(index);
                                     // });
                                     // print(_listProduct[index].productId);
-                                    BlocProvider.of<NavigationBloc>(context).add(
-                                        SpecificProductPageEvent(
+                                    BlocProvider.of<NavigationBloc>(context)
+                                        .add(SpecificProductPageEvent(
                                             product.productId));
                                   },
                                   child: GestureDetector(
                                     onTap: () {
                                       // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(_listCategories[index].branchId,_listCategories[index].categorieId));
-                                      BlocProvider.of<NavigationBloc>(context).add(
-                                          SpecificProductPageEvent(
+                                      BlocProvider.of<NavigationBloc>(context)
+                                          .add(SpecificProductPageEvent(
                                               product.productId));
                                       // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
                                     },
@@ -270,47 +282,63 @@ class _ProductPageState extends State<ProductPage> {
                                       color: color1,
                                       elevation: 5.0,
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10.0),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                       ),
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: size.width*0.34,
-                                            height: size.height*0.2,
+                                            width: size.width * 0.34,
+                                            height: size.height * 0.2,
                                             decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),topLeft:  Radius.circular(10)),
+                                                borderRadius: BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(10),
+                                                    topLeft:
+                                                        Radius.circular(10)),
                                                 image: DecorationImage(
-                                                    image: NetworkImage(product.imageUrl),
-                                                    fit: BoxFit.cover
-                                                )
-                                            ),
+                                                    image: NetworkImage(
+                                                        product.imageUrl),
+                                                    fit: BoxFit.cover)),
                                           ),
-                                          SizedBox(width: size.width*0.05,),
+                                          SizedBox(
+                                            width: size.width * 0.05,
+                                          ),
                                           Container(
                                             child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: [
                                                 SizedBox(
-                                                  child: AutoSizeText("${product.name}",
-                                                    style: TextStyle(fontSize: size.width*0.037, color: Colors.white),
+                                                  child: AutoSizeText(
+                                                    "${product.name}",
+                                                    style: TextStyle(
+                                                        fontSize:
+                                                            size.width * 0.037,
+                                                        color: Colors.white),
                                                     maxLines: 1,
                                                   ),
                                                 ),
                                                 Text(
                                                   "Cantidad: ${product.unit}",
                                                   style: TextStyle(
-                                                      fontSize: 15.0, color: color5),
+                                                      fontSize: 15.0,
+                                                      color: color5),
                                                 ),
                                                 Text(
                                                   "Precio: ${product.price} Bs",
                                                   style: TextStyle(
-                                                      fontSize: 15.0, color: color3),
+                                                      fontSize: 15.0,
+                                                      color: color3),
                                                 ),
                                               ],
                                             ),
                                           ),
-                                          SizedBox(width: size.width*0.01,),
+                                          SizedBox(
+                                            width: size.width * 0.01,
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -323,7 +351,6 @@ class _ProductPageState extends State<ProductPage> {
                               // ),
                               // noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
                             ),
-
                           ),
                         ),
                       ),
@@ -339,6 +366,7 @@ class _ProductPageState extends State<ProductPage> {
       ),
     );
   }
+
   @override
   void dispose() {
     _pagingController.dispose();

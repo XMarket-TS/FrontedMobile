@@ -11,13 +11,13 @@ class UserRepository {
       // print("entra al obtainUserProfile");
       // print(userId);
       String url = directionUrl + "user/" + userId.toString();
-      User user=User();
+      User user = User();
       var res = await http.get(url, //ip for virtualized devices
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           });
       var user2 = jsonDecode(res.body);
-      user=User.fromJson(user2);
+      user = User.fromJson(user2);
       // print(singleDriver2);
       // user.userId = (user2["userId"]);
       // user.personUserId = (user2["personId"]);
@@ -38,10 +38,10 @@ class UserRepository {
     }
   }
 
-  Future<User> confirmUser(ConfirmUser confirmUser)async{
+  Future<User> confirmUser(ConfirmUser confirmUser) async {
     try {
       String url = directionUrl + "user/login";
-      User user=User();
+      User user = User();
       // print("llego al repositorio del usuario");
       // print(confirmUser.userName);
       // print(confirmUser.password);
@@ -57,7 +57,7 @@ class UserRepository {
       // print("datos que devuelve usuario");
       // print(user2["userId"]);
       // print(singleDriver2);
-      user=User.fromJson(user2);
+      user = User.fromJson(user2);
       // user.userId = (user2["userId"]);
       // user.personUserId = (user2["personUserId"]);
       // user.name = (user2["name"]);
@@ -79,10 +79,10 @@ class UserRepository {
     }
   }
 
-  Future<User> addUser(User user)async{
+  Future<User> addUser(User user) async {
     try {
       String url = directionUrl + "user";
-      User user1=User();
+      User user1 = User();
       print("llego al repositorio del addUser");
       // print(confirmUser.userName);
       // print(confirmUser.password);
@@ -97,7 +97,7 @@ class UserRepository {
       var user2 = jsonDecode(res.body);
       // print("datos que devuelve usuario");
       // print(user2["userId"]);
-      user1=User.fromJson(user2);
+      user1 = User.fromJson(user2);
       if (res.statusCode == 200) {
         print("DoneCreateUser");
         return user1;

@@ -21,16 +21,18 @@ class ProductRepository {
   // }
 
   static Future<List<Product>> obtainListProduct(
-      int branchId, int categoriesId,int page,int size) async {
+      int branchId, int categoriesId, int page, int size) async {
     try {
       // var _branchId=branchId.toString();
       String url = directionUrl +
           "user/1/branchOffice/" +
           branchId.toString() +
           "/category/" +
-          categoriesId.toString()+"?page=" +
+          categoriesId.toString() +
+          "?page=" +
           page.toString() +
-          "&size="+size.toString();
+          "&size=" +
+          size.toString();
       // print(url);
       var res = await http.get(url, //ip for virtualized devices
           headers: <String, String>{
