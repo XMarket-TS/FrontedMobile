@@ -28,7 +28,7 @@ class _ProductPageState extends State<ProductPage> {
   int categoryId;
   _ProductPageState(this._listProduct, this._listOffer);
   TextEditingController _search=TextEditingController();
-  static const _pageSize = 1;
+  static const _pageSize = 10;
   final _pagingController = PagingController<int, Product>(
     firstPageKey: 1,
   );
@@ -42,7 +42,6 @@ class _ProductPageState extends State<ProductPage> {
   Future<void> _fetchPage(int pageKey) async {
     try {
       final _listProduct1 = await ProductRepository.obtainListProduct(branchId,categoryId,pageKey, _pageSize);
-      print(pageKey);
       final isLastPage = _listProduct1.length < _pageSize;
       if (isLastPage) {
         _pagingController.appendLastPage(_listProduct1);
@@ -339,6 +338,11 @@ class _ProductPageState extends State<ProductPage> {
         ),
       ),
     );
+  }
+  @override
+  void dispose() {
+    _pagingController.dispose();
+    super.dispose();
   }
 }
 // class loq extends StatefulWidget {
