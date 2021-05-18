@@ -144,5 +144,21 @@ class ImageUploadState extends NavigationStates{
   ImagesUrl _imagesUrl;
   @override
   List<Object> get props => [_imagesUrl];
+}
+class RegisterState extends NavigationStates{
+  User _user;
+
+  RegisterState(this._user);
+  @override
+  List<Object> get props => [_user];
+}
+class RegisterPageState extends NavigationStates{
+  @override
+  List<Object> get props => [];
+
+}
+class LoginPageState extends NavigationStates{
+  @override
+  List<Object> get props => [];
 
 }

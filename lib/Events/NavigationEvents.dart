@@ -3,6 +3,8 @@ import 'package:x_market/Models/ConfirmUser.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'dart:io';
 
+import 'package:x_market/Models/User.dart';
+
 abstract class NavigationEvents extends Equatable {}
 
 class NavigationProductPageEvent extends NavigationEvents {
@@ -110,9 +112,10 @@ class LogoutEvent extends NavigationEvents{
   List<Object> get props =>[];
 }
 class RegisterEvent extends NavigationEvents{
-
+  User _user;
+  RegisterEvent(this._user);
   @override
-  List<Object> get props => [];
+  List<Object> get props => [_user];
 
 }
 class QrEvent extends NavigationEvents{
@@ -127,4 +130,13 @@ class UploadImageEvent extends NavigationEvents{
   File _imagefile;
   @override
   List<Object> get props => [_imagefile];
+}
+class RegisterPageEvent extends NavigationEvents{
+  @override
+  List<Object> get props => [];
+}
+class LoginPageEvent extends NavigationEvents{
+  @override
+  List<Object> get props => [];
+
 }
