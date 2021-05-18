@@ -5,8 +5,8 @@ class ImagesCloudinary {
   String _tags;
   File _fileContents;
 
+  // ImagesCloudinary(this._preset,this._tags,this._fileContents);
   ImagesCloudinary();
-
 
   String get preset => _preset;
 
@@ -29,6 +29,13 @@ class ImagesCloudinary {
   Map toJson()=> {
     "upload_preset":preset,
     "tags": tags,
-    "file":fileContents
+    "file": fileContents
   };
+  ImagesCloudinary.fromJson(Map<String, dynamic> json) {
+    preset = json['branchOfficeId'];
+    tags = json['managerId'];
+    fileContents = json['name'];
+    // status=json['status'];
+    // transaction=json['transaction'];
+  }
 }

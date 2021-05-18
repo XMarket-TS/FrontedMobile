@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:x_market/Models/Branch.dart';
+import 'package:x_market/Models/ImagesUrl.dart';
 import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/Models/CardList.dart';
@@ -138,5 +139,10 @@ class QrState extends NavigationStates{
 class RecetasState extends NavigationStates{
   @override
   List<Object> get props =>[];
+}
+class ImageUploadState extends NavigationStates{
+  ImagesUrl _imagesUrl;
+  @override
+  List<Object> get props => [_imagesUrl];
 
 }

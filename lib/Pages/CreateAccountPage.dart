@@ -2,14 +2,21 @@
 
 import 'dart:io';
 
+import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:x_market/Models/ImagesCloudinary.dart';
 import 'package:x_market/Models/User.dart';
+import 'package:x_market/Repository/ImageRepository.dart';
 
 import '../Colors.dart';
 
 class CreateAccountPage extends StatefulWidget {
+  // ImageRepository _imageRepository;
+  //
+  // CreateAccountPage(this._imageRepository);
+
   @override
   _CreateAccountPageState createState() => _CreateAccountPageState();
 }
@@ -21,7 +28,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
   TextEditingController _gender = TextEditingController();
-  String _imageUrl;
+  ImageRepository _imageRepository=ImageRepository();
+  ImagesCloudinary _imagesCloudinary=ImagesCloudinary();
+  String _imageUrl="";
+  final cloudinary = CloudinaryPublic('fulano', 'ik1apwhk', cache: false);
   User _user=User();
   File _image;
   final picker = ImagePicker();
@@ -37,6 +47,34 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
       // _image = File(pickedFile.path);
       // _image=picture;
     });
+  }
+  Future uploadImage()async{
+    // setState(() {
+    //
+    //   _imagesCloudinary.preset="ik1apwhk";
+    //   _imagesCloudinary.tags="browser-upload";
+    //   _imagesCloudinary.fileContents=_image;
+    // });
+    // print("datos en la funcion");
+    // print(_imagesCloudinary.preset);
+    // print(_imagesCloudinary.tags);
+    // var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    CloudinaryResponse response = await cloudinary.uploadFile(
+      CloudinaryFile.fromFile(_image.path, resourceType: CloudinaryResourceType.Image),
+    );
+    // print(response.secureUrl);
+    // print("subido");
+    // try {
+    //   CloudinaryResponse response = await cloudinary.uploadFile(
+    //     CloudinaryFile.fromFile(_image.path, resourceType: CloudinaryResourceType.Image),
+    //   );
+    //
+    //   print(response.secureUrl);
+    //   print("subido");
+    // } catch (e) {
+    //   print(e.message);
+    //   print(e.request);
+    // }
   }
   @override
   Widget build(BuildContext context) {
@@ -119,7 +157,19 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           borderRadius: BorderRadius.circular(16.0),
                           color: color3),
                       child: FlatButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // setState(() {
+                            _imagesCloudinary.preset="ik1apwhk";
+                            _imagesCloudinary.tags="browser-upload";
+                            _imagesCloudinary.fileContents=_image;
+                          // });
+                          uploadImage();
+                          print("para enviar al repo");
+                          // print(_image);
+                          // print(_imagesCloudinary.fileContents);
+                          // print(imagesCloudinary.preset);
+                          // _imageUrl=await  _imageRepository.uploadImageCloudinary(imagesCloudinary);
+                        },
                         child: Text(
                           "Guardar Imagen",
                           style: TextStyle(

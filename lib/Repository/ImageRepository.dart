@@ -12,12 +12,14 @@ class ImageRepository {
     try {
       String imageUrl=null;
       String cloudName="fulano";
-      imagesCloudinary.preset="ik1apwhk";
-      imagesCloudinary.tags="browser-upload";
+      print("entro al repo image");
+      print(imagesCloudinary.preset);
+      // imagesCloudinary.preset="ik1apwhk";
+      // imagesCloudinary.tags="browser-upload";
       String url = "https://api.cloudinary.com/v1_1/"+cloudName+"/upload";
       // User user=User();
       print("llego al repositorio del imagenCloudinary");
-      print("fusion branches");
+      // print("fusion branches");
       // print(confirmUser.userName);
       // print(confirmUser.password);
       var res = await http.post(url, //ip for virtualized devices
@@ -29,7 +31,9 @@ class ImageRepository {
       // print(jsonEncode(confirmUser.toJsonUp()));
       // print(res.body);
       var imageUrl2 = jsonDecode(res.body);
-      imageUrl=imageUrl2["secure_url"];
+      print(imageUrl2);
+      // imageUrl=imageUrl2["secure_url"];
+      imageUrl="http";
       print("url obtenida de la subida");
       print(imageUrl);
       if (res.statusCode == 200) {

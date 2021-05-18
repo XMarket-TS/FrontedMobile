@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:x_market/Models/ConfirmUser.dart';
 import 'package:x_market/Models/Tarjeta.dart';
+import 'dart:io';
 
 abstract class NavigationEvents extends Equatable {}
 
@@ -121,4 +122,9 @@ class QrEvent extends NavigationEvents{
 class RecetasEvent extends NavigationEvents{
   @override
   List<Object> get props => [];
+}
+class UploadImageEvent extends NavigationEvents{
+  File _imagefile;
+  @override
+  List<Object> get props => [_imagefile];
 }
