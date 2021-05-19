@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Branch.dart';
 import 'package:x_market/Models/ConfirmUser.dart';
+import 'package:x_market/Models/ListProduct.dart';
 import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/Models/CardList.dart';
@@ -182,6 +183,19 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       // event.
       yield NavigationLoadingState();
       yield LoginPageState();
+    }else if (event is QrAditionEvent) {
+      // event.
+      yield NavigationLoadingState();
+      String _hash=event.props[0];
+      Product _product=await _productRepository.obtainbyHash(_hash);
+      ListProduct _listProduct=ListProduct();
+      _listProduct.productId=_product.productId;
+      _listProduct.productName=_product.name;
+      _listProduct.price=_product.price;
+      _listProduct.unit=1;
+      _listProduct.imageUrl=_product.imageUrl;
+      globals.listProductCard.add(_listProduct);
+      yield QrAditionState();
     }else {}
   }
 }

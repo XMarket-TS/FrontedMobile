@@ -106,4 +106,31 @@ class ProductRepository {
       return null;
     }
   }
+
+  Future<Product> obtainbyHash(String hash) async {
+    try {
+      // var _branchId=branchId.toString();
+      print("entro a repo de hash");
+      Product product=Product();
+      String url = directionUrl + "product/qr/hash?hash=" + hash;
+
+      var res = await http.get(url, //ip for virtualized devices
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          });
+      var product2 = jsonDecode(res.body);
+      product = Product.fromJson(product2);
+      if (res.statusCode == 200) {
+        print("se obtuvo producto por hash");
+        print(product.name);
+        return product;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      print(error);
+      return null;
+    }
+  }
+
 }

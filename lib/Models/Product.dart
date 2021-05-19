@@ -22,9 +22,9 @@ class Product {
   // Double _discount;
   // ,this._unit,this._branchId,
 
-  Product(this._productId, this._name, this._price, this._percentage,
-      this._description, this._category, this._imageUrl, this._unit);
-
+  // Product(this._productId, this._name, this._price, this._percentage,
+  //     this._description, this._category, this._imageUrl, this._unit);
+  Product();
   // this._percentage,
   // , this._imageUrl
   // ,this._category

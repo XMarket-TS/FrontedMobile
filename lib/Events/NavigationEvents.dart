@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:x_market/Models/ConfirmUser.dart';
+import 'package:x_market/Models/ListProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'dart:io';
 
@@ -138,5 +139,14 @@ class RegisterPageEvent extends NavigationEvents{
 class LoginPageEvent extends NavigationEvents{
   @override
   List<Object> get props => [];
+
+}
+class QrAditionEvent extends NavigationEvents{
+  String  _hash;
+
+  QrAditionEvent(this._hash);
+
+  @override
+  List<Object> get props => [_hash];
 
 }

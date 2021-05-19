@@ -36,207 +36,207 @@ class _SpecificProductPageState extends State<SpecificProductPage> {
     final Size size = MediaQuery.of(context).size;
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(
-        toolbarHeight: size.height * 0.08,
-        backgroundColor: color2,
-        elevation: 5,
-        title: Text(
-          "X-Market",
-          style: TextStyle(fontSize: size.height * 0.045),
-        ),
-        centerTitle: true,
-      ),
-      // body: Container(
-      //   child: Text("producto especifico",style: TextStyle(color: Colors.white),),
-      // ),
-      body: BlocBuilder<NavigationBloc, NavigationStates>(
-        builder: (context, state) {
-          if (state is SpecificProductPageState) {
-            SpecificProduct _product = state.props[0];
-            _units.text = "";
-            // _units.text=_product.unit.toString();
-            // print("Prueba ahhh" + _product.productId.toString());
-            // List<Offer> _listOffer=state.props[1];
-            return SingleChildScrollView(
-              child: Container(
-                height: size.height,
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      height: size.height * 0.28,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 10),
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: _product.imageUrl.length,
-                          itemBuilder: (context, index) {
-                            return Card(
-                              color: color6.withOpacity(0.8),
-                              elevation: 10.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              child: Image.network(_product.imageUrl[index],
-                                  fit: BoxFit.fill),
-                            );
-                          }),
-                    ),
-                    Container(
-                      height: size.height * 0.49,
-                      padding: const EdgeInsets.only(right: 8, left: 8),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20)),
-                        // borderRadius: BorderRadius.circular(20),
-                        color: color1,
-                      ),
-                      // color: color1,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: size.height * 0.025,
-                            ),
-                            Text(
-                              _product.name,
-                              style: TextStyle(
-                                  color: color2, fontSize: size.height * 0.03),
-                            ),
-                            SizedBox(
-                              height: size.height * 0.025,
-                            ),
-                            Text(
-                              _product.description,
-                              style: TextStyle(
-                                  color: color5, fontSize: size.height * 0.02),
-                            ),
-                            SizedBox(
-                              height: size.height * 0.025,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          appBar: AppBar(
+            toolbarHeight: size.height * 0.08,
+            backgroundColor: color2,
+            elevation: 5,
+            title: Text(
+              "X-Market",
+              style: TextStyle(fontSize: size.height * 0.045),
+            ),
+            centerTitle: true,
+          ),
+          // body: Container(
+          //   child: Text("producto especifico",style: TextStyle(color: Colors.white),),
+          // ),
+          body: BlocBuilder<NavigationBloc, NavigationStates>(
+            builder: (context, state) {
+              if (state is SpecificProductPageState) {
+                SpecificProduct _product = state.props[0];
+                _units.text = "";
+                // _units.text=_product.unit.toString();
+                // print("Prueba ahhh" + _product.productId.toString());
+                // List<Offer> _listOffer=state.props[1];
+                return SingleChildScrollView(
+                  child: Container(
+                    height: size.height,
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          height: size.height * 0.28,
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: _product.imageUrl.length,
+                              itemBuilder: (context, index) {
+                                return Card(
+                                  color: color6.withOpacity(0.8),
+                                  elevation: 10.0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: Image.network(_product.imageUrl[index],
+                                      fit: BoxFit.fill),
+                                );
+                              }),
+                        ),
+                        Container(
+                          height: size.height * 0.49,
+                          padding: const EdgeInsets.only(right: 8, left: 8),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20)),
+                            // borderRadius: BorderRadius.circular(20),
+                            color: color1,
+                          ),
+                          // color: color1,
+                          child: SingleChildScrollView(
+                            child: Column(
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: color3,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 8, bottom: 8, right: 10, left: 10),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "Disponible: ",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: size.height * 0.024),
-                                        ),
-                                        Text(
-                                          _product.unit.toString(),
-                                          style: TextStyle(
-                                              color: color5,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: size.height * 0.024),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                SizedBox(
+                                  height: size.height * 0.025,
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: color3,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 8, bottom: 8, right: 10, left: 10),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "Precio: ",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: size.height * 0.024),
-                                        ),
-                                        Text(
-                                          "${_product.price.toString()} Bs",
-                                          style: TextStyle(
-                                              color: color5,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: size.height * 0.024),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                Text(
+                                  _product.name,
+                                  style: TextStyle(
+                                      color: color2, fontSize: size.height * 0.03),
                                 ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: size.height * 0.025,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    // print("Alert producto");
-                                    // return _chooseProduct();
-                                    return showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return chooseProduct(size, _product,
-                                              _units, _addProduct);
-                                        });
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: color4,
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 8,
-                                          bottom: 8,
-                                          right: 20,
-                                          left: 20),
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            "Agregar",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: size.height * 0.024),
-                                          ),
-                                          Icon(
-                                            Icons.add_shopping_cart,
-                                            color: Colors.white,
-                                            size: size.height * 0.028,
-                                          ),
-                                        ],
+                                SizedBox(
+                                  height: size.height * 0.025,
+                                ),
+                                Text(
+                                  _product.description,
+                                  style: TextStyle(
+                                      color: color5, fontSize: size.height * 0.02),
+                                ),
+                                SizedBox(
+                                  height: size.height * 0.025,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: color3,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 8, bottom: 8, right: 10, left: 10),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              "Disponible: ",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: size.height * 0.024),
+                                            ),
+                                            Text(
+                                              _product.unit.toString(),
+                                              style: TextStyle(
+                                                  color: color5,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: size.height * 0.024),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: color3,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 8, bottom: 8, right: 10, left: 10),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              "Precio: ",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: size.height * 0.024),
+                                            ),
+                                            Text(
+                                              "${_product.price.toString()} Bs",
+                                              style: TextStyle(
+                                                  color: color5,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: size.height * 0.024),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
+                                SizedBox(
+                                  height: size.height * 0.025,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        // print("Alert producto");
+                                        // return _chooseProduct();
+                                        return showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return chooseProduct(size, _product,
+                                                  _units, _addProduct);
+                                            });
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          color: color4,
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 8,
+                                              bottom: 8,
+                                              right: 20,
+                                              left: 20),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Agregar",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: size.height * 0.024),
+                                              ),
+                                              Icon(
+                                                Icons.add_shopping_cart,
+                                                color: Colors.white,
+                                                size: size.height * 0.028,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                // Text("dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf vdadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf vvdadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf vvvdadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf ")
                               ],
                             ),
-                            // Text("dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf vdadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf vvdadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf vvvdadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf dadslajflsjdf;jaldfjda;ljfldasjfl sldfj l lsjdfl jf jsldj fl jsldj lfsjd ljsf ")
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-            );
-          } else {
-            return Container(); //pantalla de error
-          }
-        },
-      ),
+                  ),
+                );
+              } else {
+                return Container(); //pantalla de error
+              }
+            },
+          ),
     ));
   }
 }

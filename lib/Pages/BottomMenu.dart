@@ -87,8 +87,7 @@ class _BottomMenuState extends State<BottomMenu> {
                   .add(NavigationBranchPageEvent());
             } else if (index == 2) {
               // print(context);
-              BlocProvider.of<NavigationBloc>(context)
-                  .add(NavigationCartPageEvent());
+              BlocProvider.of<NavigationBloc>(context).add(NavigationCartPageEvent());
               // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent());
             } else {
               BlocProvider.of<NavigationBloc>(context).add(ProfilePageEvent(1));
@@ -151,16 +150,10 @@ class _BottomMenuState extends State<BottomMenu> {
           } else if (state is RecetasState) {
             // List<Branch> _listBranches = state.props[0];
             return RecetasPage();
-          }
-          // else if (state is RegisterPageState) {
-          //   // List<Branch> _listBranches = state.props[0];
-          //   return CreateAccountPage();
-          // }
-          // else if (state is LoginPageState) {
-          //   // List<Branch> _listBranches = state.props[0];
-          //   return LoginPage();
-          // }
-          else {
+          } else if (state is QrAditionState) {
+            // List<Branch> _listBranches = state.props[0];
+            return CartPage();
+          }else {
             return Container();
           }
         }));
