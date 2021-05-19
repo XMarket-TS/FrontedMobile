@@ -14,6 +14,7 @@ import 'Events/NavigationEvents.dart';
 import 'Repository/BranchRepository.dart';
 import 'Repository/OffersRepository.dart';
 import 'Repository/ProductRepository.dart';
+import 'Repository/RecipesRepository.dart';
 import 'Globals.dart' as globals;
 import 'States/NavigationStates.dart';
 
@@ -39,7 +40,8 @@ class MyApp extends StatelessWidget {
               CategoriesRepository(),
               UserRepository(),
               CardRepository(),
-              ImageRepository())
+              ImageRepository(),
+              RecipesRepository())
             ..add(NavigationBranchPageEvent()),
           // child: BottomMenu()),
           child: BlocBuilder<NavigationBloc, NavigationStates>(
