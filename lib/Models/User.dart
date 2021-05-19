@@ -15,13 +15,11 @@ class User {
   //      this._imageUrl,this._email, this._cellphone);
   User();
 
-
   String get password => _password;
 
   set password(String value) {
     _password = value;
   }
-
 
   String get gender => _gender;
 
@@ -46,7 +44,6 @@ class User {
   set userName(String value) {
     _userName = value;
   }
-
 
   String get surName => _surName;
 
@@ -78,7 +75,6 @@ class User {
     _cellphone = value;
   }
 
-
   int get status => _status;
 
   set status(int value) {
@@ -89,21 +85,22 @@ class User {
     userId = json['userId'];
     personUserId = json['personUserId'];
     name = json['name'];
-    surName=json['surname'];
+    surName = json['surname'];
     userName = json['username'];
-    status=json['status'];
+    status = json['status'];
     imageUrl = json['photo'];
     email = json['email'];
     cellphone = json['cellphone'];
   }
+
   Map toJson() => {
-    "name" :name,
-    "surname":surName,
-    "username":userName,
-    "gender":gender,
-    "userPhoto" : imageUrl,
-    "email":email,
-    "password": password,
-    "cellphone": cellphone
-  };
+        "name": name,
+        "surname": surName,
+        "username": userName,
+        "gender": gender,
+        "userPhoto": imageUrl,
+        "email": email,
+        "password": password,
+        "cellphone": cellphone
+      };
 }

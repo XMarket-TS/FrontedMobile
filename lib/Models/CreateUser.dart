@@ -1,4 +1,4 @@
-class CreateUser{
+class CreateUser {
   String _name;
   String _surname;
   String _username;
@@ -50,13 +50,14 @@ class CreateUser{
   set name(String value) {
     _name = value;
   }
+
   Map toJson() => {
-    "name" :name,
-    "surname":surname,
-    "username":username,
-    "gender":gender,
-    "userPhoto" : imageUrl,
-    "email":email,
-    "password" :password
-  };
+        "name": name,
+        "surname": surname,
+        "username": username,
+        "gender": gender,
+        "userPhoto": imageUrl,
+        "email": email,
+        "password": password
+      };
 }

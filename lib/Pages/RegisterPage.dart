@@ -15,7 +15,7 @@ class CreatePage extends StatelessWidget {
   TextEditingController _password = TextEditingController();
   TextEditingController _gender = TextEditingController();
   String _imageUrl;
-  User _user=User();
+  User _user = User();
   File _image;
   final picker = ImagePicker();
 
@@ -251,7 +251,8 @@ class CreatePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                    ),Padding(
+                    ),
+                    Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: Container(
                         height: size.height * 0.075,

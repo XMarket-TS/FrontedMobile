@@ -33,15 +33,16 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   TextEditingController _password = TextEditingController();
   TextEditingController _gender = TextEditingController();
   TextEditingController _cellphone = TextEditingController();
-  ImageRepository _imageRepository=ImageRepository();
-  ImagesCloudinary _imagesCloudinary=ImagesCloudinary();
-  String _imageUrl="";
+  ImageRepository _imageRepository = ImageRepository();
+  ImagesCloudinary _imagesCloudinary = ImagesCloudinary();
+  String _imageUrl = "";
   final cloudinary = CloudinaryPublic('fulano', 'ik1apwhk', cache: false);
-  User _user=User();
+  User _user = User();
   File _image;
   final picker = ImagePicker();
   CloudinaryResponse response;
-  Future getImage() async  {
+
+  Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.camera);
     // final picture= await ImagePicker.pickImage(source: ImageSource.camera);
     setState(() {
@@ -54,7 +55,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
       // _image=picture;
     });
   }
-  Future uploadImage()async{
+
+  Future uploadImage() async {
     // setState(() {
     //
     //   _imagesCloudinary.preset="ik1apwhk";
@@ -66,7 +68,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
     // print(_imagesCloudinary.tags);
     // var image = await ImagePicker.pickImage(source: ImageSource.camera);
     response = await cloudinary.uploadFile(
-      CloudinaryFile.fromFile(_image.path, resourceType: CloudinaryResourceType.Image),
+      CloudinaryFile.fromFile(_image.path,
+          resourceType: CloudinaryResourceType.Image),
     );
     print(response.secureUrl);
     print("subido");
@@ -82,6 +85,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
     //   print(e.request);
     // }
   }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -104,9 +108,9 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
             ),
           ),
         ),
-        BlocBuilder<NavigationBloc,NavigationStates>(
-          builder: (context,state){
-            if(state is RegisterPageState){
+        BlocBuilder<NavigationBloc, NavigationStates>(
+          builder: (context, state) {
+            if (state is RegisterPageState) {
               return Scaffold(
                 backgroundColor: Colors.transparent,
                 body: SingleChildScrollView(
@@ -120,20 +124,26 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           Center(
                             child: CircleAvatar(
                               radius: size.width * 0.17,
-                              backgroundColor: Colors.grey[400].withOpacity(0.5),
+                              backgroundColor:
+                                  Colors.grey[400].withOpacity(0.5),
                               // backgroundColor: color7.withOpacity(0.9),
-                              child: _image!=null?Image.file(_image,fit: BoxFit.fill,):Icon(
-                                Icons.perm_identity_rounded,
-                                color: color5,
-                                size: size.width * 0.2,
-                              ),
+                              child: _image != null
+                                  ? Image.file(
+                                      _image,
+                                      fit: BoxFit.fill,
+                                    )
+                                  : Icon(
+                                      Icons.perm_identity_rounded,
+                                      color: color5,
+                                      size: size.width * 0.2,
+                                    ),
                             ),
                           ),
                           Positioned(
                             top: size.height * 0.103,
                             left: size.width * 0.59,
                             child: GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 // print("ELEGIR IMAGEN");
                                 getImage();
                               },
@@ -143,7 +153,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                 decoration: BoxDecoration(
                                     color: color2,
                                     shape: BoxShape.circle,
-                                    border: Border.all(color: color5, width: 2)),
+                                    border:
+                                        Border.all(color: color5, width: 2)),
                                 child: Icon(
                                   Icons.add,
                                   color: color5,
@@ -168,9 +179,9 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                             child: FlatButton(
                               onPressed: () {
                                 // setState(() {
-                                _imagesCloudinary.preset="ik1apwhk";
-                                _imagesCloudinary.tags="browser-upload";
-                                _imagesCloudinary.fileContents=_image;
+                                _imagesCloudinary.preset = "ik1apwhk";
+                                _imagesCloudinary.tags = "browser-upload";
+                                _imagesCloudinary.fileContents = _image;
                                 // });
                                 uploadImage();
                                 print("para enviar al repo");
@@ -213,7 +224,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                     ),
                                     hintText: "Nombre",
                                     hintStyle: TextStyle(
-                                        fontSize: size.height * 0.025, height: 1.5),
+                                        fontSize: size.height * 0.025,
+                                        height: 1.5),
                                   ),
                                   keyboardType: TextInputType.emailAddress,
                                   textInputAction: TextInputAction.next,
@@ -246,7 +258,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                     ),
                                     hintText: "Apellido",
                                     hintStyle: TextStyle(
-                                        fontSize: size.height * 0.025, height: 1.5),
+                                        fontSize: size.height * 0.025,
+                                        height: 1.5),
                                   ),
                                   keyboardType: TextInputType.emailAddress,
                                   textInputAction: TextInputAction.next,
@@ -279,7 +292,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                     ),
                                     hintText: "Nombre de Usuario",
                                     hintStyle: TextStyle(
-                                        fontSize: size.height * 0.025, height: 1.5),
+                                        fontSize: size.height * 0.025,
+                                        height: 1.5),
                                   ),
                                   keyboardType: TextInputType.emailAddress,
                                   textInputAction: TextInputAction.next,
@@ -312,7 +326,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                     ),
                                     hintText: "Género (Male/Female)",
                                     hintStyle: TextStyle(
-                                        fontSize: size.height * 0.025, height: 1.5),
+                                        fontSize: size.height * 0.025,
+                                        height: 1.5),
                                   ),
                                   keyboardType: TextInputType.emailAddress,
                                   textInputAction: TextInputAction.next,
@@ -433,15 +448,16 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                     color: color3),
                                 child: FlatButton(
                                   onPressed: () {
-                                    _user.name=_firstName.text;
-                                    _user.surName=_lastName.text;
-                                    _user.userName=_username.text;
-                                    _user.gender=_gender.text;
-                                    _user.imageUrl=response.secureUrl;
-                                    _user.email=_email.text;
-                                    _user.password=_password.text;
-                                    _user.cellphone=_cellphone.text;
-                                    BlocProvider.of<NavigationBloc>(context).add(RegisterEvent(_user));
+                                    _user.name = _firstName.text;
+                                    _user.surName = _lastName.text;
+                                    _user.userName = _username.text;
+                                    _user.gender = _gender.text;
+                                    _user.imageUrl = response.secureUrl;
+                                    _user.email = _email.text;
+                                    _user.password = _password.text;
+                                    _user.cellphone = _cellphone.text;
+                                    BlocProvider.of<NavigationBloc>(context)
+                                        .add(RegisterEvent(_user));
                                   },
                                   child: Text(
                                     "Crear",
@@ -463,7 +479,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                     color: color2),
                                 child: FlatButton(
                                   onPressed: () {
-                                    BlocProvider.of<NavigationBloc>(context).add(LoginPageEvent());
+                                    BlocProvider.of<NavigationBloc>(context)
+                                        .add(LoginPageEvent());
                                   },
                                   child: Text(
                                     "Cancelar",
@@ -485,13 +502,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   ),
                 ),
               );
-            }else{
+            } else {
               return Container();
             }
           },
         ),
-
-
       ],
     );
   }

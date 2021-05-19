@@ -55,10 +55,11 @@ class _ProfilePageState extends State<ProfilePage> {
                           padding: const EdgeInsets.only(left: 20.0, top: 10),
                           child: CircleAvatar(
                             radius: size.height * 0.075,
-                            backgroundImage:
-                                _user!=null?
+                            backgroundImage: _user != null
+                                ?
                                 // AssetImage('assets/images/burger.png'),
-                                NetworkImage(_user.imageUrl):AssetImage('assets/images/burger.png'),
+                                NetworkImage(_user.imageUrl)
+                                : AssetImage('assets/images/burger.png'),
                           ),
                         ),
                         Padding(
@@ -66,16 +67,18 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(_user!=null?
-                                '${_user.name}':'User',
+                              Text(
+                                _user != null ? '${_user.name}' : 'User',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: size.height * 0.035,
                                   color: color4,
                                 ),
                               ),
-                              Text(_user!=null?
-                                '${_user.email}':'example@gmail.com',
+                              Text(
+                                _user != null
+                                    ? '${_user.email}'
+                                    : 'example@gmail.com',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: size.height * 0.017,
@@ -105,7 +108,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: Padding(
                               padding: const EdgeInsets.only(
                                   top: 8, bottom: 8, right: 20, left: 20),
-                                  // top: 8, bottom: 8, right: 20, left: 20),
+                              // top: 8, bottom: 8, right: 20, left: 20),
                               child: Text(
                                 "Editar Perfil",
                                 style: TextStyle(
@@ -119,7 +122,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           onTap: () {
                             // print("la tarjeta es del id ");
                             // print(_user.userId);
-                            BlocProvider.of<NavigationBloc>(context).add(CardPageEvent(_user.userId));
+                            BlocProvider.of<NavigationBloc>(context)
+                                .add(CardPageEvent(_user.userId));
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -129,7 +133,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: Padding(
                               padding: const EdgeInsets.only(
                                   top: 8, bottom: 8, right: 10, left: 10),
-                                  // top: 8, bottom: 8, right: 20, left: 20),
+                              // top: 8, bottom: 8, right: 20, left: 20),
                               child: Text(
                                 "Editar Tarjetas",
                                 style: TextStyle(
@@ -141,7 +145,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            BlocProvider.of<NavigationBloc>(context).add(LogoutEvent());
+                            BlocProvider.of<NavigationBloc>(context)
+                                .add(LogoutEvent());
                           },
                           child: Container(
                             decoration: BoxDecoration(

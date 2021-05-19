@@ -3,13 +3,15 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:x_market/Components/PopupMenuComponent.dart';
 
 import '../Colors.dart';
+
 class QrPage extends StatefulWidget {
   @override
   _QrPageState createState() => _QrPageState();
 }
 
 class _QrPageState extends State<QrPage> {
-  String qrCode='unknown';
+  String qrCode = 'unknown';
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -25,7 +27,8 @@ class _QrPageState extends State<QrPage> {
         ),
         centerTitle: true,
         actions: [
-          Padding(padding: EdgeInsets.only(right: 10.0),
+          Padding(
+            padding: EdgeInsets.only(right: 10.0),
             child: PopupMenuComponent(),
           )
         ],
@@ -39,12 +42,18 @@ class _QrPageState extends State<QrPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: size.height*0.1,
-                  width: size.width*0.8,
+                  height: size.height * 0.1,
+                  width: size.width * 0.8,
                   color: color2,
-                  child: Text(qrCode,style: TextStyle(color: color3,fontSize: size.height*0.08),),
+                  child: Text(
+                    qrCode,
+                    style:
+                        TextStyle(color: color3, fontSize: size.height * 0.08),
+                  ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 GestureDetector(
                   onTap: () {
                     print("entro a escanear");
@@ -62,8 +71,7 @@ class _QrPageState extends State<QrPage> {
                       child: Text(
                         "Scanear Qr",
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: size.height * 0.024),
+                            color: Colors.white, fontSize: size.height * 0.024),
                       ),
                     ),
                   ),
@@ -76,16 +84,17 @@ class _QrPageState extends State<QrPage> {
     );
   }
 
-  Future<void> scanQrCode()async {
+  Future<void> scanQrCode() async {
     String qrCode;
-    try{
-      qrCode= await FlutterBarcodeScanner.scanBarcode('#ff6666', 'Cancelar', true, ScanMode.QR);
-      if(!mounted)return;
+    try {
+      qrCode = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancelar', true, ScanMode.QR);
+      if (!mounted) return;
       setState(() {
-        this.qrCode=qrCode;
+        this.qrCode = qrCode;
       });
-    }catch (error) {
-      qrCode='Error al tener la version de la plataforma';
+    } catch (error) {
+      qrCode = 'Error al tener la version de la plataforma';
     }
   }
 }

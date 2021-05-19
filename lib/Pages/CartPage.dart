@@ -27,7 +27,8 @@ class _CartPageState extends State<CartPage> {
         ),
         centerTitle: true,
         actions: [
-          Padding(padding: EdgeInsets.only(right: 10.0),
+          Padding(
+            padding: EdgeInsets.only(right: 10.0),
             child: PopupMenuComponent(),
           )
         ],

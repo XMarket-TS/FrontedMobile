@@ -26,11 +26,8 @@ class ImagesCloudinary {
     _fileContents = value;
   }
 
-  Map toJson()=> {
-    "upload_preset":preset,
-    "tags": tags,
-    "file": fileContents
-  };
+  Map toJson() => {"upload_preset": preset, "tags": tags, "file": fileContents};
+
   ImagesCloudinary.fromJson(Map<String, dynamic> json) {
     preset = json['branchOfficeId'];
     tags = json['managerId'];
