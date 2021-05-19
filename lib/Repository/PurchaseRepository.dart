@@ -2,15 +2,17 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:x_market/Models/Product.dart';
+import 'package:x_market/Models/PurchaseData.dart';
 import 'package:x_market/Models/PurchaseProduct.dart';
 import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Repository/url.dart';
 
 class PurchaseRepository {
 
-  Future<int> makePurchase(PurchaseProduct purchaseProduct,int userId) async {
+  Future<int> makePurchase(PurchaseData purchaseData,int userId) async {
     try {
       print("entro a repo de purchase");
+      print(purchaseData.city);
       int result=0;
       // Product product=Product();
       String url = directionUrl + "purchase/user/" + userId.toString();
@@ -19,8 +21,10 @@ class PurchaseRepository {
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
-          body: jsonEncode(purchaseProduct.toJson()));
+          body: jsonEncode(purchaseData.toJson()));
       var purchase2 = jsonDecode(res.body);
+      print("devolucion");
+      print(res.body);
       if(purchase2!=null){
         result=1;
       }

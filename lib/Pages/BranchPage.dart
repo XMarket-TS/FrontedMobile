@@ -103,9 +103,7 @@ class _BranchPageState extends State<BranchPage> {
                             return GestureDetector(
                               onTap: () {
                                 // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent());
-                                BlocProvider.of<NavigationBloc>(context).add(
-                                    NavigationCategoriesPageEvent(
-                                        _listBranches[index].branchId));
+                                BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
                               },
                               child: Card(
                                 color: color1,

@@ -177,3 +177,8 @@ class QrAditionState extends NavigationStates{
   List<Object> get props => [];
 
 }
+class PurchaseState extends NavigationStates{
+  @override
+  List<Object> get props => [];
+
+}

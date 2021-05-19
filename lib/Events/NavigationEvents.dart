@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:x_market/Models/ConfirmUser.dart';
 import 'package:x_market/Models/ListProduct.dart';
+import 'package:x_market/Models/PurchaseData.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'dart:io';
 
@@ -148,5 +149,14 @@ class QrAditionEvent extends NavigationEvents{
 
   @override
   List<Object> get props => [_hash];
+
+}
+class PurchaseEvent extends NavigationEvents{
+  PurchaseData _purchaseData;
+
+  PurchaseEvent(this._purchaseData);
+
+  @override
+  List<Object> get props => [_purchaseData];
 
 }

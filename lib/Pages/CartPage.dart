@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:x_market/Bloc/NavigationBloc.dart';
 import 'package:x_market/Components/PopupMenuComponent.dart';
+import 'package:x_market/Events/NavigationEvents.dart';
+import 'package:x_market/Models/ListProduct.dart';
+import 'package:x_market/Models/PurchaseData.dart';
+import 'package:x_market/Models/PurchaseProduct.dart';
+import 'package:x_market/Repository/MyBehavior.dart';
+import 'package:x_market/States/NavigationStates.dart';
 import '../Globals.dart' as globals;
 import 'package:auto_size_text/auto_size_text.dart';
 import '../Colors.dart';
@@ -11,7 +20,10 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   double costo = 0;
-
+  PurchaseData _purchaseData=PurchaseData();
+  TextEditingController _billingAddres=TextEditingController();
+  TextEditingController _city=TextEditingController();
+  ListProduct _addProduct = ListProduct();
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -33,9 +45,12 @@ class _CartPageState extends State<CartPage> {
           )
         ],
       ),
-      body: SingleChildScrollView(
-          child: globals.listProductCard.length > 0
-              ? Container(
+      body: BlocBuilder<NavigationBloc,NavigationStates>(
+        builder: (context,state){
+          if(state is NavigationCartPageState || state is QrAditionState){
+            return SingleChildScrollView(
+                child: globals.listProductCard.length > 0
+                    ? Container(
                   height: size.height,
                   color: color1,
                   // padding: const EdgeInsets.only(right: 8, left: 8),
@@ -76,7 +91,7 @@ class _CartPageState extends State<CartPage> {
                                     Container(
                                       child: Column(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        MainAxisAlignment.center,
                                         children: [
                                           SizedBox(
                                             height: size.width * 0.07,
@@ -101,7 +116,7 @@ class _CartPageState extends State<CartPage> {
                                                 style: TextStyle(
                                                     color: color5,
                                                     fontSize:
-                                                        size.width * 0.04),
+                                                    size.width * 0.04),
                                               ),
                                               Text(
                                                 globals
@@ -110,7 +125,7 @@ class _CartPageState extends State<CartPage> {
                                                 style: TextStyle(
                                                     color: color4,
                                                     fontSize:
-                                                        size.width * 0.04),
+                                                    size.width * 0.04),
                                               ),
                                             ],
                                           ),
@@ -173,13 +188,13 @@ class _CartPageState extends State<CartPage> {
                                           onTap: () {
                                             setState(() {
                                               if (globals.listProductCard[index]
-                                                      .unit >
+                                                  .unit >
                                                   0) {
                                                 globals.listProductCard[index]
                                                     .unit--;
                                               } else if (globals
-                                                      .listProductCard[index]
-                                                      .unit ==
+                                                  .listProductCard[index]
+                                                  .unit ==
                                                   0) {
                                                 globals.listProductCard
                                                     .removeAt(index);
@@ -238,14 +253,24 @@ class _CartPageState extends State<CartPage> {
                                       color: Colors.white,
                                       fontSize: size.width * 0.05),
                                 ),
-                                onPressed: () {}),
+                                onPressed: () {
+                                  return showDialog(
+                                      context: context,
+                                      builder: (_) {
+                                        return BlocProvider.value(value: BlocProvider.of<NavigationBloc>(context),
+                                          child: buyProduct(size, _purchaseData,
+                                              _billingAddres,_city, _addProduct,costoTotal(costo)),
+                                        );
+                                      }
+                                  );
+                                }),
                           ],
                         ),
                       ),
                     ],
                   ),
                 )
-              : Container(
+                    : Container(
                   height: size.height - size.height * 0.08,
                   width: size.width,
                   color: color1,
@@ -258,7 +283,10 @@ class _CartPageState extends State<CartPage> {
                       ),
                     ),
                   ),
-                )),
+                ));
+          }else{return Container();}
+        },
+      )
     );
   }
 }
@@ -270,4 +298,152 @@ double costoTotal(double costo) {
         (globals.listProductCard[i].unit * globals.listProductCard[i].price);
   }
   return costo;
+}
+
+class buyProduct extends StatefulWidget {
+  Size size;
+  PurchaseData _product;
+  TextEditingController _billingAddress;
+  TextEditingController  _city;
+  ListProduct _addProduct;
+  double _total;
+
+  buyProduct(this.size, this._product, this._billingAddress, this._city,this._addProduct,this._total);
+
+  @override
+  _buyProductState createState() => _buyProductState(
+      this.size, this._product, this._billingAddress, this._city,this._addProduct,this._total);
+}
+
+class _buyProductState extends State<buyProduct> {
+  Size size;
+  PurchaseData _product;
+  TextEditingController _billingAddress;
+  TextEditingController  _city;
+  ListProduct _addProduct;
+  double _total;
+
+  _buyProductState(this.size, this._product, this._billingAddress, this._city,this._addProduct,this._total);
+  PurchaseProduct _purchaseProduct=PurchaseProduct();
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      titlePadding: EdgeInsets.all(0),
+      actionsPadding: EdgeInsets.only(top: 0),
+      contentPadding: EdgeInsets.only(top: 8, left: 8, right: 8),
+      title: Container(
+        width: size.width * 0.3,
+        height: size.height * 0.3,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+            image: DecorationImage(
+                // image: NetworkImage(_product.productPurchases[0].), fit: BoxFit.cover)),
+                image: AssetImage("assets/images/loginImage2.jpg"),fit: BoxFit.cover)),
+      ),
+      backgroundColor: color1,
+      content: Container(
+          width: size.width,
+          height: size.height * 0.2,
+          child: ScrollConfiguration(
+            behavior: MyBehavior(),
+            child: ListView(
+              children: [
+                SizedBox(
+                  height: size.height * 0.025,
+                ),
+                Text(
+                  "Ingrese la Ciudad:",
+                  style: TextStyle(
+                      color: color5, fontSize: 18, fontWeight: FontWeight.w500),
+                ),
+                Container(
+                  color: color1,
+                  child: TextField(
+                    controller: _city,
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(size.height * 0.01),
+                    ),
+                    style: TextStyle(color: color5),
+                    cursorColor: color2,
+                  ),
+                ),
+                SizedBox(
+                  height: size.height * 0.025,
+                ),
+                Text(
+                  "Ingrese la Calle:",
+                  style: TextStyle(
+                      color: color5, fontSize: 18, fontWeight: FontWeight.w500),
+                ),
+                Container(
+                  color: color1,
+                  child: TextField(
+                    controller: _billingAddress,
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(size.height * 0.01),
+                    ),
+                    style: TextStyle(color: color5),
+                    cursorColor: color2,
+                  ),
+                ),
+                SizedBox(
+                  height: size.height * 0.025,
+                ),
+                Text(
+                  "Total:",
+                  style: TextStyle(
+                      color: color5, fontSize: 18, fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  _total.toString(),
+                  style: TextStyle(
+                      color: color5, fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+                // SizedBox(height: 10,),
+                // Text(_news.source,style: TextStyle(color: color5),),
+              ],
+            ),
+          )),
+      actions: <Widget>[
+        TextButton(
+          child: Text(
+            'Comprar',
+            style: TextStyle(color: color4),
+          ),
+          onPressed: () {
+            // print(_product.productId);
+            _product.productPurchases=List();
+            setState(() {
+              for (int i = 0; i < globals.listProductCard.length; i++) {
+                _purchaseProduct.productId=globals.listProductCard[i].productId;
+                _purchaseProduct.price=globals.listProductCard[i].price;
+                _purchaseProduct.unit=globals.listProductCard[i].unit;
+                _product.productPurchases.add(_purchaseProduct);
+              }
+              _product.billingAddress=_billingAddress.text;
+              _product.city=_city.text;
+              _product.cardId=1;
+
+              // print("prueba de agregar un producto al carro");
+              // print(globals.listProductCard.length);
+              BlocProvider.of<NavigationBloc>(context).add(PurchaseEvent(_product));
+              Navigator.pop(context);
+            });
+          },
+        ),
+        TextButton(
+          child: Text(
+            'Cancelar',
+            style: TextStyle(color: color2),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
+  }
 }

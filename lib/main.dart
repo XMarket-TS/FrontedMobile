@@ -7,6 +7,7 @@ import 'package:x_market/Pages/LoginPage.dart';
 import 'package:x_market/Repository/CardRepository.dart';
 import 'package:x_market/Repository/CategoriesRepository.dart';
 import 'package:x_market/Repository/ImageRepository.dart';
+import 'package:x_market/Repository/PurchaseRepository.dart';
 import 'package:x_market/Repository/UserRepository.dart';
 
 import 'Bloc/NavigationBloc.dart';
@@ -41,7 +42,8 @@ class MyApp extends StatelessWidget {
               UserRepository(),
               CardRepository(),
               ImageRepository(),
-              RecipesRepository())
+              RecipesRepository(),
+              PurchaseRepository())
             ..add(NavigationBranchPageEvent()),
           // child: BottomMenu()),
           child: BlocBuilder<NavigationBloc, NavigationStates>(

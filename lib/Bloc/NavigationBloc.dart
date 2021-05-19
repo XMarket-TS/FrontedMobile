@@ -4,6 +4,7 @@ import 'package:x_market/Events/NavigationEvents.dart';
 import 'package:x_market/Models/Branch.dart';
 import 'package:x_market/Models/ConfirmUser.dart';
 import 'package:x_market/Models/ListProduct.dart';
+import 'package:x_market/Models/PurchaseData.dart';
 import 'package:x_market/Models/SpecificProduct.dart';
 import 'package:x_market/Models/Tarjeta.dart';
 import 'package:x_market/Models/CardList.dart';
@@ -17,6 +18,7 @@ import 'package:x_market/Repository/CategoriesRepository.dart';
 import 'package:x_market/Repository/ImageRepository.dart';
 import 'package:x_market/Repository/OffersRepository.dart';
 import 'package:x_market/Repository/ProductRepository.dart';
+import 'package:x_market/Repository/PurchaseRepository.dart';
 import 'package:x_market/Repository/RecipesRepository.dart';
 import 'package:x_market/Repository/UserRepository.dart';
 import 'package:x_market/States/NavigationStates.dart';
@@ -32,6 +34,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   CardRepository _cardRepository;
   ImageRepository _imageRepository;
   RecipesRepository _recipesRepository;
+  PurchaseRepository _purchaseRepository;
   NavigationBloc(
       this._productRepository,
       this._offersRepository,
@@ -40,7 +43,8 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       this._userRepository,
       this._cardRepository,
       this._imageRepository,
-      this._recipesRepository);
+      this._recipesRepository,
+      this._purchaseRepository);
 
   @override
   NavigationStates get initialState => NavigationInitialState();
@@ -86,6 +90,8 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       yield NavigationLoadingState();
       int _userId = event.props[0];
       List<CardList> _cardList = await _cardRepository.obtainCardList(_userId);
+      SharedPreferences cardId=await SharedPreferences.getInstance();
+      await cardId.setInt('cardId', _cardList[0].cardId);
       yield CardPageState(_cardList);
     } else if (event is SpecificCardPageEvent) {
       // event.
@@ -116,6 +122,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       // print(_tarjeta.bank);
       int _success = await _cardRepository.updateCard(_tarjeta);
       List<CardList> _cardList = await _cardRepository.obtainCardList(_userId);
+
       yield _success == 1
           ? CardPageState(_cardList)
           : NavigationCartPageState();
@@ -199,6 +206,17 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       _listProduct.imageUrl=_product.imageUrl;
       globals.listProductCard.add(_listProduct);
       yield QrAditionState();
+    }else if (event is PurchaseEvent) {
+      // event.
+      yield NavigationLoadingState();
+      PurchaseData _purchaseData=event.props[0];
+      SharedPreferences userId=await SharedPreferences.getInstance();
+      SharedPreferences cardId=await SharedPreferences.getInstance();
+      _purchaseData.cardId=cardId.getInt('cardId');
+      int response=await _purchaseRepository.makePurchase(_purchaseData, userId.getInt('userId'));
+      List<Branch> _getBranchList = await _branchRepository.obtainListBranch();
+      if(response==1)globals.listProductCard.clear();
+      yield (response==1)?ListBranchPageState(_getBranchList):NavigationCartPageState();
     }else {}
   }
 }
