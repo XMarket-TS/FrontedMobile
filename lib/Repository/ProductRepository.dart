@@ -110,7 +110,7 @@ class ProductRepository {
   Future<Product> obtainbyHash(String hash) async {
     try {
       // var _branchId=branchId.toString();
-      print("entro a repo de hash");
+      // print("entro a repo de hash");
       Product product=Product();
       String url = directionUrl + "product/qr/hash?hash=" + hash;
 
@@ -121,8 +121,8 @@ class ProductRepository {
       var product2 = jsonDecode(res.body);
       product = Product.fromJson(product2);
       if (res.statusCode == 200) {
-        print("se obtuvo producto por hash");
-        print(product.name);
+        // print("se obtuvo producto por hash");
+        // print(product.name);
         return product;
       } else {
         return null;

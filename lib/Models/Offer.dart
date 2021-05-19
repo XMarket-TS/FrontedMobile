@@ -1,5 +1,6 @@
 class Offer {
-  // int _productId;
+  int _offerId;
+  int _productId;
   String _name;
   double _price;
   String _description;
@@ -7,22 +8,19 @@ class Offer {
   String _endDate;
   String _imageUrl;
   int _unit;
+  int _discount;
   int _categoryId;
   int _branchId;
 
   // String _branch;
-
-  Offer(
-      this._name,
-      this._price,
-      this._startDate,
-      this._endDate,
-      this._description,
-      this._unit,
-      this._imageUrl,
-      this._discount,
-      this._categoryId,
-      this._branchId);
+  Offer();
+  // Offer(
+  //     this._offerId, this._productId,
+  //     this._name, this._price,
+  //     this._startDate, this._endDate,
+  //     this._description, this._unit,
+  //     this._imageUrl, this._discount,
+  //     this._categoryId, this._branchId);
 
   String get startDate => _startDate;
 
@@ -42,7 +40,7 @@ class Offer {
     _unit = value;
   }
 
-  double _discount;
+
 
   String get imageUrl => _imageUrl;
 
@@ -56,9 +54,9 @@ class Offer {
     _name = value;
   }
 
-  double get discount => _discount;
+  int get discount => _discount;
 
-  set discount(double value) {
+  set discount(int value) {
     _discount = value;
   }
 
@@ -86,15 +84,30 @@ class Offer {
     _branchId = value;
   }
 
+
+  int get productId => _productId;
+
+  set productId(int value) {
+    _productId = value;
+  }
+
+
+  int get offerId => _offerId;
+
+  set offerId(int value) {
+    _offerId = value;
+  }
+
   Offer.fromJson(Map<String, dynamic> json) {
+    offerId=json['offerId'];
+    productId= json['productId'];
     name = json['name'];
     price = json['price'];
     startDate = json["startDate"];
     endDate = json['endDate'];
-    description = json['description'];
     imageUrl = json['imageUrl'];
-    discount = json['discount'];
-    categoryId = json['cateforyId'];
+    discount = json['percentage'];
+    categoryId = json['categoryId'];
     branchId = json['branchId'];
   }
 }

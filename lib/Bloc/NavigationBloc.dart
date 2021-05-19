@@ -56,7 +56,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       String _data=event.props[4];
       List<Product> _getListProduct =
           await ProductRepository.obtainListProduct(_branchId, _categoriesId,page,size,_data);
-      List<Offer> _getListOffer = _offersRepository.offerList;
+      List<Offer> _getListOffer = await _offersRepository.obtainOffersByBranch(_branchId);
       yield ListProductPageState(_getListProduct, _getListOffer, _branchId,_categoriesId);
     } else if (event is NavigationBranchPageEvent) {
       // event.
@@ -68,7 +68,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       int _branchId = event.props[0];
       List<Categories> _getListCategories =
           await _categoriesRepository.obtainListCategories(_branchId);
-      List<Offer> _getListOffer = await _offersRepository.offerList;
+      List<Offer> _getListOffer = await _offersRepository.obtainOffersByBranch(_branchId);
       yield ListCategoriesPageState(
           _getListCategories, _getListOffer, _branchId);
     } else if (event is ProfilePageEvent) {
