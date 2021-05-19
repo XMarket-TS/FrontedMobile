@@ -31,8 +31,8 @@ class ImageRepository {
       print(imageUrl2);
       // imageUrl=imageUrl2["secure_url"];
       imageUrl = "http";
-      print("url obtenida de la subida");
-      print(imageUrl);
+      // print("url obtenida de la subida");
+      // print(imageUrl);
       if (res.statusCode == 200) {
         print("Se subio cloudinary");
         return imageUrl;
