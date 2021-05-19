@@ -91,77 +91,82 @@ class _CategoriesPageState extends State<CategoriesPage> {
                             scrollDirection: Axis.horizontal,
                             itemCount: _listOffer.length,
                             itemBuilder: (context, index) {
-                              return Card(
-                                color: color6.withOpacity(0.8),
-                                // color: color3.withOpacity(0.8),
-                                // color: color2.withOpacity(0.7),
-                                elevation: 10.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                child: Stack(
-                                  children: [
-                                    // Image.asset("assets/images/${_listOffer[index].imageUrl}",fit: BoxFit.fill,),
-                                    // Image.asset(
-                                    //   "assets/images/${_url2[index]}",
-                                    //   fit: BoxFit.fill,
-                                    // ),
-                                    Image.network(_listOffer[index].imageUrl,fit: BoxFit.fill,),
-                                    Positioned(
-                                      bottom: 0,
-                                      right: 0,
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              // bottomRight: Radius.circular(10.0),
-                                              topLeft: Radius.circular(30.0)
+                              return GestureDetector(
+                                onTap: (){
+                                  BlocProvider.of<NavigationBloc>(context).add(SpecificProductPageEvent(_listOffer[index].productId));
+                                },
+                                child: Card(
+                                  color: color6.withOpacity(0.8),
+                                  // color: color3.withOpacity(0.8),
+                                  // color: color2.withOpacity(0.7),
+                                  elevation: 10.0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  child: Stack(
+                                    children: [
+                                      // Image.asset("assets/images/${_listOffer[index].imageUrl}",fit: BoxFit.fill,),
+                                      // Image.asset(
+                                      //   "assets/images/${_url2[index]}",
+                                      //   fit: BoxFit.fill,
+                                      // ),
+                                      Image.network(_listOffer[index].imageUrl,fit: BoxFit.fill,),
+                                      Positioned(
+                                        bottom: 0,
+                                        right: 0,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                                // bottomRight: Radius.circular(10.0),
+                                                topLeft: Radius.circular(30.0)
+                                            ),
+                                            color: Colors.yellow.withOpacity(0.9),
                                           ),
-                                          color: Colors.yellow.withOpacity(0.9),
-                                        ),
-                                        // color: Colors.white.withOpacity(0.7),
-                                        padding: EdgeInsets.only(
-                                            left: 20.0,
-                                            right: 20.0,
-                                            bottom: 5.0,
-                                            top: 5.0),
+                                          // color: Colors.white.withOpacity(0.7),
+                                          padding: EdgeInsets.only(
+                                              left: 20.0,
+                                              right: 20.0,
+                                              bottom: 5.0,
+                                              top: 5.0),
 
-                                        child: Center(
-                                          child: Column(
-                                            children: [
-                                              Text(
-                                                "${_listOffer[index].name}",
-                                                style: TextStyle(
-                                                  fontSize: size.height * 0.018,
+                                          child: Center(
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  "${_listOffer[index].name}",
+                                                  style: TextStyle(
+                                                    fontSize: size.height * 0.018,
+                                                  ),
                                                 ),
-                                              ),
-                                              Text(
-                                                "Cantidad ${_listOffer[index].unit}",
-                                                style: TextStyle(
-                                                  fontSize: size.height * 0.015,
-                                                ),
-                                              ),
-                                              Text(
-                                                "${_listOffer[index].price} Bs",
-                                                style: TextStyle(
+                                                Text(
+                                                  "Cantidad ${_listOffer[index].unit}",
+                                                  style: TextStyle(
                                                     fontSize: size.height * 0.015,
-                                                    color: color3),
-                                              ),
-                                            ],
+                                                  ),
+                                                ),
+                                                Text(
+                                                  "${_listOffer[index].price} Bs",
+                                                  style: TextStyle(
+                                                      fontSize: size.height * 0.015,
+                                                      color: color3),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Text(
-                                        "Oferta ${_listOffer[index].discount}%",
-                                        style: TextStyle(
-                                            fontSize: size.height * 0.035,
-                                            color: color2,fontWeight: FontWeight.bold),
+                                      Container(
+                                        padding: EdgeInsets.all(5.0),
+                                        child: Text(
+                                          "Oferta ${_listOffer[index].discount}%",
+                                          style: TextStyle(
+                                              fontSize: size.height * 0.035,
+                                              color: color2,fontWeight: FontWeight.bold),
+                                        ),
+                                        // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
                                       ),
-                                      // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               );
                             },

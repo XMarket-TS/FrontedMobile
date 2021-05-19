@@ -96,28 +96,28 @@ class _ProfilePageState extends State<ProfilePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: color3,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 8, bottom: 8, right: 20, left: 20),
-                              // top: 8, bottom: 8, right: 20, left: 20),
-                              child: Text(
-                                "Editar Perfil",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: size.height * 0.024),
-                              ),
-                            ),
-                          ),
-                        ),
+                        // GestureDetector(
+                        //   onTap: () {
+                        //     // BlocProvider.of<NavigationBloc>(context).add(NavigationCategoriesPageEvent(_listBranches[index].branchId));
+                        //   },
+                        //   child: Container(
+                        //     decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(20),
+                        //       color: color3,
+                        //     ),
+                        //     child: Padding(
+                        //       padding: const EdgeInsets.only(
+                        //           top: 8, bottom: 8, right: 20, left: 20),
+                        //       // top: 8, bottom: 8, right: 20, left: 20),
+                        //       child: Text(
+                        //         "Editar Perfil",
+                        //         style: TextStyle(
+                        //             color: Colors.white,
+                        //             fontSize: size.height * 0.024),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         GestureDetector(
                           onTap: () {
                             // print("la tarjeta es del id ");

@@ -5,12 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:x_market/Bloc/NavigationBloc.dart';
 import 'package:x_market/Events/NavigationEvents.dart';
+import 'package:x_market/Models/ListProduct.dart';
 import 'package:x_market/Models/Offer.dart';
 import 'package:x_market/Repository/ProductRepository.dart';
 import 'package:x_market/States/NavigationStates.dart';
 import '../Models/Product.dart';
 import '../Colors.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import '../Globals.dart' as globals;
 class ProductPage extends StatefulWidget {
   List<Product> _listProduct;
   List<Offer> _listOffer;
@@ -65,6 +67,7 @@ class _ProductPageState extends State<ProductPage> {
   //   _productBloc.dispose();
   // }
   List<Widget> itemsData = [];
+  ListProduct _addProduct = ListProduct();
 
   @override
   Widget build(BuildContext context) {
@@ -277,7 +280,13 @@ class _ProductPageState extends State<ProductPage> {
                                     //   _listProduct.removeAt(index);
                                     // });
                                     // print(_listProduct[index].productId);
-                                    BlocProvider.of<NavigationBloc>(context).add(SpecificProductPageEvent(product.productId));
+                                    _addProduct.productId = product.productId;
+                                    _addProduct.productName = product.name;
+                                    _addProduct.price = product.price;
+                                    _addProduct.unit = 1;
+                                    _addProduct.imageUrl = product.imageUrl;
+                                    globals.listProductCard.add(_addProduct);
+                                    // BlocProvider.of<NavigationBloc>(context).add(SpecificProductPageEvent(product.productId));
                                   },
                                   child: GestureDetector(
                                     onTap: () {
