@@ -22,7 +22,7 @@ class _CartPageState extends State<CartPage> {
         backgroundColor: color2,
         elevation: 5,
         title: Text(
-          "Cart",
+          "Compras",
           style: TextStyle(fontSize: size.height * 0.045),
         ),
         centerTitle: true,
