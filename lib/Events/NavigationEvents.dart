@@ -13,13 +13,13 @@ class NavigationProductPageEvent extends NavigationEvents {
   int _categorieId;
   int page;
   int size;
+  String _data;
 
-  NavigationProductPageEvent(
-      this._branchId, this._categorieId, this.page, this.size);
+  NavigationProductPageEvent(this._branchId, this._categorieId, this.page, this.size,this._data);
 
 
   @override
-  List<Object> get props => [_branchId, _categorieId,page,size];
+  List<Object> get props => [_branchId, _categorieId,page,size,_data];
 }
 
 class NavigationBranchPageEvent extends NavigationEvents {

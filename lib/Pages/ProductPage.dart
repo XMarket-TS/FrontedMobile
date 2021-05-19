@@ -26,6 +26,7 @@ class _ProductPageState extends State<ProductPage> {
   List<Offer> _listOffer;
   int branchId;
   int categoryId;
+  String _data=null;
   _ProductPageState(this._listProduct, this._listOffer);
   TextEditingController _search=TextEditingController();
   static const _pageSize = 10;
@@ -41,7 +42,7 @@ class _ProductPageState extends State<ProductPage> {
   }
   Future<void> _fetchPage(int pageKey) async {
     try {
-      final _listProduct1 = await ProductRepository.obtainListProduct(branchId,categoryId,pageKey, _pageSize);
+      final _listProduct1 = await ProductRepository.obtainListProduct(branchId,categoryId,pageKey, _pageSize,_data);
       final isLastPage = _listProduct1.length < _pageSize;
       if (isLastPage) {
         _pagingController.appendLastPage(_listProduct1);
@@ -103,7 +104,7 @@ class _ProductPageState extends State<ProductPage> {
                           Container(
                             // color: color5,
                             height: size.height*0.06,
-                            width: size.width*0.8,
+                            width: size.width*0.7,
                             margin: EdgeInsets.only(left: 10,top: 10,bottom: 10),
                             padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
                             decoration: BoxDecoration(
@@ -124,6 +125,25 @@ class _ProductPageState extends State<ProductPage> {
                           Container(
                             height: size.height*0.06,
                             width: size.width*0.1,
+                            margin: EdgeInsets.only(top: 10,bottom: 10),
+                            padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
+                            decoration: BoxDecoration(
+                              // borderRadius: BorderRadius.only(topRight: Radius.circular(10.0),bottomRight: Radius.circular(10.0)),
+                              color: color5,
+                            ),
+                            child: GestureDetector(
+                                onTap: (){
+                                  print("search");
+                                  _data=_search.text;
+                                  _pagingController.refresh();
+                                  // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(branchId, categoryId, page, size, _data));
+                                },
+                                child: Icon(Icons.search)
+                            ),
+                          ),
+                          Container(
+                            height: size.height*0.06,
+                            width: size.width*0.1,
                             margin: EdgeInsets.only(right: 10,top: 10,bottom: 10),
                             padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
                             decoration: BoxDecoration(
@@ -132,9 +152,12 @@ class _ProductPageState extends State<ProductPage> {
                             ),
                             child: GestureDetector(
                                 onTap: (){
-                                  // print("search");
+                                  print("delete");
+                                  _data=null;
+                                  _pagingController.refresh();
+                                  // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(branchId, categoryId, page, size, _data));
                                 },
-                                child: Icon(Icons.search)
+                                child: Icon(Icons.close)
                             ),
                           ),
                         ],
@@ -254,9 +277,7 @@ class _ProductPageState extends State<ProductPage> {
                                     //   _listProduct.removeAt(index);
                                     // });
                                     // print(_listProduct[index].productId);
-                                    BlocProvider.of<NavigationBloc>(context).add(
-                                        SpecificProductPageEvent(
-                                            product.productId));
+                                    BlocProvider.of<NavigationBloc>(context).add(SpecificProductPageEvent(product.productId));
                                   },
                                   child: GestureDetector(
                                     onTap: () {
