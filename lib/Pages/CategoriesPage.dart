@@ -47,34 +47,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
     'cola.png',
     'fries.png'
   ];
-  List _url = [
-    'fig1.jpg',
-    'fig2.jpg',
-    'fig3.png',
-    'fig1.jpg',
-    'fig4.jpg',
-    'fig5.jpg',
-    'fig2.jpg',
-    'sandwich.png',
-    'wrap.png',
-    'fig1.jpg',
-    'fig2.jpg',
-    'fig3.png',
-    'fig1.jpg',
-    'fig4.jpg',
-    'fig5.jpg',
-    'fig2.jpg',
-    'sandwich.png',
-    'wrap.png',
-    'fig1.jpg',
-    'fig2.jpg',
-    'fig3.png',
-    'fig1.jpg',
-    'fig4.jpg',
-    'fig5.jpg',
-    'fig2.jpg',
-    'sandwich.png',
-    'wrap.png'
+  List _url = ['fig1.jpg', 'fig2.jpg', 'fig3.png', 'fig1.jpg', 'fig4.jpg', 'fig5.jpg', 'fig2.jpg', 'sandwich.png', 'wrap.png', 'fig1.jpg', 'fig2.jpg', 'fig3.png', 'fig1.jpg', 'fig4.jpg', 'fig5.jpg', 'fig2.jpg', 'sandwich.png', 'wrap.png', 'fig1.jpg', 'fig2.jpg', 'fig3.png', 'fig1.jpg', 'fig4.jpg', 'fig5.jpg', 'fig2.jpg', 'sandwich.png', 'wrap.png'
   ];
 
   @override
@@ -124,23 +97,25 @@ class _CategoriesPageState extends State<CategoriesPage> {
                                 // color: color2.withOpacity(0.7),
                                 elevation: 10.0,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 child: Stack(
                                   children: [
                                     // Image.asset("assets/images/${_listOffer[index].imageUrl}",fit: BoxFit.fill,),
-                                    Image.asset(
-                                      "assets/images/${_url2[index]}",
-                                      fit: BoxFit.fill,
-                                    ),
+                                    // Image.asset(
+                                    //   "assets/images/${_url2[index]}",
+                                    //   fit: BoxFit.fill,
+                                    // ),
+                                    Image.network(_listOffer[index].imageUrl,fit: BoxFit.fill,),
                                     Positioned(
                                       bottom: 0,
                                       right: 0,
                                       child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.only(
-                                              bottomRight: Radius.circular(10.0),
-                                              topLeft: Radius.circular(30.0)),
+                                              // bottomRight: Radius.circular(10.0),
+                                              topLeft: Radius.circular(30.0)
+                                          ),
                                           color: Colors.yellow.withOpacity(0.9),
                                         ),
                                         // color: Colors.white.withOpacity(0.7),
@@ -156,7 +131,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                                               Text(
                                                 "${_listOffer[index].name}",
                                                 style: TextStyle(
-                                                  fontSize: size.height * 0.025,
+                                                  fontSize: size.height * 0.018,
                                                 ),
                                               ),
                                               Text(
@@ -181,8 +156,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
                                       child: Text(
                                         "Oferta ${_listOffer[index].discount}%",
                                         style: TextStyle(
-                                            fontSize: size.height * 0.03,
-                                            color: Colors.black),
+                                            fontSize: size.height * 0.035,
+                                            color: color2,fontWeight: FontWeight.bold),
                                       ),
                                       // child: Text("${snapshot.data[index].name}",style: TextStyle(fontSize: 20.0),),
                                     ),
