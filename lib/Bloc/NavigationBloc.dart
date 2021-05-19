@@ -17,6 +17,7 @@ import 'package:x_market/Repository/CategoriesRepository.dart';
 import 'package:x_market/Repository/ImageRepository.dart';
 import 'package:x_market/Repository/OffersRepository.dart';
 import 'package:x_market/Repository/ProductRepository.dart';
+import 'package:x_market/Repository/RecipesRepository.dart';
 import 'package:x_market/Repository/UserRepository.dart';
 import 'package:x_market/States/NavigationStates.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,7 +31,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   UserRepository _userRepository;
   CardRepository _cardRepository;
   ImageRepository _imageRepository;
-
+  RecipesRepository _recipesRepository;
   NavigationBloc(
       this._productRepository,
       this._offersRepository,
@@ -38,7 +39,8 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
       this._categoriesRepository,
       this._userRepository,
       this._cardRepository,
-      this._imageRepository);
+      this._imageRepository,
+      this._recipesRepository);
 
   @override
   NavigationStates get initialState => NavigationInitialState();
@@ -161,6 +163,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
     }else if (event is RecetasEvent) {
       // event.
       yield NavigationLoadingState();
+      await _recipesRepository.getRandomRecipes();
       yield RecetasState();
     } else if (event is RegisterEvent) {
       // event.
