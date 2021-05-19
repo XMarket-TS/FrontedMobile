@@ -133,7 +133,7 @@ class _ProductPageState extends State<ProductPage> {
                             ),
                             child: GestureDetector(
                                 onTap: (){
-                                  print("search");
+                                  // print("search");
                                   _data=_search.text;
                                   _pagingController.refresh();
                                   // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(branchId, categoryId, page, size, _data));
@@ -152,7 +152,7 @@ class _ProductPageState extends State<ProductPage> {
                             ),
                             child: GestureDetector(
                                 onTap: (){
-                                  print("delete");
+                                  // print("delete");
                                   _data=null;
                                   _pagingController.refresh();
                                   // BlocProvider.of<NavigationBloc>(context).add(NavigationProductPageEvent(branchId, categoryId, page, size, _data));
