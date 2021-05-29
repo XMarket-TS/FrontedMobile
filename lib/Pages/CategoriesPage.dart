@@ -55,13 +55,14 @@ class _CategoriesPageState extends State<CategoriesPage> {
     final Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: color1,
         appBar: AppBar(
           toolbarHeight: size.height * 0.08,
           backgroundColor: color2,
           elevation: 5,
           title: Text(
             "X-Market",
-            style: TextStyle(fontSize: size.height * 0.045),
+            style: TextStyle(fontSize: size.height * 0.045,color: color1),
           ),
           centerTitle: true,
         ),
@@ -120,7 +121,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                                                 // bottomRight: Radius.circular(10.0),
                                                 topLeft: Radius.circular(30.0)
                                             ),
-                                            color: Colors.yellow.withOpacity(0.9),
+                                            color: color9.withOpacity(0.9),
                                           ),
                                           // color: Colors.white.withOpacity(0.7),
                                           padding: EdgeInsets.only(
@@ -148,7 +149,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                                                   "${_listOffer[index].price} Bs",
                                                   style: TextStyle(
                                                       fontSize: size.height * 0.015,
-                                                      color: color3),
+                                                      color: color5),
                                                 ),
                                               ],
                                             ),
@@ -175,7 +176,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                         Text(
                           "Categorias",
                           style: TextStyle(
-                              color: Colors.white, fontSize: size.width * 0.08),
+                              color: color2, fontSize: size.width * 0.08),
                         ),
                         // categoriesScroller,
                         Container(
@@ -224,7 +225,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                                                   bottomRight:
                                                   Radius.circular(10.0),
                                                   topLeft: Radius.circular(30.0)),
-                                              color: color2.withOpacity(0.9),
+                                              color: color10.withOpacity(0.9),
                                             ),
                                             // color: Colors.white.withOpacity(0.7),
                                             padding: EdgeInsets.only(
@@ -365,7 +366,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                         Text(
                           "Categorias",
                           style: TextStyle(
-                              color: Colors.white, fontSize: size.width * 0.08),
+                              color: color2, fontSize: size.width * 0.08),
                         ),
                         // categoriesScroller,
                         Container(
@@ -414,7 +415,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                                                   bottomRight:
                                                   Radius.circular(10.0),
                                                   topLeft: Radius.circular(30.0)),
-                                              color: color2.withOpacity(0.9),
+                                              color: color10.withOpacity(0.9),
                                             ),
                                             // color: Colors.white.withOpacity(0.7),
                                             padding: EdgeInsets.only(

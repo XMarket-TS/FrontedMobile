@@ -11,6 +11,7 @@ import 'package:x_market/Repository/PurchaseRepository.dart';
 import 'package:x_market/Repository/UserRepository.dart';
 
 import 'Bloc/NavigationBloc.dart';
+import 'Colors.dart';
 import 'Events/NavigationEvents.dart';
 import 'Repository/BranchRepository.dart';
 import 'Repository/OffersRepository.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       // title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          scaffoldBackgroundColor: Colors.black, primaryColor: Colors.black),
+          scaffoldBackgroundColor: color1, primaryColor: color1),
       // home: LoadingPage()
       home: BlocProvider(
           create: (context) => NavigationBloc(

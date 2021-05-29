@@ -74,13 +74,14 @@ class _ProductPageState extends State<ProductPage> {
     final Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: color1,
         appBar: AppBar(
           toolbarHeight: size.height * 0.08,
           backgroundColor: color2,
           elevation: 5,
           title: Text(
             "X-Market",
-            style: TextStyle(fontSize: size.height * 0.045),
+            style: TextStyle(fontSize: size.height * 0.045,color: color1),
           ),
           centerTitle: true,
         ),
@@ -112,7 +113,7 @@ class _ProductPageState extends State<ProductPage> {
                             padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
                             decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0),bottomLeft: Radius.circular(10.0)),
-                                color: color5,
+                                color: color6,
                           ),
                             child: TextField(
                                   // cursorWidth: size.width*0.5,
@@ -132,7 +133,7 @@ class _ProductPageState extends State<ProductPage> {
                             padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
                             decoration: BoxDecoration(
                               // borderRadius: BorderRadius.only(topRight: Radius.circular(10.0),bottomRight: Radius.circular(10.0)),
-                              color: color5,
+                              color: color6,
                             ),
                             child: GestureDetector(
                                 onTap: (){
@@ -151,7 +152,7 @@ class _ProductPageState extends State<ProductPage> {
                             padding: EdgeInsets.only(right: 10,left: 10,top: 5,bottom: 5),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(topRight: Radius.circular(10.0),bottomRight: Radius.circular(10.0)),
-                              color: color5,
+                              color: color6,
                             ),
                             child: GestureDetector(
                                 onTap: (){
@@ -323,7 +324,7 @@ class _ProductPageState extends State<ProductPage> {
                                               children: [
                                                 SizedBox(
                                                   child: AutoSizeText("${product.name}",
-                                                    style: TextStyle(fontSize: size.width*0.037, color: Colors.white),
+                                                    style: TextStyle(fontSize: size.width*0.035, color: color6),
                                                     maxLines: 1,
                                                   ),
                                                 ),

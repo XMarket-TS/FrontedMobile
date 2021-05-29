@@ -77,7 +77,7 @@ class _CardPageState extends State<CardPage> {
                                     Container(
                                       padding: EdgeInsets.all(10.0),
                                       child: Image.asset(
-                                        "assets/images/burger.png",
+                                        "assets/images/cardImage.jpg",
                                         height: size.width * 0.2,
                                         width: size.width * 0.2,
                                       ),
@@ -91,7 +91,7 @@ class _CardPageState extends State<CardPage> {
                                             "${_cardList[index].bank}",
                                             style: TextStyle(
                                                 fontSize: 20.0,
-                                                color: Colors.white),
+                                                color: color2),
                                           ),
                                           Text(
                                             "${_cardList[index].cardNumber}",

@@ -58,6 +58,7 @@ class _BranchPageState extends State<BranchPage> {
     final Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: color1,
         appBar: AppBar(
           // titleSpacing: 100.0,
           toolbarHeight: size.height * 0.09,
@@ -67,11 +68,11 @@ class _BranchPageState extends State<BranchPage> {
             children: [
               Text(
                 "X-Market",
-                style: TextStyle(fontSize: size.height * 0.045),
+                style: TextStyle(fontSize: size.height * 0.045,color: color1),
               ),
               Text(
                 "Sucursales",
-                style: TextStyle(fontSize: size.height * 0.03),
+                style: TextStyle(fontSize: size.height * 0.03,color: color1),
               ),
             ],
           ),
@@ -135,7 +136,7 @@ class _BranchPageState extends State<BranchPage> {
                                               bottomRight:
                                                   Radius.circular(10.0),
                                               topLeft: Radius.circular(30.0)),
-                                          color: color2.withOpacity(0.9),
+                                          color: color10.withOpacity(0.9),
                                         ),
                                         // color: Colors.white.withOpacity(0.7),
                                         padding: EdgeInsets.only(
@@ -149,19 +150,19 @@ class _BranchPageState extends State<BranchPage> {
                                               "${_listBranches[index].name}",
                                               style: TextStyle(
                                                   fontSize: 20.0,
-                                                  color: Colors.white),
+                                                  color: color9),
                                             ),
                                             Text(
                                               "${_listBranches[index].zone}",
                                               style: TextStyle(
                                                   fontSize: 15.0,
-                                                  color: color5),
+                                                  color: Colors.white),
                                             ),
                                             Text(
                                               "${_listBranches[index].address} ",
                                               style: TextStyle(
                                                   fontSize: 15.0,
-                                                  color: color3),
+                                                  color: Colors.white),
                                             ),
                                           ],
                                         ),

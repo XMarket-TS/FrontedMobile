@@ -8,7 +8,7 @@ import '../Colors.dart';
 class PopupMenuComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton(onSelected: (result) {
+    return PopupMenuButton(color: color1, onSelected: (result) {
       if (result == 1) {
         BlocProvider.of<NavigationBloc>(context).add(QrEvent());
       } else if (result == 2) {
@@ -31,21 +31,21 @@ class PopupMenuComponent extends StatelessWidget {
           ),
           value: 1,
         ),
-        PopupMenuItem(
-          child: Row(
-            children: [
-              Icon(
-                Icons.fiber_new_sharp,
-                color: color2,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 10.0),
-                child: Text("Recetas"),
-              )
-            ],
-          ),
-          value: 2,
-        ),
+        // PopupMenuItem(
+        //   child: Row(
+        //     children: [
+        //       Icon(
+        //         Icons.fiber_new_sharp,
+        //         color: color2,
+        //       ),
+        //       Padding(
+        //         padding: EdgeInsets.only(left: 10.0),
+        //         child: Text("Recetas"),
+        //       )
+        //     ],
+        //   ),
+        //   value: 2,
+        // ),
       ];
     });
   }

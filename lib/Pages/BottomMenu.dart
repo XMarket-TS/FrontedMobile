@@ -53,6 +53,7 @@ class _BottomMenuState extends State<BottomMenu> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      // backgroundColor: color1,
         bottomNavigationBar: CurvedNavigationBar(
           index: _selectedIndex,
           // height: size.height,
@@ -60,14 +61,17 @@ class _BottomMenuState extends State<BottomMenu> {
             Icon(
               Icons.person,
               size: 40,
+              color: color1,
             ),
             Icon(
               Icons.menu,
               size: 40,
+              color: color1,
             ),
             Icon(
               Icons.add_shopping_cart,
               size: 40,
+              color: color1,
             ),
             // Icon(Icons.add_shopping_cart,size: 40,),
           ],
@@ -94,8 +98,8 @@ class _BottomMenuState extends State<BottomMenu> {
             }
           },
           buttonBackgroundColor: color2,
-          backgroundColor: color1,
-          color: color6,
+          backgroundColor: Colors.transparent,
+          color: color2,
           animationCurve: Curves.easeInBack,
           animationDuration: const Duration(milliseconds: 300),
         ),

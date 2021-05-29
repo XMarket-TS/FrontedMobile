@@ -35,7 +35,7 @@ class _CartPageState extends State<CartPage> {
         elevation: 5,
         title: Text(
           "Compras",
-          style: TextStyle(fontSize: size.height * 0.045),
+          style: TextStyle(fontSize: size.height * 0.045,color: color1),
         ),
         centerTitle: true,
         actions: [
@@ -215,7 +215,7 @@ class _CartPageState extends State<CartPage> {
                           borderRadius: BorderRadius.only(
                               topRight: Radius.circular(30.0),
                               topLeft: Radius.circular(30.0)),
-                          color: color7,
+                          color: color3,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -226,13 +226,13 @@ class _CartPageState extends State<CartPage> {
                                 Text(
                                   "Total:",
                                   style: TextStyle(
-                                      color: Colors.white,
+                                      color: color2,
                                       fontSize: size.width * 0.05),
                                 ),
                                 Text(
                                   "${costoTotal(costo).toString()} Bs",
                                   style: TextStyle(
-                                      color: color2,
+                                      color: color1,
                                       fontSize: size.width * 0.05),
                                 ),
                               ],
@@ -398,9 +398,9 @@ class _buyProductState extends State<buyProduct> {
                       color: color5, fontSize: 18, fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  _total.toString(),
+                  "${_total.toString()} Bs",
                   style: TextStyle(
-                      color: color5, fontSize: 20, fontWeight: FontWeight.w500),
+                      color: color3, fontSize: 20, fontWeight: FontWeight.w500),
                 ),
                 // SizedBox(height: 10,),
                 // Text(_news.source,style: TextStyle(color: color5),),
@@ -411,7 +411,7 @@ class _buyProductState extends State<buyProduct> {
         TextButton(
           child: Text(
             'Comprar',
-            style: TextStyle(color: color4),
+            style: TextStyle(color: color3),
           ),
           onPressed: () {
             // print(_product.productId);

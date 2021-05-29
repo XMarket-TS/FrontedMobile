@@ -131,9 +131,9 @@ class LoginPage extends StatelessWidget {
                         .add(ConfirmUserEvent(_confirmUser));
                   },
                   child: Text(
-                    "Login",
+                    "Iniciar Sesión",
                     style: TextStyle(
-                        color: color5,
+                        color: color1,
                         fontSize: size.height * 0.025,
                         fontWeight: FontWeight.bold),
                   ),
@@ -152,11 +152,11 @@ class LoginPage extends StatelessWidget {
                   child: Text(
                     "Crear una cuenta nueva",
                     style:
-                        TextStyle(color: color5, fontSize: size.height * 0.025),
+                        TextStyle(color: color1, fontSize: size.height * 0.025),
                   ),
                   decoration: BoxDecoration(
                       border:
-                          Border(bottom: BorderSide(width: 1, color: color5))),
+                          Border(bottom: BorderSide(width: 1, color: color1))),
                 ),
               ),
               SizedBox(

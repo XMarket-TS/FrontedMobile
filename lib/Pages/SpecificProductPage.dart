@@ -36,13 +36,14 @@ class _SpecificProductPageState extends State<SpecificProductPage> {
     final Size size = MediaQuery.of(context).size;
     return SafeArea(
         child: Scaffold(
+          backgroundColor: color1,
           appBar: AppBar(
             toolbarHeight: size.height * 0.08,
             backgroundColor: color2,
             elevation: 5,
             title: Text(
               "X-Market",
-              style: TextStyle(fontSize: size.height * 0.045),
+              style: TextStyle(fontSize: size.height * 0.045,color: color1),
             ),
             centerTitle: true,
           ),
@@ -84,18 +85,19 @@ class _SpecificProductPageState extends State<SpecificProductPage> {
                               }),
                         ),
                         Container(
-                          height: size.height * 0.49,
+                          height: size.height * 0.51,
                           padding: const EdgeInsets.only(right: 8, left: 8),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20),
                                 topRight: Radius.circular(20)),
                             // borderRadius: BorderRadius.circular(20),
-                            color: color1,
+                            color: color3,
                           ),
                           // color: color1,
                           child: SingleChildScrollView(
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SizedBox(
                                   height: size.height * 0.025,
@@ -111,7 +113,7 @@ class _SpecificProductPageState extends State<SpecificProductPage> {
                                 Text(
                                   _product.description,
                                   style: TextStyle(
-                                      color: color5, fontSize: size.height * 0.02),
+                                      color: Colors.white, fontSize: size.height * 0.025),
                                 ),
                                 SizedBox(
                                   height: size.height * 0.025,
@@ -132,13 +134,13 @@ class _SpecificProductPageState extends State<SpecificProductPage> {
                                             Text(
                                               "Disponible: ",
                                               style: TextStyle(
-                                                  color: Colors.white,
+                                                  color: color2,
                                                   fontSize: size.height * 0.024),
                                             ),
                                             Text(
                                               _product.unit.toString(),
                                               style: TextStyle(
-                                                  color: color5,
+                                                  color: color1,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: size.height * 0.024),
                                             ),
@@ -159,13 +161,13 @@ class _SpecificProductPageState extends State<SpecificProductPage> {
                                             Text(
                                               "Precio: ",
                                               style: TextStyle(
-                                                  color: Colors.white,
+                                                  color: color2,
                                                   fontSize: size.height * 0.024),
                                             ),
                                             Text(
                                               "${_product.price.toString()} Bs",
                                               style: TextStyle(
-                                                  color: color5,
+                                                  color: color1,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: size.height * 0.024),
                                             ),
@@ -314,9 +316,9 @@ class _chooseProductState extends State<chooseProduct> {
                       color: color5, fontSize: 18, fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  _product.price.toString(),
+                  "${_product.price.toString()} Bs",
                   style: TextStyle(
-                      color: color5, fontSize: 20, fontWeight: FontWeight.w500),
+                      color: color3, fontSize: 20, fontWeight: FontWeight.w500),
                 ),
                 // SizedBox(height: 10,),
                 // Text(_news.source,style: TextStyle(color: color5),),

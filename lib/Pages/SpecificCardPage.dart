@@ -75,7 +75,7 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                     Container(
                       width: size.width * 0.97,
                       decoration: BoxDecoration(
-                        color: color7,
+                        color: color2.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: TextField(
@@ -95,7 +95,7 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                     Container(
                       width: size.width * 0.97,
                       decoration: BoxDecoration(
-                        color: color7,
+                        color: color2.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: TextField(
@@ -115,7 +115,7 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                     Container(
                       width: size.width * 0.97,
                       decoration: BoxDecoration(
-                        color: color7,
+                        color: color2.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: TextField(
@@ -135,7 +135,7 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                     Container(
                       width: size.width * 0.97,
                       decoration: BoxDecoration(
-                        color: color7,
+                        color: color2.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: TextField(
@@ -155,7 +155,7 @@ class _SpecificCardPageState extends State<SpecificCardPage> {
                     Container(
                       width: size.width * 0.97,
                       decoration: BoxDecoration(
-                        color: color7,
+                        color: color2.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: TextField(

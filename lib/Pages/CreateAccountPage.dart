@@ -134,7 +134,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                     )
                                   : Icon(
                                       Icons.perm_identity_rounded,
-                                      color: color5,
+                                      color: color2,
                                       size: size.width * 0.2,
                                     ),
                             ),
@@ -154,10 +154,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                     color: color2,
                                     shape: BoxShape.circle,
                                     border:
-                                        Border.all(color: color5, width: 2)),
+                                        Border.all(color: color1, width: 2)),
                                 child: Icon(
                                   Icons.add,
-                                  color: color5,
+                                  color: color1,
                                 ),
                               ),
                             ),
@@ -175,7 +175,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                             width: size.width * 0.4,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16.0),
-                                color: color3),
+                                color: color2),
                             child: FlatButton(
                               onPressed: () {
                                 // setState(() {
@@ -184,7 +184,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                 _imagesCloudinary.fileContents = _image;
                                 // });
                                 uploadImage();
-                                print("para enviar al repo");
+                                // print("para enviar al repo");
                                 // print(_image);
                                 // print(_imagesCloudinary.fileContents);
                                 // print(imagesCloudinary.preset);
@@ -193,7 +193,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                               child: Text(
                                 "Guardar Imagen",
                                 style: TextStyle(
-                                    color: color5,
+                                    color: color1,
                                     fontSize: size.width * 0.04,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -462,7 +462,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                   child: Text(
                                     "Crear",
                                     style: TextStyle(
-                                        color: color5,
+                                        color: color1,
                                         fontSize: size.width * 0.04,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -485,7 +485,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                   child: Text(
                                     "Cancelar",
                                     style: TextStyle(
-                                        color: color5,
+                                        color: color1,
                                         fontSize: size.width * 0.04,
                                         fontWeight: FontWeight.bold),
                                   ),

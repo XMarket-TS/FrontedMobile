@@ -26,13 +26,14 @@ class _ProfilePageState extends State<ProfilePage> {
     final Size size = MediaQuery.of(context).size;
     return SafeArea(
         child: Scaffold(
+          backgroundColor: color1,
       appBar: AppBar(
         toolbarHeight: size.height * 0.08,
         backgroundColor: color2,
         elevation: 5,
         title: Text(
           "Profile",
-          style: TextStyle(fontSize: size.height * 0.045),
+          style: TextStyle(fontSize: size.height * 0.045,color: color1),
         ),
         centerTitle: true,
       ),
@@ -72,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: size.height * 0.035,
-                                  color: color4,
+                                  color: color2,
                                 ),
                               ),
                               Text(
@@ -132,7 +133,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.only(
-                                  top: 8, bottom: 8, right: 10, left: 10),
+                                  top: 8, bottom: 8, right: 20, left: 20),
                               // top: 8, bottom: 8, right: 20, left: 20),
                               child: Text(
                                 "Editar Tarjetas",
@@ -155,7 +156,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.only(
-                                  top: 8, bottom: 8, right: 10, left: 10),
+                                  top: 8, bottom: 8, right: 20, left: 20),
                               child: Text(
                                 "Salir",
                                 style: TextStyle(
@@ -175,7 +176,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: double.infinity,
                       margin: EdgeInsets.only(top: 15),
                       decoration: BoxDecoration(
-                        color: color1,
+                        color: color3,
                         borderRadius:
                             BorderRadius.vertical(top: Radius.circular(30)),
                       ),
@@ -190,7 +191,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: size.height * 0.04,
-                                color: color4),
+                                color: color2),
                           ),
                         ],
                       ),
